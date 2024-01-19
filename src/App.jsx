@@ -45,6 +45,10 @@ const GlobalStyle = styled.createGlobalStyle`
   li {
     list-style: none;
   }
+
+  body {
+    background: var(--Grayscale-20);
+  }
 `;
 
 function App() {
