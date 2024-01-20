@@ -1,7 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
-import HomePage from './pages/HomePage';
-import NotFoundPage from './pages/NotFoundPage';
 
 const styled = { createGlobalStyle };
 
@@ -50,22 +47,4 @@ const GlobalStyle = styled.createGlobalStyle`
     background: var(--Grayscale-20);
   }
 `;
-
-function App() {
-  return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <Routes>
-        <Route path="/">
-          <Route index element={<HomePage />} />
-          <Route path="/list" element={<HomePage />} />
-          <Route path="/post/$id" element={<HomePage />} />
-          <Route path="/post/$id/answer" element={<HomePage />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+export default GlobalStyle;
