@@ -9,7 +9,7 @@ const MainContainer = styled.div`
   align-items: center;
   flex-direction: column;
 
-  .buttonArea {
+  .button-area {
     width: 100%;
     text-align: end;
     padding-bottom: 69px;
@@ -32,7 +32,7 @@ const MainContainer = styled.div`
     }
   }
 
-  .inputArea {
+  .input-area {
     padding: 32px;
     background: var(--Grayscale-10);
     width: 400px;
@@ -57,7 +57,7 @@ const MainContainer = styled.div`
       padding: 12px 16px 12px 40px;
       font-size: 1.6rem;
     }
-    .personIcon {
+    .person-icon {
       position: absolute;
       top: 13px;
       left: 16px;
@@ -76,8 +76,8 @@ const MainContainer = styled.div`
     }
   }
 
-  .imageArea {
-    .peopleImage {
+  .image-area {
+    .people-image {
       height: auto;
       width: 100%;
       position: fixed;
