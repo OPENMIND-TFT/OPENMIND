@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
+import AnswerPage from './pages/AnswerPage';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/list" element={<HomePage />} />
           <Route path="/post/$id" element={<HomePage />} />
-          <Route path="/post/$id/answer" element={<HomePage />} />
+          <Route path="/post/$id/answer" element={<AnswerPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
