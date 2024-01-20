@@ -22,11 +22,11 @@ const MainPage = () => {
         </form>
       </div>
       <div className="image-area">
-        <img
+        {/* <img
           className="people-image"
           src="/assets/images/logoWithoutBg.png"
           alt="메인페이지 일러스트"
-        />
+        /> */}
       </div>
     </MainContainer>
   );
