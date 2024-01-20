@@ -56,7 +56,12 @@ function App() {
     <BrowserRouter>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/">
+          <Route index element={<HomePage />} />
+          <Route path="/list" element={<HomePage />} />
+          <Route path="/post/$id" element={<HomePage />} />
+          <Route path="/post/$id/answer" element={<HomePage />} />
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 {
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "env": {
@@ -8,7 +6,6 @@
     "node": true,
   },
   "settings": {
-    // import/resolver` 는 `eslint-plugin-import` 의 경로 설정 옵션
     "import/resolver": {
       "node": {
         "paths": ["src"],
@@ -25,5 +22,9 @@
     ],
     "react/prop-types": "off",
     "prefer-const": "error",
+    "dot-notation": "off",
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
   },
 }
