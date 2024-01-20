@@ -1,5 +1,14 @@
+import { Link } from 'react-router-dom';
+import PheedPageContainer from './style';
+
 const PheedPage = () => {
-  return <div>피드 페이지 입니다.</div>;
+  return (
+    <PheedPageContainer>
+      <Link to="/">
+        <img src="/assets/images/logo.png" className="logo" alt="로고" />
+      </Link>
+    </PheedPageContainer>
+  );
 };
 
 export default PheedPage;
