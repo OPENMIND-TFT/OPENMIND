@@ -6,12 +6,12 @@ const Button = styled.button`
   gap: 8px;
   align-items: center;
   border-radius: 8px;
-  border: 1px solid #542f1a;
-  background-color: #f5f1ee;
+  border: 1px solid var(--Brown-40);
+  background-color: var(--Brown-10);
   cursor: pointer;
 
   .button-p {
-    color: #542f1a;
+    color: var(--Brown-40);
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 22px;

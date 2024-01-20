@@ -1,41 +1,46 @@
-import { useState, useEffect, useRef } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useState, useEffect } from 'react';
 import Container from './style';
 import GoToAnswer from '../../components/GoToAnswer';
 import BackToMain from '../../components/BackToMain';
 
 const List = () => {
-  const [dropDown, setDropDown] = useState(false);
+  const [subjects, setSubjects] = useState([]);
+  const [isDropDown, setIsDropDown] = useState(false);
   const [sortBy, setSortBy] = useState('최신순');
   const [cardInfo, setCardInfo] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+  const [translateY, setTranslateY] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const [currentScroll, setCurrentScroll] = useState(1);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const sliderRef = useRef(null);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${
-          (currentPage - 1) * itemsPerPage
-        }`,
+        `https://openmind-api.vercel.app/3-5/subjects/?limit=${subjects.count ?? 999}&offset=0`,
       );
       const data = await response.json();
+      setSubjects(data);
       setCardInfo(data['results']);
       setTotalItems(data['count']);
     }
     fetchData();
-  }, [currentPage, itemsPerPage]);
+  }, []);
 
   function handleSorting(e) {
     // 정렬기능
     setSortBy(e.target.innerHTML);
     const selectedSort = e.target.innerHTML;
     if (selectedSort === '이름순') {
-      setCardInfo([...cardInfo].sort((a, b) => a.name.localeCompare(b.name)));
+      setCardInfo(
+        [...cardInfo].sort((a, b) =>
+          a.name.localeCompare(b.name, undefined, {
+            numeric: true,
+          }),
+        ),
+      );
     } else if (selectedSort === '최신순') {
       setCardInfo([...cardInfo].sort((a, b) => b.id - a.id));
     }
@@ -43,20 +48,27 @@ const List = () => {
     setSortBy(selectedSort);
   }
 
-  function handlePageChange(newPage) {
-    setCurrentPage(newPage);
+  function handlePageChange(e) {
+    setCurrentPage(Number(e.target.innerHTML));
+    setTranslateY((Number(e.target.innerHTML) - 1) * -414);
   }
 
   function goToPrev() {
-    sliderRef.current.slickPrev();
+    if (currentScroll > 1) {
+      setTranslateX(translateX + 200);
+      setCurrentScroll(currentScroll - 1);
+    }
   }
 
   function goToNext() {
-    sliderRef.current.slickNext();
+    if (currentScroll < Math.ceil(totalPages / 5)) {
+      setTranslateX(translateX - 200);
+      setCurrentScroll(currentScroll + 1);
+    }
   }
 
   return (
-    <Container>
+    <Container x={translateX} y={translateY}>
       <header className="list-header">
         <BackToMain />
         <GoToAnswer />
@@ -65,23 +77,23 @@ const List = () => {
       <main className="list-main">
         <h1 className="list-main-h1">누구에게 질문할까요?</h1>
         <ul
-          className={`list-main-ul ${dropDown ? 'activated' : ''}`}
+          className={`list-main-ul ${isDropDown ? 'activated' : ''}`}
           onKeyDown={() => {}}
           role="presentation"
           onClick={() => {
-            setDropDown(!dropDown);
+            setIsDropDown(!isDropDown);
           }}
         >
           {sortBy}
           <img
             src={
-              !dropDown
+              !isDropDown
                 ? `/assets/images/arrowDown.svg`
                 : `/assets/images/arrowUp.svg`
             }
             alt="arrow"
           />
-          {dropDown && (
+          {isDropDown && (
             <div className="list-main-ul-dropdown">
               <li
                 onClick={handleSorting}
@@ -125,35 +137,25 @@ const List = () => {
       <nav className="list-nav">
         <div
           className="list-nav-controlbutton"
-          onClick={goToPrev}
+          onClick={goToPrev} // 체크포인트
           onKeyDown={() => {}}
           role="presentation"
         >
           {'<'}
         </div>
-        <Slider
-          className="list-nav-pagebutton-box"
-          ref={sliderRef}
-          dots
-          infinite={false}
-          speed={0}
-          slidesToShow={5}
-          slidesToScroll={5}
-        >
+        <div className="list-nav-pagebutton-box">
           {Array.from({ length: totalPages }, (_, index) => (
             <div
-              className={`list-nav-pagebutton ${
-                currentPage === index + 1 ? 'selected' : ''
-              }`}
+              onClick={e => handlePageChange(e)}
+              className={`list-nav-pagebutton ${currentPage === index + 1 ? 'selected' : ''}`}
               key={index + 1}
-              onClick={() => handlePageChange(index + 1)}
               onKeyDown={() => {}}
               role="presentation"
             >
               {index + 1}
             </div>
           ))}
-        </Slider>
+        </div>
         <div
           className="list-nav-controlbutton"
           onClick={goToNext}

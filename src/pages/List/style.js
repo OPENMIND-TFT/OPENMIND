@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  background-color: #f9f9f9;
+  background-color: var(--Grayscale-20);
 
   .list-header {
     width: 100%;
@@ -29,11 +29,11 @@ const Container = styled.div`
       padding: 8px 12px;
       display: flex;
       gap: 4px;
-      border: 1px solid #818181;
+      border: 1px solid var(--Grayscale-40);
       border-radius: 8px;
       position: relative;
       cursor: default;
-      color: #818181;
+      color: var(--Grayscale-40);
       font-size: 1.4rem;
       font-style: normal;
       font-weight: 500;
@@ -43,46 +43,51 @@ const Container = styled.div`
         position: absolute;
         top: 40px;
         left: 0px;
-        border: 1px solid #cfcfcf;
+        border: 1px solid var(--Grayscale-30);
         border-radius: 8px;
-        background-color: #fff;
+        background-color: var(--Grayscale-10);
+        z-index: 1;
 
         li {
           width: 79px;
           padding: 6px 16px;
-          color: #515151;
+          color: var(--Grayscale-50);
         }
 
         li:hover {
-          color: #1877f2;
+          color: var(--Blue-50);
         }
       }
     }
 
     .list-main-ul.activated {
-      color: #000;
-      border: 1px solid #000;
+      color: var(--Grayscale-60);
+      border: 1px solid var(--Grayscale-60);
     }
   }
 
   .list-section {
-    width: 1200px;
-    padding: 50px 130px;
-    margin: 0 auto;
+    max-width: 1200px;
+    max-height: 396px;
+    padding: 0 130px;
+    margin: 30px auto 50px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    overflow: hidden;
 
     .list-section-card {
-      width: 220px;
+      max-width: 220px;
       height: 187px;
       padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 1px solid #818181;
+      border: 1px solid var(--Grayscale-40);
       border-radius: 16px;
-      background-color: #fff;
+      background-color: var(--Grayscale-10);
+      transition: all 0.5s;
+      transform: translateY(${props => props.y}px);
 
       .card-profile {
         display: flex;
@@ -107,7 +112,7 @@ const Container = styled.div`
         justify-content: space-between;
 
         h3 {
-          color: #818181;
+          color: var(--Grayscale-40);
           font-size: 1.4rem;
         }
 
@@ -135,17 +140,20 @@ const Container = styled.div`
       width: 200px;
       text-align: center;
       overflow: hidden;
+      display: flex;
+      flex-wrap: nowrap;
     }
 
     .list-nav-pagebutton {
-      float: left;
+      transition: all 0.5s;
+      transform: translateX(${props => props.x}px);
     }
 
     .list-nav-pagebutton,
     .list-nav-controlbutton {
-      width: 40px;
+      min-width: 40px;
       height: 40px;
-      color: #818181;
+      color: var(--Grayscale-40);
       font-size: 2rem;
       font-style: normal;
       font-weight: 400;
@@ -156,7 +164,7 @@ const Container = styled.div`
     }
 
     .list-nav-pagebutton.selected {
-      color: #542f1a;
+      color: var(--Brown-40);
     }
   }
 `;
