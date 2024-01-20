@@ -17,6 +17,7 @@ const List = () => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   useEffect(() => {
+    // 카드정보 호출
     async function fetchData() {
       const response = await fetch(
         `https://openmind-api.vercel.app/3-5/subjects/?limit=${subjects.count ?? 999}&offset=0`,
@@ -49,11 +50,13 @@ const List = () => {
   }
 
   function handlePageChange(e) {
+    // 페이지이동
     setCurrentPage(Number(e.target.innerHTML));
     setTranslateY((Number(e.target.innerHTML) - 1) * -414);
   }
 
   function goToPrev() {
+    // 이전 페이지리스트
     if (currentScroll > 1) {
       setTranslateX(translateX + 200);
       setCurrentScroll(currentScroll - 1);
@@ -61,6 +64,7 @@ const List = () => {
   }
 
   function goToNext() {
+    // 다음 페이지리스트
     if (currentScroll < Math.ceil(totalPages / 5)) {
       setTranslateX(translateX - 200);
       setCurrentScroll(currentScroll + 1);
@@ -137,7 +141,7 @@ const List = () => {
       <nav className="list-nav">
         <div
           className="list-nav-controlbutton"
-          onClick={goToPrev} // 체크포인트
+          onClick={goToPrev}
           onKeyDown={() => {}}
           role="presentation"
         >
