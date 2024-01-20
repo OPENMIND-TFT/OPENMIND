@@ -4,6 +4,8 @@ const styled = { createGlobalStyle };
 
 const GlobalStyle = styled.createGlobalStyle`
   :root {
+    font-size: 62.5%;
+
     --Grayscale-10: #ffffff;
     --Grayscale-20: #f9f9f9;
     --Grayscale-30: #cfcfcf;
