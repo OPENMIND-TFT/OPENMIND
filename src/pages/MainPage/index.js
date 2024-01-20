@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import MainContainer from './style';
 
 const MainPage = () => {
@@ -6,8 +7,9 @@ const MainPage = () => {
       <div className="button-area">
         <button type="button">질문 하러 가기 {'->'}</button>
       </div>
-
-      <img className="logo-image" src="/assets/images/logo.png" alt="로고" />
+      <Link to="/">
+        <img className="logo-image" src="/assets/images/logo.png" alt="로고" />
+      </Link>
       <div className="input-area">
         <form>
           <input type="text" placeholder="이름을 입력하세요" />
