@@ -29,7 +29,7 @@ const NotFoundContainer = styled.div`
     .not-found-content-text {
       text-align: center;
 
-      h2 {
+      .h2 {
         font-size: 2.5rem;
         font-weight: 400;
         margin-bottom: 20px;
