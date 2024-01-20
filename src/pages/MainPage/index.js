@@ -13,7 +13,7 @@ const MainPage = () => {
           <input type="text" placeholder="이름을 입력하세요" />
           <img
             className="person-icon"
-            src="/assets/images/personIcon.png"
+            src="/assets/images/personIcon.svg"
             alt="사람 아이콘"
           />
           <button type="submit">질문 받기</button>
