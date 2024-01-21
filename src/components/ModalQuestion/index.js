@@ -18,6 +18,10 @@ const ModalQuestion = ({ handleClose }) => {
     fetchData();
   }, []);
 
+  if (!userData) {
+    return null;
+  }
+
   const textareaEmpty = e => {
     if (e.target.value !== '') {
       setIsTextareaEmpty(false);

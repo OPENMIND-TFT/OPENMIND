@@ -31,6 +31,10 @@ const List = () => {
     fetchData();
   }, []);
 
+  if (!cardInfo) {
+    return null;
+  }
+
   const handleSorting = e => {
     // 정렬기능
     const selectedSort = e.target.innerHTML;
