@@ -103,9 +103,11 @@ const PheedPageContainer = styled.div`
     }
 
     .title-image {
-      background-image: url('/assets/images/Messages.svg');
+      background-image: url('/assets/images/messagesBrown40.svg');
       width: 24px;
       height: 24px;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
 
