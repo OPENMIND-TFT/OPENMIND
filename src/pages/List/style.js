@@ -88,6 +88,7 @@ const Container = styled.div`
       background-color: var(--Grayscale-10);
       transition: all 0.5s;
       transform: translateY(${props => props.y}px);
+      cursor: pointer;
 
       .card-profile {
         display: flex;

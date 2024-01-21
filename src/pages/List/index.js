@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Container from './style';
 import GoToAnswer from '../../components/GoToAnswer';
@@ -121,19 +122,21 @@ const List = () => {
       <section className="list-section">
         {cardInfo.map(item => {
           return (
-            <article className="list-section-card" key={item.id}>
-              <div className="card-profile">
-                <img src={item.imageSource} alt="profile" />
-                <h2>{item.name}</h2>
-              </div>
-              <div className="card-questions">
-                <div>
-                  <img src="/assets/images/messages.svg" alt="message" />
-                  <h3>받은질문</h3>
+            <Link to={`/post/${item.id}`} key={item.id}>
+              <article className="list-section-card">
+                <div className="card-profile">
+                  <img src={item.imageSource} alt="profile" />
+                  <h2>{item.name}</h2>
                 </div>
-                <h3>{item.questionCount}개</h3>
-              </div>
-            </article>
+                <div className="card-questions">
+                  <div>
+                    <img src="/assets/images/messages.svg" alt="message" />
+                    <h3>받은질문</h3>
+                  </div>
+                  <h3>{item.questionCount}개</h3>
+                </div>
+              </article>
+            </Link>
           );
         })}
       </section>
