@@ -38,10 +38,12 @@ const AnswerPage = () => {
         </div>
       </header>
       <main>
-        <article>
-          <button type="button" className="delete-button">
-            삭제하기
-          </button>
+        <article className="article-container">
+          <div className="delete-button-wrap">
+            <button type="button" className="delete-button">
+              삭제하기
+            </button>
+          </div>
           <div className="question-list-wrap">
             <div className="list-title-wrap">
               <img src="/assets/images/Messages.svg" alt="메시지 아이콘" />
@@ -50,7 +52,9 @@ const AnswerPage = () => {
             <div className="question-card">
               <div className="card-navigation">
                 <div className="answer-status">답변 완료</div>
-                <img src="/assets/images/kebab.svg" alt="더보기 버튼" />
+                <div className="card-navigation-kebab">
+                  <img src="/assets/images/kebab.svg" alt="더보기 버튼" />
+                </div>
               </div>
               <div className="card-title-wrap">
                 <h4 className="write-date">질문 2주전</h4>
@@ -67,9 +71,9 @@ const AnswerPage = () => {
                 <div className="answer-input-area">
                   <div className="answer-input-wrap">
                     <h3 className="answer-profile-name">아초는고양이</h3>
-                    <input
+                    <textarea
                       placeholder="답변을 입력해주세요."
-                      className="answer-input"
+                      className="answer-textarea"
                     />
                     <button type="button" className="answer-button">
                       답변완료
