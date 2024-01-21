@@ -33,10 +33,10 @@ const QuestionContainer = styled.div`
       'clig' off,
       'liga' off;
     font-family: Pretendard;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 18px;
+    line-height: 1.8rem;
 
     display: flex;
     padding: 4px 12px;
@@ -55,10 +55,10 @@ const QuestionContainer = styled.div`
       'clig' off,
       'liga' off;
     font-family: Pretendard;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 18px;
+    line-height: 1.8rem;
 
     margin-bottom: 4px;
   }
@@ -74,10 +74,10 @@ const QuestionContainer = styled.div`
       'clig' off,
       'liga' off;
     font-family: Actor;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 2.4rem;
   }
 
   .card-profile-wrap {
@@ -106,10 +106,10 @@ const QuestionContainer = styled.div`
       'clig' off,
       'liga' off;
     font-family: Actor;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 2.4rem;
   }
 
   .answer-textarea {
@@ -130,10 +130,10 @@ const QuestionContainer = styled.div`
         'clig' off,
         'liga' off;
       font-family: Pretendard;
-      font-size: 16px;
+      font-size: 1.6rem;
       font-style: normal;
       font-weight: 400;
-      line-height: 22px;
+      line-height: 2.2rem;
     }
   }
 
@@ -143,10 +143,10 @@ const QuestionContainer = styled.div`
       'clig' off,
       'liga' off;
     font-family: Pretendard;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 22px;
+    line-height: 2.2rem;
 
     display: flex;
     width: 100%;
@@ -173,10 +173,10 @@ const QuestionContainer = styled.div`
         'clig' off,
         'liga' off;
       font-family: Pretendard;
-      font-size: 14px;
+      font-size: 1.4rem;
       font-style: normal;
       font-weight: 500;
-      line-height: 18px;
+      line-height: 1.8rem;
 
       margin-left: 6px;
     }

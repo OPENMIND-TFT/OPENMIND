@@ -24,10 +24,10 @@ const QuestionListContainer = styled.div`
         'clig' off,
         'liga' off;
       font-family: Actor;
-      font-size: 20px;
+      font-size: 2rem;
       font-style: normal;
       font-weight: 400;
-      line-height: 25px;
+      line-height: 2.5rem;
     }
   }
 `;
