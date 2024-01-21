@@ -10,8 +10,8 @@ const GlobalStyle = styled.createGlobalStyle`
     --Grayscale-20: #f9f9f9;
     --Grayscale-30: #cfcfcf;
     --Grayscale-40: #818181;
-    --Grayscale-50: #ffffff;
-    --Grayscale-60: #ffffff;
+    --Grayscale-50: #515151;
+    --Grayscale-60: #000000;
 
     --Brown-10: #f5f1ee;
     --Brown-20: #e4d5c9;
@@ -19,7 +19,9 @@ const GlobalStyle = styled.createGlobalStyle`
     --Brown-40: #542f1a;
     --Brown-50: #341909;
 
-    --Blue-50: #1877f2 --Yellow-50: #fee500 --Red-50: #b93333;
+    --Blue-50: #1877f2;
+    --Yellow-50: #fee500;
+    --Red-50: #b93333;
   }
 
   * {
