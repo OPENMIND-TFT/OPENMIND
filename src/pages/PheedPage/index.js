@@ -53,6 +53,8 @@ const PheedPage = () => {
             <figure className="title-image" />
             <span className="title">3개의 질문이 있습니다</span>
           </div>
+          {/* 질문이 없는 경우 no-question-image 활성화
+          <figure className="no-question-image" /> */}
           <div className="question-list">
             <section className="question-answer-box answer-complete">
               <div className="answer complete">답변 완료</div>

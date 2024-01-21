@@ -77,6 +77,7 @@ const PheedPageContainer = styled.div`
   }
 
   .question-list-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,6 +107,17 @@ const PheedPageContainer = styled.div`
       width: 24px;
       height: 24px;
     }
+  }
+
+  .no-question-image {
+    width: 150px;
+    height: 154px;
+    display: flex;
+    background: url('/assets/images/bucket.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    bottom: 65px;
   }
 
   .question-list {
