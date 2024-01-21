@@ -28,7 +28,7 @@ const QuestionContainer = styled.div`
   }
 
   .answer-status {
-    color: var(--Grayscale-40);
+    color: var(--Brown-40);
     font-feature-settings:
       'clig' off,
       'liga' off;
@@ -42,10 +42,9 @@ const QuestionContainer = styled.div`
     padding: 4px 12px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 
     border-radius: 8px;
-    border: 1px solid var(--Grayscale-40);
+    border: 1px solid var(--Brown-40);
     background: var(--Grayscale-10);
   }
 
@@ -94,10 +93,17 @@ const QuestionContainer = styled.div`
     flex-grow: 1;
   }
 
-  .answer-input-wrap {
+  .answer-area-wrap {
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+
+  .answer-profile-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
   }
 
   .answer-profile-name {
@@ -112,33 +118,20 @@ const QuestionContainer = styled.div`
     line-height: 24px;
   }
 
-  .answer-textarea {
-    width: 100%;
-    height: 186px;
-    padding: 16px;
-    align-self: stretch;
-    margin-top: 4px;
-    margin-bottom: 8px;
-
-    border: none;
-    border-radius: 8px;
-    background: var(--Grayscale-20);
-
-    &:placeholder {
-      color: var(--Grayscale-40);
-      font-feature-settings:
-        'clig' off,
-        'liga' off;
-      font-family: Pretendard;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 22px;
-    }
+  .answer-date {
+    color: var(--Grayscale-40);
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
   }
 
-  .answer-button {
-    color: var(--Grayscale-10);
+  .reply-font {
+    color: var(--Grayscale-60, #000);
     font-feature-settings:
       'clig' off,
       'liga' off;
@@ -147,25 +140,13 @@ const QuestionContainer = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
-
-    display: flex;
-    width: 100%;
-    height: 46px;
-    padding: 12px 24px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    align-self: stretch;
-
-    border: none;
-    border-radius: 8px;
-    background: var(--Brown-40);
   }
 
-  .reaction-section {
+  .card-footer-section {
     display: flex;
-    gap: 32px;
     border-top: 1px solid var(--Grayscale-30);
+    justify-content: space-between;
+    align-items: center;
 
     h4 {
       color: var(--Grayscale-40);
@@ -177,9 +158,13 @@ const QuestionContainer = styled.div`
       font-style: normal;
       font-weight: 500;
       line-height: 18px;
-
       margin-left: 6px;
     }
+  }
+
+  .reaction-section {
+    display: flex;
+    gap: 32px;
   }
 
   .reaction-like {
@@ -190,6 +175,35 @@ const QuestionContainer = styled.div`
   .reaction-hate {
     display: flex;
     margin-top: 24px;
+  }
+
+  .edit-button {
+    margin-top: 24px;
+    gap: 8px;
+    color: var(--Grayscale-50);
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    display: flex;
+    width: 103px;
+    padding: 10px 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--Grayscale-30);
+    background: var(--Grayscale-10);
+    box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
   }
 `;
 

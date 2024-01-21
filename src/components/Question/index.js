@@ -5,7 +5,7 @@ const Question = () => {
     <QuestionContainer>
       <div className="question-card">
         <div className="card-navigation">
-          <div className="answer-status">답변 완료</div>
+          <div className="answer-status">미답변</div>
           <div className="card-navigation-kebab">
             <img src="/assets/images/kebab.svg" alt="더보기 버튼" />
           </div>

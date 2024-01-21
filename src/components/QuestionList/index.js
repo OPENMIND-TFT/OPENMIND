@@ -1,4 +1,5 @@
 import Question from '../Question';
+import ReplyPosted from '../ReplyPosted';
 import QuestionListContainer from './style';
 
 const QuestionList = () => {
@@ -10,6 +11,7 @@ const QuestionList = () => {
           <h3 className="list-title">1개의 질문이 있습니다.</h3>
         </div>
         <Question />
+        <ReplyPosted />
       </div>
     </QuestionListContainer>
   );
