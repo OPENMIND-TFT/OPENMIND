@@ -105,6 +105,7 @@ const Container = styled.div`
           font-size: 2rem;
           font-weight: 400;
           line-height: 25px;
+          color: var(--Grayscale-60);
         }
       }
 
