@@ -105,7 +105,7 @@ const PheedPage = () => {
               </div>
             </section>
 
-            <section className="question-answer-box answer-complete">
+            <section className="question-answer-box answer-none">
               <div className="answer none">미답변</div>
               <div className="question-box">
                 <div className="question-title-box">
