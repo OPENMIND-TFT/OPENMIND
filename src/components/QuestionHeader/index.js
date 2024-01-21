@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import HeaderContainer from './style';
 
 const QuestionHeader = () => {
@@ -5,13 +6,13 @@ const QuestionHeader = () => {
     <HeaderContainer>
       <div className="header-background-image">
         <div className="header-profile-wrap">
-          <div>
+          <Link to="/">
             <img
               className="top-logo"
               src="/assets/images/logo.png"
               alt="로고"
             />
-          </div>
+          </Link>
           <div>
             <img
               src="/assets/images/profile.svg"
