@@ -101,6 +101,7 @@ const List = () => {
           {isDropDown && (
             <div className="list-main-ul-dropdown">
               <li
+                className="list-main-li"
                 onClick={handleSorting}
                 onKeyDown={() => {}}
                 role="presentation"
@@ -108,6 +109,7 @@ const List = () => {
                 이름순
               </li>
               <li
+                className="list-main-li"
                 onClick={handleSorting}
                 onKeyDown={() => {}}
                 role="presentation"
@@ -125,15 +127,23 @@ const List = () => {
             <Link to={`/post/${item.id}`} key={item.id}>
               <article className="list-section-card">
                 <div className="card-profile">
-                  <img src={item.imageSource} alt="profile" />
-                  <h2>{item.name}</h2>
+                  <img
+                    src={item.imageSource}
+                    alt="profile"
+                    className="card-profile-img"
+                  />
+                  <h2 className="card-profile-h2">{item.name}</h2>
                 </div>
                 <div className="card-questions">
-                  <div>
-                    <img src="/assets/images/messages.svg" alt="message" />
-                    <h3>받은질문</h3>
+                  <div className="card-questions-div">
+                    <img
+                      src="/assets/images/messages.svg"
+                      alt="message"
+                      className="card-questions-img"
+                    />
+                    <h3 className="card-questions-h3">받은질문</h3>
                   </div>
-                  <h3>{item.questionCount}개</h3>
+                  <h3 className="card-questions-h3">{item.questionCount}개</h3>
                 </div>
               </article>
             </Link>
