@@ -6,7 +6,7 @@ const GoToAnswer = () => {
       <p className="button-p">답변하러 가기</p>
       <img
         src="/assets/images/arrowRight.svg"
-        alt="arrow"
+        alt="오른쪽화살표"
         className="button-img"
       />
     </Button>

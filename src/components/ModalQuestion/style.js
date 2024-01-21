@@ -83,7 +83,7 @@ const Container = styled.div`
       resize: none;
       margin-bottom: 8px;
     }
-    .modal-textarea:focus {
+    &:focus {
       outline: none;
     }
 
@@ -100,7 +100,7 @@ const Container = styled.div`
       cursor: pointer;
     }
 
-    .modal-button:disabled {
+    &:disabled {
       background: var(--Brown-30);
       cursor: default;
     }

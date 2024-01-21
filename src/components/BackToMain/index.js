@@ -5,7 +5,7 @@ const BackToMain = () => {
   return (
     <Container>
       <Link to="/">
-        <img src="/assets/images/logo.png" className="logo" alt="logo" />
+        <img src="/assets/images/logo.png" className="logo" alt="로고" />
       </Link>
     </Container>
   );

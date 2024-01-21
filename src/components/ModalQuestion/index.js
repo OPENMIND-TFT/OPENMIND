@@ -54,14 +54,14 @@ const ModalQuestion = ({ handleClose }) => {
         <header className="modal-title">
           <img
             src="/assets/images/messages.svg"
-            alt="message"
+            alt="메세지아이콘"
             className="modal-title-img"
           />
           <h1 className="modal-title-h1">질문을 작성하세요</h1>
         </header>
         <img
           src="/assets/images/close.svg"
-          alt="close"
+          alt="모달닫는버튼"
           className="modal-X"
           onClick={handleClose}
           onKeyDown={() => {}}
@@ -71,7 +71,7 @@ const ModalQuestion = ({ handleClose }) => {
           <h2 className="modal-profile-h2">To.</h2>
           <img
             src={userData.imageSource}
-            alt="profile"
+            alt="프로필사진"
             className="modal-profile-img"
           />
           <h2 className="modal-profile-h2">{userData.name}</h2>
