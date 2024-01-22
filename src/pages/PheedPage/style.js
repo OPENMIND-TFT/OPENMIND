@@ -233,25 +233,23 @@ const PheedPageContainer = styled.div`
     .like-button-box.on {
       color: var(--Blue-50);
       .tumbs-up-image {
-        filter: invert(36%) sepia(32%) saturate(6200%) hue-rotate(203deg)
-          brightness(100%) contrast(91%);
+        background: url('/assets/images/thumbsUpBlue50.svg');
       }
     }
 
     .dislike-button-box.on {
       color: var(--Red-50);
       .tumbs-up-image {
-        filter: invert(20%) sepia(24%) saturate(6385%) hue-rotate(344deg)
-          brightness(111%) contrast(79%);
+        background: url('/assets/images/thumbsDown.svg');
       }
     }
 
     .tumbs-up-image {
-      background: url('/assets/images/thumbs-up.svg');
+      background: url('/assets/images/thumbsUp.svg');
     }
 
     .tumbs-down-image {
-      background: url('/assets/images/thumbs-down.svg');
+      background: url('/assets/images/thumbsDown.svg');
     }
 
     .tumbs-up-image,
