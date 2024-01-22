@@ -32,11 +32,9 @@ const QuestionContainer = styled.div`
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: Pretendard;
     font-size: 1.4rem;
-    font-style: normal;
     font-weight: 500;
-    line-height: 1.8rem;
+    line-height: 18px;
 
     display: flex;
     padding: 4px 12px;
@@ -53,11 +51,9 @@ const QuestionContainer = styled.div`
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: Pretendard;
     font-size: 1.4rem;
-    font-style: normal;
     font-weight: 500;
-    line-height: 1.8rem;
+    line-height: 18px;
 
     margin-bottom: 4px;
   }
@@ -74,9 +70,7 @@ const QuestionContainer = styled.div`
       'liga' off;
     font-family: Actor;
     font-size: 1.8rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 2.4rem;
+    line-height: 24px;
   }
 
   .card-profile-wrap {
@@ -113,9 +107,7 @@ const QuestionContainer = styled.div`
       'liga' off;
     font-family: Actor;
     font-size: 1.8rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 2.4rem;
+    line-height: 24px;
   }
 
   .answer-date {
@@ -123,11 +115,9 @@ const QuestionContainer = styled.div`
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: Pretendard;
     font-size: 1.4rem;
-    font-style: normal;
     font-weight: 500;
-    line-height: 1.8rem;
+    line-height: 18px;
   }
 
   .reply-font {
@@ -135,11 +125,8 @@ const QuestionContainer = styled.div`
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: Pretendard;
     font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 2.2rem;
+    line-height: 22px;
   }
 
   .card-footer-section {
@@ -153,11 +140,9 @@ const QuestionContainer = styled.div`
       font-feature-settings:
         'clig' off,
         'liga' off;
-      font-family: Pretendard;
       font-size: 1.4rem;
-      font-style: normal;
       font-weight: 500;
-      line-height: 1.8rem;
+      line-height: 18px;
       margin-left: 6px;
     }
   }
@@ -184,11 +169,9 @@ const QuestionContainer = styled.div`
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: Pretendard;
     font-size: 1.4rem;
-    font-style: normal;
     font-weight: 500;
-    line-height: 1.8rem;
+    line-height: 18px;
     display: flex;
     width: 103px;
     padding: 10px 15px;

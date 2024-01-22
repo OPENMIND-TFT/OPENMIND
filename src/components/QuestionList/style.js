@@ -25,9 +25,7 @@ const QuestionListContainer = styled.div`
         'liga' off;
       font-family: Actor;
       font-size: 2rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 2.5rem;
+      line-height: 25px;
     }
   }
 `;

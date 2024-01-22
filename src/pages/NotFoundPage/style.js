@@ -31,7 +31,6 @@ const NotFoundContainer = styled.div`
 
       .h2 {
         font-size: 2.5rem;
-        font-weight: 400;
         margin-bottom: 20px;
       }
 

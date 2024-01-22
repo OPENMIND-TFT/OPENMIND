@@ -39,9 +39,7 @@ const HeaderContainer = styled.header`
           'liga' off;
         font-family: Actor;
         font-size: 3.2rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 4rem;
+        line-height: 40px;
         margin-top: 12px;
         margin-bottom: 12px;
       }

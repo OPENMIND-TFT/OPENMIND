@@ -21,11 +21,8 @@ const AnswerPageContainer = styled.div`
       font-feature-settings:
         'clig' off,
         'liga' off;
-      font-family: Pretendard;
       font-size: 1.5rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 2.5rem;
+      line-height: 25px;
       margin-top: 145px;
       margin-bottom: 8px;
       border-radius: 200px;
