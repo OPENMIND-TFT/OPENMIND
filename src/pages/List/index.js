@@ -78,8 +78,10 @@ const List = () => {
   return (
     <Container x={translateX} y={translateY}>
       <header className="list-header">
-        <BackToMain />
-        <GoToAnswer />
+        <div className="list-header-inner">
+          <BackToMain />
+          <GoToAnswer />
+        </div>
       </header>
 
       <main className="list-main">

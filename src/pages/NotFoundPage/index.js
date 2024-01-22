@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import BackToMain from '../../components/BackToMain';
 import Cta from '../../components/Cta';
-import { NotFoundContainer, FixedLogo } from './style';
+import NotFoundContainer from './style';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -11,9 +11,9 @@ const NotFoundPage = () => {
 
   return (
     <NotFoundContainer>
-      <FixedLogo>
+      <div className="fixed-logo">
         <BackToMain />
-      </FixedLogo>
+      </div>
       <div className="not-found-content">
         <img
           src="/assets/images/notFoundEmoji.png"

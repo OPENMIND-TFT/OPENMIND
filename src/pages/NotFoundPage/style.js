@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
-export const FixedLogo = styled.div`
-  position: fixed;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  img {
-    width: 170px;
-  }
-`;
-
-export const NotFoundContainer = styled.div`
+const NotFoundContainer = styled.div`
   width: 100%;
   height: 100vh;
   background: url(/assets/images/paperBackground.png) no-repeat;
   background-size: cover;
+
+  .fixed-logo {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    img {
+      width: 170px;
+    }
+  }
 
   .not-found-content {
     height: 100%;
@@ -58,3 +58,5 @@ export const NotFoundContainer = styled.div`
     }
   }
 `;
+
+export default NotFoundContainer;
