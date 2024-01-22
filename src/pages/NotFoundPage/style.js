@@ -40,4 +40,21 @@ export const NotFoundContainer = styled.div`
       }
     }
   }
+
+  /* 반응형 */
+  @media screen and (max-width: 1024px) {
+    .not-found-content {
+      background-size: contain;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .not-found-content {
+      .not-found-content-text {
+        h2 {
+          font-size: 2.4rem;
+        }
+      }
+    }
+  }
 `;
