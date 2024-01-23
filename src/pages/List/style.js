@@ -4,6 +4,7 @@ const Container = styled.div`
   background-color: var(--Grayscale-20);
 
   .list-header {
+    padding: 0px 130px;
     width: 100%;
     height: 137px;
     display: flex;
