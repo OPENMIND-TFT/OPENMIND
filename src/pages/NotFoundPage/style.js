@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const NotFoundContainer = styled.div`
+export const NotFoundContainer = styled.div`
   width: 100%;
   height: 100vh;
   background: url(/assets/images/paperBackground.png) no-repeat;
@@ -58,5 +58,3 @@ const NotFoundContainer = styled.div`
     }
   }
 `;
-
-export default NotFoundContainer;

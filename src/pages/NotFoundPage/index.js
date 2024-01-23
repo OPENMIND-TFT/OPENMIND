@@ -1,6 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-import BackToMain from '../../components/BackToMain';
-import Cta from '../../components/Cta';
+import { Link, useNavigate } from 'react-router-dom';
 import NotFoundContainer from './style';
 
 const NotFoundPage = () => {
@@ -11,9 +9,9 @@ const NotFoundPage = () => {
 
   return (
     <NotFoundContainer>
-      <div className="fixed-logo">
-        <BackToMain />
-      </div>
+      <Link to="/">
+        <img src="/assets/images/logo.png" alt="로고" />
+      </Link>
       <div className="not-found-content">
         <img
           src="/assets/images/notFoundEmoji.png"
@@ -27,9 +25,9 @@ const NotFoundPage = () => {
             요청하신 페이지의 주소가 변경, 삭제되어 찾을 수 없습니다.
           </p>
         </div>
-        <Cta width="336px" height="46px" onClick={backToReturn}>
+        <button type="button" onClick={backToReturn}>
           이전페이지로
-        </Cta>
+        </button>
       </div>
     </NotFoundContainer>
   );
