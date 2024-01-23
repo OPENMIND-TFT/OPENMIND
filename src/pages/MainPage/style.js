@@ -77,14 +77,16 @@ const MainContainer = styled.div`
   }
 
   .image-area {
-    background-image: url(/assets/images/logoWithoutBg.png);
-    height: auto;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    padding: 0px 100px 0px 100px;
-     
+img{
+  height: auto;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 0px 100px 0px 100px;
+   
+
+}   
     }
   }
 `;
