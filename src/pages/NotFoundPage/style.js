@@ -6,7 +6,7 @@ const NotFoundContainer = styled.div`
   background: url(/assets/images/paperBackground.png) no-repeat;
   background-size: cover;
 
-  a {
+  .fixed-logo {
     position: fixed;
     top: 50px;
     left: 50%;
@@ -29,34 +29,31 @@ const NotFoundContainer = styled.div`
     .not-found-content-text {
       text-align: center;
 
-      .h2 {
-        font-size: 2.5rem;
+      h2 {
+        font-size: 4rem;
         margin-bottom: 20px;
       }
 
       p {
+        font-size: 1.6rem;
         line-height: 1.5em;
       }
     }
+  }
 
-    button {
-      display: inline-block;
-      width: 336px;
-      height: 46px;
-      border-radius: 8px;
-      font-size: 1em;
-      background: var(--Brown-50);
-      color: var(--Grayscale-10);
-      padding: 12px 24px;
-      border: 1px solid transparent;
-      outline: 0;
-      transition: 0.3s all;
-      cursor: pointer;
+  /* 반응형 */
+  @media screen and (max-width: 1024px) {
+    .not-found-content {
+      background-size: contain;
+    }
+  }
 
-      &:hover {
-        background: var(--Grayscale-10);
-        color: var(--Brown-50);
-        border-color: var(--Brown-50);
+  @media screen and (max-width: 425px) {
+    .not-found-content {
+      .not-found-content-text {
+        h2 {
+          font-size: 2.4rem;
+        }
       }
     }
   }
