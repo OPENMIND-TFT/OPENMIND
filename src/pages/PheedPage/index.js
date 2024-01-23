@@ -169,6 +169,9 @@ const PheedPage = () => {
       <button className="question-write-button" type="button">
         질문 작성하기
       </button>
+      <button className="question-write-button-mobile" type="button">
+        질문 작성
+      </button>
     </PheedPageContainer>
   );
 };

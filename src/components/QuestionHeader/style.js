@@ -39,6 +39,7 @@ const HeaderContainer = styled.header`
           'liga' off;
         font-family: Actor;
         font-size: 3.2rem;
+        font-weight: 400;
         line-height: 40px;
         margin-top: 12px;
         margin-bottom: 12px;
@@ -70,6 +71,25 @@ const HeaderContainer = styled.header`
 
         .facebook-color {
           background-color: var(--Blue-50);
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1124px) {
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    .header-background-image {
+      .header-profile-wrap {
+        .top-logo {
+          width: 124px;
+          height: 49px;
+          margin-top: 40px;
+        }
+        .header-profile-image {
+          width: 104px;
+          height: 104px;
         }
       }
     }
