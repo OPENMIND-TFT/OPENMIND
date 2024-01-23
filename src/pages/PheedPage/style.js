@@ -278,6 +278,9 @@ const PheedPageContainer = styled.div`
     border: 0;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+  .question-write-button-mobile {
+    visibility: hidden;
+  }
 
   @media screen and (min-width: 768px) and (max-width: 1124px) {
     .pheed-page-main {
@@ -321,6 +324,7 @@ const PheedPageContainer = styled.div`
       background: var(--Brown-40);
       border: 0;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      visibility: visible;
     }
   }
 `;
