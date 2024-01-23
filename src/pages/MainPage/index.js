@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import creatPheed from '../../api';
 import MainContainer from './style';
 
 const MainPage = () => {
@@ -9,9 +10,11 @@ const MainPage = () => {
     setName(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log({ name });
+
+    await creatPheed(name);
+    setName('');
   };
   return (
     <MainContainer>
