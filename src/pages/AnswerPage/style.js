@@ -38,7 +38,6 @@ const AnswerPageContainer = styled.div`
         flex-shrink: 0;
 
         padding: 12px 24px;
-
       }
     }
   }
