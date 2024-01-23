@@ -1,7 +1,18 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MainContainer from './style';
 
 const MainPage = () => {
+  const [name, setName] = useState('');
+
+  const handleNameChange = e => {
+    setName(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log({ name });
+  };
   return (
     <MainContainer>
       <div className="button-area">
@@ -11,8 +22,13 @@ const MainPage = () => {
         <img className="logo-image" src="/assets/images/logo.png" alt="로고" />
       </Link>
       <div className="input-area">
-        <form>
-          <input type="text" placeholder="이름을 입력하세요" />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="이름을 입력하세요"
+            value={name}
+            onChange={handleNameChange}
+          />
           <img
             className="person-icon"
             src="/assets/images/personIcon.svg"
