@@ -7,6 +7,7 @@ const Container = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,8 +15,9 @@ const Container = styled.div`
 
   .modal-window {
     background-color: var(--Grayscale-10);
-    width: 612px;
-    height: 454px;
+    width: 100%;
+    max-width: 612px;
+    min-height: 454px;
     border-radius: 24px;
     padding: 40px;
     display: flex;
@@ -74,8 +76,9 @@ const Container = styled.div`
     }
 
     .modal-textarea {
-      width: 532px;
-      height: 180px;
+      width: 100%;
+      max-width: 532px;
+      min-height: 180px;
       padding: 16px;
       border: 0px;
       border-radius: 8px;
@@ -103,6 +106,25 @@ const Container = styled.div`
     &:disabled {
       background: var(--Brown-30);
       cursor: default;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .modal-window {
+      .modal-title {
+        .modal-title-h1 {
+          font-size: 2rem;
+        }
+      }
+
+      .modal-X {
+        width: 22px;
+        height: 22px;
+      }
+
+      .modal-textarea {
+        min-height: 358px;
+      }
     }
   }
 `;

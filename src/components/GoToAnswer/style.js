@@ -21,6 +21,10 @@ const Button = styled.button`
     width: 18px;
     height: 18px;
   }
+
+  @media screen and (max-width: 425px) {
+    padding: 8px 12px;
+  }
 `;
 
 export default Button;
