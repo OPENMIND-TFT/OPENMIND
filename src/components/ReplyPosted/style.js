@@ -188,6 +188,18 @@ const QuestionContainer = styled.div`
       height: 14px;
     }
   }
+
+  @media screen and (min-width: 768px) and (max-width: 1124px) {
+    .edit-button {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    .edit-button {
+      display: none;
+    }
+  }
 `;
 
 export default QuestionContainer;

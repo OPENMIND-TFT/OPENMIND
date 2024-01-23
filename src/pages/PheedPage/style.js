@@ -278,6 +278,51 @@ const PheedPageContainer = styled.div`
     border: 0;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+
+  @media screen and (min-width: 768px) and (max-width: 1124px) {
+    .pheed-page-main {
+      padding: 0px 32px;
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    .pheed-page-header {
+      height: 177px;
+    }
+    .header-section {
+      padding-top: 40px;
+      .logo {
+        width: 124px;
+        height: 49px;
+      }
+
+      .header-profile-image {
+        width: 104px;
+        height: 104px;
+      }
+    }
+    .pheed-page-main {
+      padding: 0px 32px;
+    }
+    .question-write-button {
+      display: none;
+    }
+    .question-write-button-mobile {
+      position: fixed;
+      z-index: 1;
+      bottom: 24px;
+      right: 24px;
+      width: 123px;
+      height: 54px;
+      padding: 12px 24px;
+      border-radius: 200px;
+      font-size: 2rem;
+      color: var(--Grayscale-10);
+      background: var(--Brown-40);
+      border: 0;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+  }
 `;
 
 export default PheedPageContainer;
