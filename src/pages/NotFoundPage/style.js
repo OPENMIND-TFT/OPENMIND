@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
-export const FixedLogo = styled.div`
-  position: fixed;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  img {
-    width: 170px;
-  }
-`;
-
 export const NotFoundContainer = styled.div`
   width: 100%;
   height: 100vh;
   background: url(/assets/images/paperBackground.png) no-repeat;
   background-size: cover;
+
+  .fixed-logo {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    img {
+      width: 170px;
+    }
+  }
 
   .not-found-content {
     height: 100%;
@@ -37,6 +37,23 @@ export const NotFoundContainer = styled.div`
       p {
         font-size: 1.6rem;
         line-height: 1.5em;
+      }
+    }
+  }
+
+  /* 반응형 */
+  @media screen and (max-width: 1024px) {
+    .not-found-content {
+      background-size: contain;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .not-found-content {
+      .not-found-content-text {
+        h2 {
+          font-size: 2.4rem;
+        }
       }
     }
   }

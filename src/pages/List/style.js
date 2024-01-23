@@ -6,9 +6,16 @@ const Container = styled.div`
   .list-header {
     width: 100%;
     height: 137px;
-    padding: 45px 130px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+
+    .list-header-inner {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .list-main {
@@ -167,6 +174,58 @@ const Container = styled.div`
 
     .list-nav-pagebutton.selected {
       color: var(--Brown-40);
+    }
+  }
+
+  /* 반응형 */
+  @media screen and (max-width: 1199px) {
+    .list-header {
+      padding: 40px 50px;
+    }
+
+    .list-section {
+      padding: 0 32px;
+
+      .list-section-card {
+        max-width: unset;
+      }
+    }
+  }
+
+  @media screen and (max-width: 868px) {
+    .list-section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .list-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .list-header {
+      height: unset;
+
+      .list-header-inner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+    }
+
+    .list-main {
+      padding: 0 24px;
+      flex-direction: initial;
+      justify-content: space-between;
+
+      .list-main-h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    .list-section {
+      padding: 0 24px;
     }
   }
 `;
