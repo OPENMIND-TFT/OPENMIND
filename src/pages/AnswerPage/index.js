@@ -6,7 +6,7 @@ const AnswerPage = () => {
   return (
     <AnswerPageContainer>
       <QuestionHeader />
-      <main>
+      <main className="list-area">
         <article className="article-container">
           <div className="delete-button-wrap">
             <button type="button" className="delete-button">
