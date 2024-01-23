@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionPageContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
@@ -114,7 +115,7 @@ const QuestionPage = () => {
                     <div className="question-title-box">
                       <span className="question-title">질문 · </span>
                       <span className="question-time-line">
-                        {question.createdAt}
+                        {getElapsedTime(question.createdAt)}
                       </span>
                     </div>
                     <span className="question-content">{question.content}</span>
@@ -133,7 +134,7 @@ const QuestionPage = () => {
                             {user.name}
                           </span>
                           <span className="answer-time-line">
-                            {question.createdAt}
+                            {getElapsedTime(question.answer.createdAt)}
                           </span>
                         </div>
                         {question.answer.isRejected ? (
