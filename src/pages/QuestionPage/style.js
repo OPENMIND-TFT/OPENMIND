@@ -3,6 +3,10 @@ import styled from 'styled-components';
 const QuestionPageContainer = styled.div`
   position: relative;
 
+  button {
+    cursor: pointer;
+  }
+
   .questions-page-header {
     position: relative;
     height: 234px;
