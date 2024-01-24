@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 const QuestionContainer = styled.div`
-  width: 100%;
-
   .question-card {
     width: 100%;
     display: flex;
@@ -81,6 +79,7 @@ const QuestionContainer = styled.div`
   .card-profile-image {
     width: 48px;
     height: 48px;
+    border-radius: 999px;
   }
 
   .answer-input-area {

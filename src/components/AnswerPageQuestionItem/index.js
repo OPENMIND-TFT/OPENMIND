@@ -1,6 +1,6 @@
 import QuestionContainer from './style';
 
-const Question = () => {
+const QuestionItem = ({ user }) => {
   return (
     <QuestionContainer>
       <div className="question-card">
@@ -17,14 +17,14 @@ const Question = () => {
         <div className="card-answer-section">
           <div className="card-profile-wrap">
             <img
-              src="/assets/images/profile.svg"
+              src={user.imageSource}
               alt="프로필 이미지"
               className="card-profile-image"
             />
           </div>
           <div className="answer-input-area">
             <div className="answer-input-wrap">
-              <h3 className="answer-profile-name">아초는고양이</h3>
+              <h3 className="answer-profile-name">{user.name}</h3>
               <textarea
                 placeholder="답변을 입력해주세요."
                 className="answer-textarea"
@@ -50,4 +50,4 @@ const Question = () => {
   );
 };
 
-export default Question;
+export default QuestionItem;
