@@ -5,7 +5,7 @@ import QuestionPageContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
 
-// TODO 임시 ID. useParams로 동적인 경로 만들어주기. 테스트 테스트 06:09 ddd
+// TODO 임시 ID. useParams로 동적인 경로 만들어주기. 테스트 테스트 06:09 dev dev
 const USER_ID = 2805;
 
 const getUser = async () => {
