@@ -23,6 +23,7 @@
     "test": "react-scripts test",
     "lint": "eslint \"./src/**/*.{js,jsx}\"",
     "lint:fix": "eslint --fix './src/**/*.{js,jsx}'",
+
     "postinstall": "husky install",
     "format": "prettier --cache --write ."
   },
