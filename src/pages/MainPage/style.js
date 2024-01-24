@@ -38,12 +38,13 @@ const MainContainer = styled.div`
     width: 400px;
     border-radius: 16px;
     margin-top: 24px;
+    padding: 32px;
 
     form {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      width: 336px;
+      width: 100%;
       position: relative;
     }
 
@@ -77,14 +78,55 @@ const MainContainer = styled.div`
   }
 
   .image-area {
-    background-image: url(/assets/images/logoWithoutBg.png);
-    height: auto;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    padding: 0px 100px 0px 100px;
-     
+    img {
+      height: auto;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 0px 100px 0px 100px;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1124px) {
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    .button-area {
+      order: 2;
+      margin-top: 24px;
+      text-align: center;
+      padding-bottom: 24px;
+
+      button {
+        width: 123px;
+        height: 34px;
+        padding: 8px 12px;
+        font-size: 1.4rem;
+        margin-top: 0px;
+        margin-right: 0px;
+        cursor: pointer;
+      }
+    }
+    .logo-image {
+      order: 1;
+      width: 248px;
+      height: 98px;
+      margin-top: 80px;
+    }
+    .input-area {
+      order: 3;
+      width: 305px;
+    }
+
+    .image-area {
+      img {
+        height: auto;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+      }
     }
   }
 `;
