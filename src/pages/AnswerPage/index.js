@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import QuestionList from '../../components/AnswerPageQuestionList';
+import AnswerPageQuestionList from '../../components/AnswerPageQuestionList';
 import AnswerPageContainer from './style';
-import QuestionHeader from '../../components/AnswerPageQuestionHeader';
+import AnswerPageQuestionHeader from '../../components/AnswerPageQuestionHeader';
 import getUserData from '../../api/getUserData';
 import getUserQuestionData from '../../api/getUserQuestionData';
 
@@ -25,7 +25,7 @@ const AnswerPage = () => {
 
   return (
     <AnswerPageContainer>
-      <QuestionHeader user={user} />
+      <AnswerPageQuestionHeader user={user} />
       <main className="list-area">
         <article className="article-container">
           <div className="delete-button-wrap">
@@ -34,7 +34,7 @@ const AnswerPage = () => {
             </button>
           </div>
 
-          <QuestionList user={user} questions={questions} />
+          <AnswerPageQuestionList user={user} questions={questions} />
         </article>
       </main>
     </AnswerPageContainer>

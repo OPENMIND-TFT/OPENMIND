@@ -42,7 +42,7 @@ const QuestionContainer = styled.div`
     border-radius: 8px;
   }
 
-  .copmlete {
+  .complete {
     color: var(--Brown-40);
     border: 1px solid var(--Brown-40);
     background: var(--Grayscale-10);

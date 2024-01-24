@@ -1,7 +1,7 @@
 import QuestionItem from '../AnswerPageQuestionItem';
 import QuestionItemContainer from './style';
 
-const Question = ({ user, questions }) => {
+const AnswerPageQuestion = ({ user, questions }) => {
   return (
     <QuestionItemContainer>
       {questions.length &&
@@ -12,4 +12,4 @@ const Question = ({ user, questions }) => {
   );
 };
 
-export default Question;
+export default AnswerPageQuestion;

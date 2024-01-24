@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import HeaderContainer from './style';
 
-const QuestionHeader = ({ user }) => {
+const AnswerPageQuestionHeader = ({ user }) => {
   return (
     <HeaderContainer>
       <div className="header-background-image">
@@ -40,4 +40,4 @@ const QuestionHeader = ({ user }) => {
   );
 };
 
-export default QuestionHeader;
+export default AnswerPageQuestionHeader;

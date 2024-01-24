@@ -2,9 +2,13 @@ import { useState } from 'react';
 import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
 
-const QuestionItem = ({ user, question }) => {
+const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
   const { id } = question;
+
+  const handleSubmitAnswer = e => {
+    setContent(e.target.value);
+  };
 
   const submitAnswer = async () => {
     const response = await fetch(
@@ -16,7 +20,7 @@ const QuestionItem = ({ user, question }) => {
         },
         body: JSON.stringify({
           content,
-          isRejected: 'false',
+          isRejected: false,
         }),
       },
     );
@@ -24,8 +28,6 @@ const QuestionItem = ({ user, question }) => {
     if (!response.ok) {
       throw new Error('답변을 전송하는데 실패했습니다.');
     }
-
-    setContent('');
   };
 
   return (
@@ -33,7 +35,7 @@ const QuestionItem = ({ user, question }) => {
       <div className="question-card">
         <div className="card-navigation">
           {question.answer ? (
-            <div className="answer-status complete">답변 완료</div>
+            <div className="answer-status complete">답변완료</div>
           ) : (
             <div className="answer-status none">미답변</div>
           )}
@@ -102,10 +104,9 @@ const QuestionItem = ({ user, question }) => {
               <div className="answer-input-area">
                 <div className="answer-input-wrap">
                   <h3 className="answer-profile-name">{user.name}</h3>
-                  {/* //여기 답변기능 추가해야됨 */}
                   <form>
                     <textarea
-                      onChange={e => setContent(e.target.value)}
+                      onChange={handleSubmitAnswer}
                       value={content}
                       placeholder="답변을 입력해주세요."
                       className="answer-textarea"
@@ -118,7 +119,6 @@ const QuestionItem = ({ user, question }) => {
                       답변완료
                     </button>
                   </form>
-                  {/* //여기 답변기능 추가해야됨 */}
                 </div>
               </div>
             </div>
@@ -142,4 +142,4 @@ const QuestionItem = ({ user, question }) => {
   );
 };
 
-export default QuestionItem;
+export default AnswerPageQuestionItem;
