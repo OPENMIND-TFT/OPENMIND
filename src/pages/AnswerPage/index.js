@@ -4,17 +4,23 @@ import QuestionList from '../../components/AnswerPageQuestionList';
 import AnswerPageContainer from './style';
 import QuestionHeader from '../../components/AnswerPageQuestionHeader';
 import getUserData from '../../api/getUserData';
+import getUserQuestionData from '../../api/getUserQuestionData';
 
 const AnswerPage = () => {
   const [user, setUser] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    const getUserIdData = async () => {
-      const data = await getUserData(id);
-      setUser(data);
+    const fetchData = async () => {
+      const userData = await getUserData(id);
+      const questionData = await getUserQuestionData(id);
+
+      setUser(userData);
+      setQuestions(questionData.results);
     };
-    getUserIdData();
+
+    fetchData();
   }, []);
 
   return (
@@ -27,7 +33,8 @@ const AnswerPage = () => {
               삭제하기
             </button>
           </div>
-          <QuestionList user={user} />
+
+          <QuestionList user={user} questions={questions} />
         </article>
       </main>
     </AnswerPageContainer>

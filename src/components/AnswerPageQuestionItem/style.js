@@ -26,7 +26,6 @@ const QuestionContainer = styled.div`
   }
 
   .answer-status {
-    color: var(--Grayscale-40);
     font-feature-settings:
       'clig' off,
       'liga' off;
@@ -41,6 +40,16 @@ const QuestionContainer = styled.div`
     gap: 10px;
 
     border-radius: 8px;
+  }
+
+  .copmlete {
+    color: var(--Brown-40);
+    border: 1px solid var(--Brown-40);
+    background: var(--Grayscale-10);
+  }
+
+  .none {
+    color: var(--Grayscale-40);
     border: 1px solid var(--Grayscale-40);
     background: var(--Grayscale-10);
   }

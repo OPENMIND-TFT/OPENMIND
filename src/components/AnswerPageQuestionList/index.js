@@ -1,7 +1,7 @@
 import Question from '../AnswerPageQuestion';
 import QuestionListContainer from './style';
 
-const QuestionList = ({ user }) => {
+const QuestionList = ({ user, questions }) => {
   return (
     <QuestionListContainer>
       <div className="question-list-wrap">
@@ -11,7 +11,7 @@ const QuestionList = ({ user }) => {
             {user.questionCount}개의 질문이 있습니다.
           </h3>
         </div>
-        <Question user={user} />
+        <Question user={user} questions={questions} />
       </div>
     </QuestionListContainer>
   );

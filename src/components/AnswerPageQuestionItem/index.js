@@ -1,18 +1,26 @@
+import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
 
-const QuestionItem = ({ user }) => {
+const QuestionItem = ({ user, question }) => {
   return (
     <QuestionContainer>
       <div className="question-card">
         <div className="card-navigation">
-          <div className="answer-status">미답변</div>
+          {question.answer ? (
+            <div className="answer-status complete">답변 완료</div>
+          ) : (
+            <div className="answer-status none">미답변</div>
+          )}
           <div className="card-navigation-kebab">
             <img src="/assets/images/kebab.svg" alt="더보기 버튼" />
           </div>
         </div>
         <div className="card-title-wrap">
-          <h4 className="write-date">질문 2주전</h4>
-          <h3 className="card-title">좋아하는 동물은?</h3>
+          <span className="write-date">질문 · </span>
+          <span className="write-date">
+            {getElapsedTime(question.createdAt)}
+          </span>
+          <h3 className="card-title">{question.content}</h3>
         </div>
         <div className="card-answer-section">
           <div className="card-profile-wrap">
