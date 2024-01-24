@@ -27,7 +27,6 @@ const MainPage = () => {
       },
     );
     if (!response.ok) {
-      console.error('Error:', response.statusText);
       throw new Error('피드를 불러오는데 실패했습니다');
     }
     const body = await response.json();
