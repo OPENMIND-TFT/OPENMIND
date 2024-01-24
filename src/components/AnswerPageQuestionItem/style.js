@@ -112,6 +112,25 @@ const QuestionContainer = styled.div`
     line-height: 24px;
   }
 
+  .answer-date {
+    color: var(--Grayscale-40);
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 18px;
+  }
+
+  .reply-font {
+    color: var(--Grayscale-60, #000);
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-size: 1.6rem;
+    line-height: 22px;
+  }
+
   .answer-textarea {
     width: 100%;
     height: 186px;
@@ -156,10 +175,11 @@ const QuestionContainer = styled.div`
     background: var(--Brown-40);
   }
 
-  .reaction-section {
+  .card-footer-section {
     display: flex;
-    gap: 32px;
     border-top: 1px solid var(--Grayscale-30);
+    justify-content: space-between;
+    align-items: center;
 
     h4 {
       color: var(--Grayscale-40);
@@ -169,9 +189,13 @@ const QuestionContainer = styled.div`
       font-size: 1.4rem;
       font-weight: 500;
       line-height: 18px;
-
       margin-left: 6px;
     }
+  }
+
+  .reaction-section {
+    display: flex;
+    gap: 32px;
   }
 
   .reaction-like {
@@ -182,6 +206,45 @@ const QuestionContainer = styled.div`
   .reaction-hate {
     display: flex;
     margin-top: 24px;
+  }
+
+  .edit-button {
+    margin-top: 24px;
+    gap: 8px;
+    color: var(--Grayscale-50);
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 18px;
+    display: flex;
+    width: 103px;
+    padding: 10px 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--Grayscale-30);
+    background: var(--Grayscale-10);
+    box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1124px) {
+    .edit-button {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    .edit-button {
+      display: none;
+    }
   }
 `;
 
