@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import HeaderContainer from './style';
+import ShareButtonBar from '../ShareButtonBar';
 
 const QuestionHeader = () => {
   return (
@@ -21,19 +22,7 @@ const QuestionHeader = () => {
             />
           </div>
           <h2 className="profile-title">아초는고양이</h2>
-          <div className="button-wrap">
-            <button type="button" className="sns-button link-color">
-              <img src="/assets/images/link.svg" alt="링크 복사하기" />
-            </button>
-
-            <button type="button" className="sns-button kakaotalk-color">
-              <img src="/assets/images/kakaotalk.svg" alt="카카오톡 공유" />
-            </button>
-
-            <button type="button" className="sns-button facebook-color">
-              <img src="/assets/images/facebook.svg" alt="페이스북 공유" />
-            </button>
-          </div>
+          <ShareButtonBar />
         </div>
       </div>
     </HeaderContainer>

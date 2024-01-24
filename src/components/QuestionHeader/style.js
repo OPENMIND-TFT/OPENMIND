@@ -44,35 +44,6 @@ const HeaderContainer = styled.header`
         margin-top: 12px;
         margin-bottom: 12px;
       }
-
-      .button-wrap {
-        display: flex;
-        gap: 12px;
-
-        img {
-          display: flex;
-          margin: 0 auto;
-        }
-
-        .sns-button {
-          width: 40px;
-          height: 40px;
-          border-radius: 200px;
-          border: none;
-        }
-
-        .link-color {
-          background-color: var(--Brown-40);
-        }
-
-        .kakaotalk-color {
-          background-color: var(--Yellow-50);
-        }
-
-        .facebook-color {
-          background-color: var(--Blue-50);
-        }
-      }
     }
   }
 
