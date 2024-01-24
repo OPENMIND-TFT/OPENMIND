@@ -4,6 +4,7 @@ const Container = styled.div`
   background-color: var(--Grayscale-20);
 
   .list-header {
+    padding: 0px 130px;
     width: 100%;
     height: 137px;
     display: flex;
@@ -75,13 +76,11 @@ const Container = styled.div`
 
   .list-section {
     max-width: 1200px;
-    max-height: 396px;
-    padding: 0 130px;
-    margin: 30px auto 50px;
+    padding: 30px 130px 50px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    overflow: hidden;
 
     .list-section-card {
       max-width: 220px;
@@ -93,8 +92,6 @@ const Container = styled.div`
       border: 1px solid var(--Grayscale-40);
       border-radius: 16px;
       background-color: var(--Grayscale-10);
-      transition: all 0.5s;
-      transform: translateY(${props => props.y}px);
       cursor: pointer;
 
       .card-profile {
@@ -184,7 +181,7 @@ const Container = styled.div`
     }
 
     .list-section {
-      padding: 0 32px;
+      padding: 30px 32px 50px;
 
       .list-section-card {
         max-width: unset;
@@ -195,6 +192,11 @@ const Container = styled.div`
   @media screen and (max-width: 868px) {
     .list-section {
       grid-template-columns: repeat(3, 1fr);
+      padding-bottom: 60px;
+    }
+
+    .list-nav {
+      margin-bottom: 60px;
     }
   }
 
@@ -225,7 +227,11 @@ const Container = styled.div`
     }
 
     .list-section {
-      padding: 0 24px;
+      padding: 20px 24px 40px;
+    }
+
+    .list-nav {
+      margin-bottom: 40px;
     }
   }
 `;
