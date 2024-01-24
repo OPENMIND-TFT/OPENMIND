@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
-const PheedPageContainer = styled.div`
+const QuestionPageContainer = styled.div`
   position: relative;
 
-  .pheed-page-header {
+  button {
+    cursor: pointer;
+  }
+
+  .questions-page-header {
     position: relative;
     height: 234px;
     background-color: var(--Grayscale-10);
@@ -32,6 +36,12 @@ const PheedPageContainer = styled.div`
       flex-direction: column;
       align-items: center;
       gap: 12px;
+    }
+
+    .header-profile-image {
+      width: 136px;
+      height: 136px;
+      border-radius: 9999px;
     }
 
     .profile-name {
@@ -71,7 +81,7 @@ const PheedPageContainer = styled.div`
     }
   }
 
-  .pheed-page-main {
+  .questions-page-main {
     display: flex;
     justify-content: center;
   }
@@ -183,6 +193,7 @@ const PheedPageContainer = styled.div`
     .answer-profile-image {
       width: 48px;
       height: 48px;
+      border-radius: 9999px;
     }
 
     .answer-title-box {
@@ -233,25 +244,23 @@ const PheedPageContainer = styled.div`
     .like-button-box.on {
       color: var(--Blue-50);
       .tumbs-up-image {
-        filter: invert(36%) sepia(32%) saturate(6200%) hue-rotate(203deg)
-          brightness(100%) contrast(91%);
+        background: url('/assets/images/thumbsUpBlue50.svg');
       }
     }
 
     .dislike-button-box.on {
       color: var(--Red-50);
       .tumbs-up-image {
-        filter: invert(20%) sepia(24%) saturate(6385%) hue-rotate(344deg)
-          brightness(111%) contrast(79%);
+        background: url('/assets/images/thumbsDown.svg');
       }
     }
 
     .tumbs-up-image {
-      background: url('/assets/images/thumbs-up.svg');
+      background: url('/assets/images/thumbsUp.svg');
     }
 
     .tumbs-down-image {
-      background: url('/assets/images/thumbs-down.svg');
+      background: url('/assets/images/thumbsDown.svg');
     }
 
     .tumbs-up-image,
@@ -283,13 +292,13 @@ const PheedPageContainer = styled.div`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1124px) {
-    .pheed-page-main {
+    .questions-page-main {
       padding: 0px 32px;
     }
   }
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
-    .pheed-page-header {
+    .questions-page-header {
       height: 177px;
     }
     .header-section {
@@ -304,7 +313,7 @@ const PheedPageContainer = styled.div`
         height: 104px;
       }
     }
-    .pheed-page-main {
+    .questions-page-main {
       padding: 0px 32px;
     }
     .question-write-button {
@@ -329,4 +338,4 @@ const PheedPageContainer = styled.div`
   }
 `;
 
-export default PheedPageContainer;
+export default QuestionPageContainer;
