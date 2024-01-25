@@ -30,6 +30,7 @@ const HeaderContainer = styled.header`
       .header-profile-image {
         width: 136px;
         height: 136px;
+        border-radius: 999px;
       }
 
       .profile-title {
