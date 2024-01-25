@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import AnswerPageQuestionList from '../../components/AnswerPageQuestionList';
 import AnswerPageContainer from './style';
@@ -11,6 +11,7 @@ const AnswerPage = () => {
   const [user, setUser] = useState([]);
   const [questions, setQuestions] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +27,7 @@ const AnswerPage = () => {
 
   const handleDelete = async () => {
     await deleteAll(id);
-    window.location.href = '/';
+    navigate('/');
   };
 
   return (
