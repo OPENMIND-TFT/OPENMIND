@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import HeaderContainer from './style';
 
-const QuestionHeader = () => {
+const AnswerPageQuestionHeader = ({ user }) => {
   return (
     <HeaderContainer>
       <div className="header-background-image">
@@ -15,12 +15,12 @@ const QuestionHeader = () => {
           </Link>
           <div>
             <img
-              src="/assets/images/profile.svg"
+              src={user.imageSource}
               alt="프로필 이미지"
               className="header-profile-image"
             />
           </div>
-          <h2 className="profile-title">아초는고양이</h2>
+          <h2 className="profile-title">{user.name}</h2>
           <div className="button-wrap">
             <button type="button" className="sns-button link-color">
               <img src="/assets/images/link.svg" alt="링크 복사하기" />
@@ -40,4 +40,4 @@ const QuestionHeader = () => {
   );
 };
 
-export default QuestionHeader;
+export default AnswerPageQuestionHeader;
