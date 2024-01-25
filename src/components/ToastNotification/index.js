@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import ToastStyled from './style';
-
+// 수정수정
 const ToastNotification = ({ children, setIsToastVisible }) => {
   useEffect(() => {
     const toastTimeout = setTimeout(() => {
