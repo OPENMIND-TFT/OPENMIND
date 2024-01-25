@@ -148,6 +148,7 @@ const QuestionPageContainer = styled.div`
       width: 100%;
       min-height: 243px;
       padding: 32px;
+      margin-bottom: 20px;
     }
 
     .answer {
