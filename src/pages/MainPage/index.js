@@ -30,6 +30,7 @@ const MainPage = () => {
       throw new Error('피드를 불러오는데 실패했습니다');
     }
     const body = await response.json();
+    window.localStorage.setItem('myId', body.id);
     navigate(`/post/${body.id}/answer`);
 
     return body;
