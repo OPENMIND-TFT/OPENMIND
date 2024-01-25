@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HeaderContainer = styled.header`
+const AnswerPageHeaderContainer = styled.header`
   .header-background-image {
     position: relative;
     width: 100%;
@@ -68,4 +68,4 @@ const HeaderContainer = styled.header`
   }
 `;
 
-export default HeaderContainer;
+export default AnswerPageHeaderContainer;
