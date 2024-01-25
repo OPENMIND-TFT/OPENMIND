@@ -28,6 +28,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
     if (!response.ok) {
       throw new Error('답변을 전송하는데 실패했습니다.');
     }
+    window.location.reload(true);
   };
 
   return (
@@ -112,7 +113,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       className="answer-textarea"
                     />
                     <button
-                      type="submit"
+                      type="button"
                       className="answer-button"
                       onClick={submitAnswer}
                     >
