@@ -1,15 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionPageContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
 
-// TODO 임시 ID. useParams로 동적인 경로 만들어주기.
-const USER_ID = 2805;
-
-const getUser = async () => {
-  const response = await fetch(`${API_BASE_URL}/subjects/${USER_ID}/`);
+const getUser = async userId => {
+  const response = await fetch(`${API_BASE_URL}/subjects/${userId}/`);
   if (!response.ok) {
     throw new Error('유저 데이터를 불러오는데 실패했습니다');
   }
@@ -132,6 +129,7 @@ const QuestionHeader = ({ user }) => {
 };
 
 const QuestionPage = () => {
+  const { id } = useParams();
   const [user, setUser] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -139,9 +137,9 @@ const QuestionPage = () => {
 
   const elementRef = useRef(null);
 
-  const getUserQuestions = async () => {
+  const getUserQuestions = async userId => {
     const response = await fetch(
-      `${API_BASE_URL}/subjects/${USER_ID}/questions/?limit=4&offset=${page * 4}`,
+      `${API_BASE_URL}/subjects/${userId}/questions/?limit=4&offset=${page * 4}`,
     );
     const responseQuestions = await response.json();
     if (responseQuestions.results.length === 0) {
@@ -157,7 +155,7 @@ const QuestionPage = () => {
   const onInterSection = entries => {
     const firstEntry = entries[0];
     if (firstEntry.isIntersecting && hasMore) {
-      getUserQuestions();
+      getUserQuestions(id);
     }
   };
 
@@ -173,7 +171,7 @@ const QuestionPage = () => {
     };
   }, [questions]);
   const fetchData = async () => {
-    const responseUser = await getUser();
+    const responseUser = await getUser(id);
     setUser(responseUser);
   };
   useEffect(() => {

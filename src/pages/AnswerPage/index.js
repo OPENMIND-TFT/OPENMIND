@@ -28,6 +28,7 @@ const AnswerPage = () => {
   const handleDelete = async () => {
     await deleteAll(id);
     navigate('/');
+
   };
 
   return (
