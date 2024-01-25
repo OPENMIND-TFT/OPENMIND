@@ -4,7 +4,7 @@ import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionPageContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
-// PR 잘되나?
+
 const getUser = async userId => {
   const response = await fetch(`${API_BASE_URL}/subjects/${userId}/`);
   if (!response.ok) {
@@ -71,6 +71,10 @@ const QuestionItem = ({ user, question }) => {
         </div>
       ) : null}
       <ReactionButtonBox question={question} />
+
+      <button type="button" className="question-delete-button">
+        삭제하기
+      </button>
     </section>
   );
 };
