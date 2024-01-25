@@ -39,37 +39,28 @@ const HeaderContainer = styled.header`
           'liga' off;
         font-family: Actor;
         font-size: 3.2rem;
+        font-weight: 400;
         line-height: 40px;
         margin-top: 12px;
         margin-bottom: 12px;
       }
+    }
+  }
 
-      .button-wrap {
-        display: flex;
-        gap: 12px;
+  @media screen and (min-width: 768px) and (max-width: 1124px) {
+  }
 
-        img {
-          display: flex;
-          margin: 0 auto;
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    .header-background-image {
+      .header-profile-wrap {
+        .top-logo {
+          width: 124px;
+          height: 49px;
+          margin-top: 40px;
         }
-
-        .sns-button {
-          width: 40px;
-          height: 40px;
-          border-radius: 200px;
-          border: none;
-        }
-
-        .link-color {
-          background-color: var(--Brown-40);
-        }
-
-        .kakaotalk-color {
-          background-color: var(--Yellow-50);
-        }
-
-        .facebook-color {
-          background-color: var(--Blue-50);
+        .header-profile-image {
+          width: 104px;
+          height: 104px;
         }
       }
     }

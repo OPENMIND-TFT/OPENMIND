@@ -4,11 +4,19 @@ const Container = styled.div`
   background-color: var(--Grayscale-20);
 
   .list-header {
+    padding: 0px 130px;
     width: 100%;
     height: 137px;
-    padding: 45px 130px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+
+    .list-header-inner {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .list-main {
@@ -68,13 +76,11 @@ const Container = styled.div`
 
   .list-section {
     max-width: 1200px;
-    max-height: 396px;
-    padding: 0 130px;
-    margin: 30px auto 50px;
+    padding: 30px 130px 50px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    overflow: hidden;
 
     .list-section-card {
       max-width: 220px;
@@ -86,8 +92,6 @@ const Container = styled.div`
       border: 1px solid var(--Grayscale-40);
       border-radius: 16px;
       background-color: var(--Grayscale-10);
-      transition: all 0.5s;
-      transform: translateY(${props => props.y}px);
       cursor: pointer;
 
       .card-profile {
@@ -167,6 +171,67 @@ const Container = styled.div`
 
     .list-nav-pagebutton.selected {
       color: var(--Brown-40);
+    }
+  }
+
+  /* 반응형 */
+  @media screen and (max-width: 1199px) {
+    .list-header {
+      padding: 40px 50px;
+    }
+
+    .list-section {
+      padding: 30px 32px 50px;
+
+      .list-section-card {
+        max-width: unset;
+      }
+    }
+  }
+
+  @media screen and (max-width: 868px) {
+    .list-section {
+      grid-template-columns: repeat(3, 1fr);
+      padding-bottom: 60px;
+    }
+
+    .list-nav {
+      margin-bottom: 60px;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .list-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .list-header {
+      height: unset;
+
+      .list-header-inner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+    }
+
+    .list-main {
+      padding: 0 24px;
+      flex-direction: initial;
+      justify-content: space-between;
+
+      .list-main-h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    .list-section {
+      padding: 20px 24px 40px;
+    }
+
+    .list-nav {
+      margin-bottom: 40px;
     }
   }
 `;

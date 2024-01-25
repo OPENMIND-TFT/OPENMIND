@@ -5,14 +5,12 @@ import GoToAnswer from '../../components/GoToAnswer';
 import BackToMain from '../../components/BackToMain';
 
 const List = () => {
-  const [subjects, setSubjects] = useState([]);
   const [isDropDown, setIsDropDown] = useState(false);
   const [sortBy, setSortBy] = useState('최신순');
   const [cardInfo, setCardInfo] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
-  const [translateY, setTranslateY] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const [currentScroll, setCurrentScroll] = useState(1);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -21,44 +19,20 @@ const List = () => {
     // 카드정보 호출
     async function fetchData() {
       const response = await fetch(
-        `https://openmind-api.vercel.app/3-5/subjects/?limit=${subjects.count ?? 999}&offset=0`,
+        sortBy === '최신순'
+          ? `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${itemsPerPage * (currentPage - 1)}`
+          : `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${itemsPerPage * (currentPage - 1)}&sort=name`,
       );
       const data = await response.json();
-      setSubjects(data);
       setCardInfo(data['results']);
       setTotalItems(data['count']);
     }
     fetchData();
-  }, []);
+  }, [currentPage, sortBy]);
 
   if (!cardInfo) {
     return null;
   }
-
-  const handleSorting = e => {
-    // 정렬기능
-    const selectedSort = e.target.innerHTML;
-    if (selectedSort === '이름순') {
-      setCardInfo(
-        [...cardInfo].sort((a, b) =>
-          a.name.localeCompare(b.name, undefined, {
-            numeric: true,
-          }),
-        ),
-      );
-    } else if (selectedSort === '최신순') {
-      setCardInfo([...cardInfo].sort((a, b) => b.id - a.id));
-    }
-
-    setSortBy(selectedSort);
-  };
-
-  const handlePageChange = e => {
-    // 페이지이동
-    setCurrentPage(Number(e.target.innerHTML));
-    setTranslateY((Number(e.target.innerHTML) - 1) * -414);
-  };
-
   const goToPrev = () => {
     // 이전 페이지리스트
     if (currentScroll > 1) {
@@ -75,11 +49,27 @@ const List = () => {
     }
   };
 
+  const handleSorting = e => {
+    // 정렬기능
+    const selectedSort = e.target.innerHTML;
+    setCurrentPage(1);
+    setTranslateX(0);
+    setCurrentScroll(1);
+    setSortBy(selectedSort);
+  };
+
+  const handlePageChange = e => {
+    // 페이지이동
+    setCurrentPage(Number(e.target.innerHTML));
+  };
+
   return (
-    <Container x={translateX} y={translateY}>
+    <Container x={translateX}>
       <header className="list-header">
-        <BackToMain />
-        <GoToAnswer />
+        <div className="list-header-inner">
+          <BackToMain />
+          <GoToAnswer />
+        </div>
       </header>
 
       <main className="list-main">
