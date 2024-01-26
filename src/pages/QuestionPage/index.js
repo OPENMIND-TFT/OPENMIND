@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import getElapsedTime from '../../utils/getElapsedTime';
+import ReactionButtonBox from '../../components/ReactionButtonBox';
 import QuestionPageContainer from './style';
 import ModalQuestion from '../../components/ModalQuestion';
 
@@ -14,24 +15,22 @@ const getUser = async userId => {
   return response.json();
 };
 
-const ReactionButtonBox = ({ question }) => {
-  return (
-    <div className="reaction-button-box">
-      <div className="like-button-box on">
-        <figure className="tumbs-up-image" />
-        <span className="like">좋아요</span>
-        <span className="like-count">{question.like}</span>
-      </div>
-      <div className="dislike-button-box">
-        <figure className="tumbs-down-image" />
-        <span className="dislike">싫어요</span>
-        <span className="dislike-count">{question.dislike}</span>
-      </div>
-    </div>
-  );
-};
+const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
+  const deleteQuestion = async questionId => {
+    const response = await fetch(`${API_BASE_URL}/questions/${questionId}/`, {
+      method: 'DELETE',
+    });
 
-const QuestionItem = ({ user, question }) => {
+    if (response.ok) {
+      setQuestions(prevQuestions =>
+        prevQuestions.filter(prevQuestion => prevQuestion.id !== question.id),
+      );
+      setQuestionCount(prevCount => prevCount - 1);
+    } else if (!response.ok) {
+      throw new Error('질문 삭제 실패했습니다');
+    }
+  };
+
   return (
     <section className="question-answer-box answer-complete">
       {question.answer ? (
@@ -71,7 +70,16 @@ const QuestionItem = ({ user, question }) => {
           </div>
         </div>
       ) : null}
+
       <ReactionButtonBox question={question} />
+
+      <button
+        type="button"
+        className="question-delete-button"
+        onClick={() => deleteQuestion(question.id)}
+      >
+        삭제하기
+      </button>
     </section>
   );
 };
@@ -136,6 +144,8 @@ const QuestionPage = () => {
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [questionCount, setQuestionCount] = useState(0);
+
 
   const elementRef = useRef(null);
 
@@ -180,6 +190,7 @@ const QuestionPage = () => {
   const fetchData = async () => {
     const responseUser = await getUser(id);
     setUser(responseUser);
+    setQuestionCount(responseUser.questionCount);
   };
   useEffect(() => {
     fetchData();
@@ -193,18 +204,22 @@ const QuestionPage = () => {
         <article className="question-list-container">
           <div className="title-box">
             <figure className="title-image" />
-            <span className="title">
-              {user.questionCount}개의 질문이 있습니다
-            </span>
+            <span className="title">{questionCount}개의 질문이 있습니다</span>
           </div>
           {/* 질문이 없는 경우 no-question-image 활성화
           <figure className="no-question-image" /> */}
 
           <div className="question-list">
             {questions.map(question => (
-              <QuestionItem key={question.id} user={user} question={question} />
+              <QuestionItem
+                key={question.id}
+                user={user}
+                question={question}
+                setQuestions={setQuestions}
+                setQuestionCount={setQuestionCount}
+              />
             ))}
-            {hasMore && <div ref={elementRef}>Load More Questins...</div>}
+            {hasMore && <div ref={elementRef}>Load More Questions...</div>}
           </div>
         </article>
       </main>
