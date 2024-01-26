@@ -7,29 +7,37 @@ const ReactionButtonBox = ({ question, style }) => {
   const [dislikeCount, setDislikeCount] = useState(question.dislike);
 
   const handleLike = async () => {
-    await fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        type: 'like',
-      }),
-    });
-    setLikeCount(likeCount + 1);
+    try {
+      await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'like',
+        }),
+      });
+      setLikeCount(likeCount + 1);
+    } catch (e) {
+      throw new Error('데이터 전송에 실패 했습니다.');
+    }
   };
 
   const handleDislike = async () => {
-    await fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        type: 'dislike',
-      }),
-    });
-    setDislikeCount(dislikeCount + 1);
+    try {
+      await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'dislike',
+        }),
+      });
+      setDislikeCount(dislikeCount + 1);
+    } catch (e) {
+      throw new Error('데이터 전송에 실패 했습니다.');
+    }
   };
 
   return (
