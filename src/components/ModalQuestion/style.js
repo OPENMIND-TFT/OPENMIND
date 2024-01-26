@@ -85,9 +85,10 @@ const Container = styled.div`
       background: var(--Grayscale-20);
       resize: none;
       margin-bottom: 8px;
-    }
-    &:focus {
-      outline: none;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .modal-button {
@@ -101,11 +102,11 @@ const Container = styled.div`
       font-weight: 400;
       line-height: 22px;
       cursor: pointer;
-    }
 
-    &:disabled {
-      background: var(--Brown-30);
-      cursor: default;
+      &:disabled {
+        background: var(--Brown-30);
+        cursor: default;
+      }
     }
   }
 

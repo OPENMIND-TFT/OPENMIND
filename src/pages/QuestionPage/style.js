@@ -203,6 +203,7 @@ const QuestionPageContainer = styled.div`
     .question-content {
       font-size: 1.8rem;
       font-family: Actor;
+      white-space: pre-line;
     }
 
     .answer-box {

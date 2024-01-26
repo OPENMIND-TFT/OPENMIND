@@ -1,19 +1,24 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Container from './style';
 
 const ModalQuestion = ({ handleClose }) => {
   const [userData, setUserData] = useState([]);
   const [isTextareaEmpty, setIsTextareaEmpty] = useState(true);
   const [question, setQuestion] = useState('');
-  const SUBJECT_ID = window.location.pathname.slice(6, 10);
+  const SUBJECT_ID = useParams();
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(
-        `https://openmind-api.vercel.app/3-5/subjects/${SUBJECT_ID}/`,
-      );
-      const data = await response.json();
-      setUserData(data);
+      try {
+        const response = await fetch(
+          `https://openmind-api.vercel.app/3-5/subjects/${SUBJECT_ID.id}/`,
+        );
+        const data = await response.json();
+        setUserData(data);
+      } catch (e) {
+        throw new Error('프로필 정보를 가져오지 못했습니다.');
+      }
     }
     fetchData();
   }, []);
@@ -31,20 +36,32 @@ const ModalQuestion = ({ handleClose }) => {
   };
 
   const sendQuestion = () => {
-    fetch(
-      `https://openmind-api.vercel.app/3-5/subjects/${SUBJECT_ID}/questions/`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+    try {
+      fetch(
+        `https://openmind-api.vercel.app/3-5/subjects/${SUBJECT_ID.id}/questions/`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            subjectId: SUBJECT_ID.id,
+            content: question,
+            team: '3-5',
+          }),
         },
-        body: JSON.stringify({
-          subjectId: SUBJECT_ID,
-          content: question,
-          team: '3-5',
-        }),
-      },
-    );
+      ).then(
+        response => response.status === 201 && window.location.reload(true),
+      );
+    } catch (e) {
+      throw new Error('전송에 실패했습니다.');
+    }
+  };
+
+  const handleEnter = e => {
+    if (e.keyCode === 13 && !e.shiftKey) {
+      sendQuestion();
+    }
   };
 
   return (
@@ -88,6 +105,7 @@ const ModalQuestion = ({ handleClose }) => {
             textareaEmpty(e);
             setQuestion(e.target.value);
           }}
+          onKeyDown={handleEnter}
         />
         <button
           className="modal-button"
@@ -103,17 +121,3 @@ const ModalQuestion = ({ handleClose }) => {
 };
 
 export default ModalQuestion;
-
-// 모달 호출하는곳에서 사용 할 코드
-//
-// 먼저 useState랑 모달 컴포넌트 import후,
-//
-// const [isShowModal, setIsShowModal] = useState(false);
-//
-// const handleModalQuestion = () => {
-//   setIsShowModal(!isShowModal);
-// };
-//
-// onClick={handleModalQuestion}(질문 작성하기 버튼에)
-//
-// {isShowModal && <ModalQuestion handleClose={handleModalQuestion} />}(호출하는곳 return 최하단)
