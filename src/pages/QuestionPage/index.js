@@ -146,7 +146,6 @@ const QuestionPage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
 
-
   const elementRef = useRef(null);
 
   const getUserQuestions = async userId => {
