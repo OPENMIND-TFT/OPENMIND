@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// cp
 import Container from './style';
 
 const ModalQuestion = ({ handleClose }) => {
@@ -46,17 +45,17 @@ const ModalQuestion = ({ handleClose }) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            subjectId: SUBJECT_ID,
+            subjectId: SUBJECT_ID.id,
             content: question,
             team: '3-5',
           }),
         },
+      ).then(
+        response => response.status === 201 && window.location.reload(true),
       );
     } catch (e) {
       throw new Error('전송에 실패했습니다.');
     }
-    handleClose();
-    window.location.reload(true);
   };
 
   const handleEnter = e => {
