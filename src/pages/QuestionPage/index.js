@@ -197,7 +197,7 @@ const QuestionPage = () => {
             {questions.map(question => (
               <QuestionItem key={question.id} user={user} question={question} />
             ))}
-            {hasMore && <div ref={elementRef}>Load More Questins...</div>}
+            {hasMore && <div ref={elementRef}>Load More Questions...</div>}
           </div>
         </article>
       </main>
