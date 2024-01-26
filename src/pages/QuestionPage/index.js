@@ -30,7 +30,22 @@ const ReactionButtonBox = ({ question }) => {
   );
 };
 
-const QuestionItem = ({ user, question }) => {
+const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
+  const deleteQuestion = async questionId => {
+    const response = await fetch(`${API_BASE_URL}/questions/${questionId}/`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      setQuestions(prevQuestions =>
+        prevQuestions.filter(prevQuestion => prevQuestion.id !== question.id),
+      );
+      setQuestionCount(prevCount => prevCount - 1);
+    } else if (!response.ok) {
+      throw new Error('질문 삭제 실패했습니다');
+    }
+  };
+
   return (
     <section className="question-answer-box answer-complete">
       {question.answer ? (
@@ -70,7 +85,15 @@ const QuestionItem = ({ user, question }) => {
           </div>
         </div>
       ) : null}
-      <ReactionButtonBox question={question} />
+      <ReactionButtonBox question={question} setQuestions={setQuestions} />
+
+      <button
+        type="button"
+        className="question-delete-button"
+        onClick={() => deleteQuestion(question.id)}
+      >
+        삭제하기
+      </button>
     </section>
   );
 };
@@ -134,6 +157,7 @@ const QuestionPage = () => {
   const [questions, setQuestions] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
+  const [questionCount, setQuestionCount] = useState(0);
 
   const elementRef = useRef(null);
 
@@ -152,6 +176,7 @@ const QuestionPage = () => {
       setPage(prevPage => prevPage + 1);
     }
   };
+
   const onInterSection = entries => {
     const firstEntry = entries[0];
     if (firstEntry.isIntersecting && hasMore) {
@@ -173,6 +198,7 @@ const QuestionPage = () => {
   const fetchData = async () => {
     const responseUser = await getUser(id);
     setUser(responseUser);
+    setQuestionCount(responseUser.questionCount);
   };
   useEffect(() => {
     fetchData();
@@ -186,16 +212,20 @@ const QuestionPage = () => {
         <article className="question-list-container">
           <div className="title-box">
             <figure className="title-image" />
-            <span className="title">
-              {user.questionCount}개의 질문이 있습니다
-            </span>
+            <span className="title">{questionCount}개의 질문이 있습니다</span>
           </div>
           {/* 질문이 없는 경우 no-question-image 활성화
           <figure className="no-question-image" /> */}
 
           <div className="question-list">
             {questions.map(question => (
-              <QuestionItem key={question.id} user={user} question={question} />
+              <QuestionItem
+                key={question.id}
+                user={user}
+                question={question}
+                setQuestions={setQuestions}
+                setQuestionCount={setQuestionCount}
+              />
             ))}
             {hasMore && <div ref={elementRef}>Load More Questions...</div>}
           </div>

@@ -149,6 +149,25 @@ const QuestionPageContainer = styled.div`
       min-height: 243px;
       padding: 32px;
       margin-bottom: 20px;
+      position: relative;
+
+      .question-delete-button {
+        position: absolute;
+        top: 28px;
+        right: 32px;
+        width: 100px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 200px;
+        background: var(--Brown-40);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        border: 0;
+
+        color: var(--Grayscale-10, #fff);
+        font-size: 1.5rem;
+      }
     }
 
     .answer {
