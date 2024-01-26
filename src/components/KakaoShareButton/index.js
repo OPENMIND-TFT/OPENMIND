@@ -10,21 +10,20 @@ const KakaoShareButton = () => {
     Kakao.init('cee8f493f2e0af4b4d91def7f810a26c');
   }, []);
 
-  const shareKakao = () => {
+  const handleShareKakao = () => {
     Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: '오늘의 디저트',
-        description: '아메리카노, 빵, 케익',
-        imageUrl:
-          'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
+        title: '오픈마인드',
+        description: '마음을 열고 대화를 주고 받는 소통 플랫폼, 오픈마인드',
+        imageUrl: '/assets/images/logo.png',
         link: {
           mobileWebUrl: realUrl,
         },
       },
       buttons: [
         {
-          title: '나도 테스트 하러가기',
+          title: '함께 참여하러 가기',
           link: {
             mobileWebUrl: realUrl,
           },
@@ -34,7 +33,7 @@ const KakaoShareButton = () => {
   };
 
   return (
-    <KakaoShareButtonStyled type="button" onClick={shareKakao}>
+    <KakaoShareButtonStyled type="button" onClick={handleShareKakao}>
       <img src="/assets/images/kakaotalk.svg" alt="카카오톡 공유" />
     </KakaoShareButtonStyled>
   );
