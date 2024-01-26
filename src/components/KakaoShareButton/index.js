@@ -17,7 +17,7 @@ const KakaoShareButton = () => {
         title: '오픈마인드',
         description: '마음을 열고 대화를 주고 받는 소통 플랫폼, 오픈마인드',
         imageUrl:
-          'https://harmonious-dusk-d79620.netlify.app/assets/images/kakaoShareImage.png',
+          'https://harmonious-dusk-d79620.netlify.app/assets/images/logo.png',
         link: {
           mobileWebUrl: realUrl,
         },
