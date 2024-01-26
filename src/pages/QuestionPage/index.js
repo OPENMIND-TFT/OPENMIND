@@ -1,27 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionPageContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
 
-// TODO 임시 ID. useParams로 동적인 경로 만들어주기.
-const USER_ID = 2805;
-
-const getUser = async () => {
-  const response = await fetch(`${API_BASE_URL}/subjects/${USER_ID}/`);
+const getUser = async userId => {
+  const response = await fetch(`${API_BASE_URL}/subjects/${userId}/`);
   if (!response.ok) {
     throw new Error('유저 데이터를 불러오는데 실패했습니다');
-  }
-  return response.json();
-};
-
-const getUserQuestions = async () => {
-  const response = await fetch(
-    `${API_BASE_URL}/subjects/${USER_ID}/questions/`,
-  );
-  if (!response.ok) {
-    throw new Error('유저의 질문 피드 데이터를 불러오는데 실패했습니다');
   }
   return response.json();
 };
@@ -88,17 +75,6 @@ const QuestionItem = ({ user, question }) => {
   );
 };
 
-const QuestionList = ({ user, questions }) => {
-  return (
-    <div className="question-list">
-      {questions.length &&
-        questions.map(question => (
-          <QuestionItem key={question.id} user={user} question={question} />
-        ))}
-    </div>
-  );
-};
-
 const ProfileShareIcons = () => {
   return (
     <div className="profile-share-icons">
@@ -153,18 +129,52 @@ const QuestionHeader = ({ user }) => {
 };
 
 const QuestionPage = () => {
+  const { id } = useParams();
   const [user, setUser] = useState([]);
   const [questions, setQuestions] = useState([]);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(0);
+
+  const elementRef = useRef(null);
+
+  const getUserQuestions = async userId => {
+    const response = await fetch(
+      `${API_BASE_URL}/subjects/${userId}/questions/?limit=4&offset=${page * 4}`,
+    );
+    const responseQuestions = await response.json();
+    if (responseQuestions.results.length === 0) {
+      setHasMore(false);
+    } else {
+      setQuestions(prevQuestions => [
+        ...prevQuestions,
+        ...responseQuestions.results,
+      ]);
+      setPage(prevPage => prevPage + 1);
+    }
+  };
+  const onInterSection = entries => {
+    const firstEntry = entries[0];
+    if (firstEntry.isIntersecting && hasMore) {
+      getUserQuestions(id);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const responseQuestions = await getUserQuestions();
-      const responseUser = await getUser();
-
-      setUser(responseUser);
-      setQuestions(responseQuestions.results);
+    const observer = new IntersectionObserver(onInterSection);
+    if (observer && elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
     };
-
+  }, [questions]);
+  const fetchData = async () => {
+    const responseUser = await getUser(id);
+    setUser(responseUser);
+  };
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -182,7 +192,13 @@ const QuestionPage = () => {
           </div>
           {/* 질문이 없는 경우 no-question-image 활성화
           <figure className="no-question-image" /> */}
-          <QuestionList user={user} questions={questions} />
+
+          <div className="question-list">
+            {questions.map(question => (
+              <QuestionItem key={question.id} user={user} question={question} />
+            ))}
+            {hasMore && <div ref={elementRef}>Load More Questins...</div>}
+          </div>
         </article>
       </main>
 

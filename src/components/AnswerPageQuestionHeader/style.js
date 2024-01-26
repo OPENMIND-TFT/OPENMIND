@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HeaderContainer = styled.header`
+const AnswerPageHeaderContainer = styled.header`
   .header-background-image {
     position: relative;
     width: 100%;
@@ -30,6 +30,7 @@ const HeaderContainer = styled.header`
       .header-profile-image {
         width: 136px;
         height: 136px;
+        border-radius: 999px;
       }
 
       .profile-title {
@@ -67,4 +68,4 @@ const HeaderContainer = styled.header`
   }
 `;
 
-export default HeaderContainer;
+export default AnswerPageHeaderContainer;
