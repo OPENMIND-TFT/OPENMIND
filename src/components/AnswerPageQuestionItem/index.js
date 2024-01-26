@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
+import ReactionButtonBox from '../ReactionButtonBox';
+import EditButton from '../EditButton';
 
 const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
@@ -74,23 +76,13 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 </div>
               </div>
             </div>
-
-            <footer className="card-footer-section">
-              <div className="reaction-section">
-                <div className="reaction-like">
-                  <img src="/assets/images/thumbsUp.svg" alt="좋아요 버튼" />
-                  <h4>좋아요</h4>
-                </div>
-                <div className="reaction-hate">
-                  <img src="/assets/images/thumbsDown.svg" alt="싫어요 버튼" />
-                  <h4>싫어요</h4>
-                </div>
-              </div>
-              <button className="edit-button" type="button">
-                <img src="/assets/images/edit.svg" alt="수정 버튼" />
-                수정하기
-              </button>
-            </footer>
+            <div className="question-item-footer">
+              <ReactionButtonBox
+                question={question}
+                style={{ border: 'none' }}
+              />
+              <EditButton />
+            </div>
           </>
         ) : (
           <>
@@ -124,18 +116,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
               </div>
             </div>
 
-            <footer className="card-footer-section">
-              <div className="reaction-section">
-                <div className="reaction-like">
-                  <img src="/assets/images/thumbsUp.svg" alt="좋아요 버튼" />
-                  <h4>좋아요</h4>
-                </div>
-                <div className="reaction-hate">
-                  <img src="/assets/images/thumbsDown.svg" alt="싫어요 버튼" />
-                  <h4>싫어요</h4>
-                </div>
-              </div>
-            </footer>
+            <ReactionButtonBox question={question} />
           </>
         )}
       </div>
