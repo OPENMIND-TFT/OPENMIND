@@ -3,13 +3,12 @@ import KakaoShareButtonStyled from './style';
 
 const KakaoShareButton = () => {
   const { Kakao } = window;
-
-  const resultUrl = window.location.href;
+  const realUrl = '';
+  // const resultUrl = window.location.href;
 
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init('cee8f493f2e0af4b4d91def7f810a26c');
-    console.log(Kakao.isInitialized());
   }, []);
 
   const shareKakao = () => {
