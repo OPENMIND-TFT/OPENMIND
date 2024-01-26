@@ -6,10 +6,15 @@ import EditButton from '../EditButton';
 
 const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
+  const [textAreaValue, setTextAreaValue] = useState(true);
   const { id } = question;
 
-  const handleSubmitAnswer = e => {
-    setContent(e.target.value);
+  const checkTextAreaEmpty = e => {
+    if (e.target.value !== '') {
+      setTextAreaValue(false);
+    } else {
+      setTextAreaValue(true);
+    }
   };
 
   const submitAnswer = async () => {
@@ -99,7 +104,10 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                   <h3 className="answer-profile-name">{user.name}</h3>
                   <form>
                     <textarea
-                      onChange={handleSubmitAnswer}
+                      onChange={e => {
+                        setContent(e.target.value);
+                        checkTextAreaEmpty(e);
+                      }}
                       value={content}
                       placeholder="답변을 입력해주세요."
                       className="answer-textarea"
@@ -108,6 +116,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       type="button"
                       className="answer-button"
                       onClick={submitAnswer}
+                      disabled={textAreaValue}
                     >
                       답변완료
                     </button>
@@ -115,7 +124,6 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 </div>
               </div>
             </div>
-
             <ReactionButtonBox question={question} />
           </>
         )}
