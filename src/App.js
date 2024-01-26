@@ -14,7 +14,7 @@ function App() {
         <Route path="/">
           <Route index element={<MainPage />} />
           <Route path="/list" element={<ListPage />} />
-          <Route path="/post/$id" element={<QuestionPage />} />
+          <Route path="/post/:id" element={<QuestionPage />} />
           <Route path="/post/:id/answer" element={<AnswerPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
