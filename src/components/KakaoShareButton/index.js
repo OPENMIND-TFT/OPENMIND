@@ -3,8 +3,7 @@ import KakaoShareButtonStyled from './style';
 
 const KakaoShareButton = () => {
   const { Kakao } = window;
-  const realUrl = '';
-  // const resultUrl = window.location.href;
+  const realUrl = 'https://harmonious-dusk-d79620.netlify.app/';
 
   useEffect(() => {
     Kakao.cleanup();
