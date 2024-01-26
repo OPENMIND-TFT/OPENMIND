@@ -23,6 +23,11 @@ const QuestionContainer = styled.div`
 
   .card-navigation-kebab {
     display: flex;
+    position: relative;
+
+    .kebab-image {
+      cursor: pointer;
+    }
   }
 
   .answer-status {
@@ -178,6 +183,7 @@ const QuestionContainer = styled.div`
     &:disabled {
       background: var(--Brown-30);
       cursor: default;
+    }
   }
 
   .question-item-footer {

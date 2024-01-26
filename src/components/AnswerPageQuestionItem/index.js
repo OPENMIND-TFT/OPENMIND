@@ -3,10 +3,12 @@ import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
 import ReactionButtonBox from '../ReactionButtonBox';
 import EditButton from '../EditButton';
+import KebabDropDown from '../KebabDropDown';
 
 const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
   const [textAreaValue, setTextAreaValue] = useState(true);
+  const [clickStatus, setClickStatus] = useState(false);
   const { id } = question;
 
   const checkTextAreaEmpty = e => {
@@ -47,9 +49,20 @@ const AnswerPageQuestionItem = ({ user, question }) => {
           ) : (
             <div className="answer-status none">미답변</div>
           )}
-          <div className="card-navigation-kebab">
-            <img src="/assets/images/kebab.svg" alt="더보기 버튼" />
-          </div>
+          <ul
+            className="card-navigation-kebab"
+            onClick={() => {
+              setClickStatus(!clickStatus);
+            }}
+            role="presentation"
+          >
+            <img
+              className="kebab-image"
+              src="/assets/images/kebab.svg"
+              alt="더보기 버튼"
+            />
+            {clickStatus && <KebabDropDown question={question} />}
+          </ul>
         </div>
         <div className="card-title-wrap">
           <span className="write-date">질문 · </span>
