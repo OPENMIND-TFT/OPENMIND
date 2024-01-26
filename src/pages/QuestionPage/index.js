@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import getElapsedTime from '../../utils/getElapsedTime';
+import ReactionButtonBox from '../../components/ReactionButtonBox';
 import QuestionPageContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
@@ -11,23 +12,6 @@ const getUser = async userId => {
     throw new Error('유저 데이터를 불러오는데 실패했습니다');
   }
   return response.json();
-};
-
-const ReactionButtonBox = ({ question }) => {
-  return (
-    <div className="reaction-button-box">
-      <div className="like-button-box on">
-        <figure className="tumbs-up-image" />
-        <span className="like">좋아요</span>
-        <span className="like-count">{question.like}</span>
-      </div>
-      <div className="dislike-button-box">
-        <figure className="tumbs-down-image" />
-        <span className="dislike">싫어요</span>
-        <span className="dislike-count">{question.dislike}</span>
-      </div>
-    </div>
-  );
 };
 
 const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
@@ -85,7 +69,8 @@ const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
           </div>
         </div>
       ) : null}
-      <ReactionButtonBox question={question} setQuestions={setQuestions} />
+
+      <ReactionButtonBox question={question} />
 
       <button
         type="button"
