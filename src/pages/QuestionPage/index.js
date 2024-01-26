@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionPageContainer from './style';
+import ModalQuestion from '../../components/ModalQuestion';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
 
@@ -134,6 +135,7 @@ const QuestionPage = () => {
   const [questions, setQuestions] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   const elementRef = useRef(null);
 
@@ -152,11 +154,16 @@ const QuestionPage = () => {
       setPage(prevPage => prevPage + 1);
     }
   };
+
   const onInterSection = entries => {
     const firstEntry = entries[0];
     if (firstEntry.isIntersecting && hasMore) {
       getUserQuestions(id);
     }
+  };
+
+  const handleModalQuestion = () => {
+    setIsShowModal(!isShowModal);
   };
 
   useEffect(() => {
@@ -202,12 +209,21 @@ const QuestionPage = () => {
         </article>
       </main>
 
-      <button className="question-write-button" type="button">
+      <button
+        className="question-write-button"
+        type="button"
+        onClick={handleModalQuestion}
+      >
         질문 작성하기
       </button>
-      <button className="question-write-button-mobile" type="button">
+      <button
+        className="question-write-button-mobile"
+        type="button"
+        onClick={handleModalQuestion}
+      >
         질문 작성
       </button>
+      {isShowModal && <ModalQuestion handleClose={handleModalQuestion} />}
     </QuestionPageContainer>
   );
 };
