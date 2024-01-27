@@ -47,7 +47,6 @@ const MainPage = () => {
       setErrorMessage('이름은 10자 이하여야 합니다!');
       return;
     }
-    setErrorMessage('');
     await creatPheed(nameValue);
   };
 
@@ -64,6 +63,7 @@ const MainPage = () => {
       <div className="input-area">
         <form onSubmit={handleSubmit}>
           <input
+            className={errorMessage ? 'error-input' : 'initial-input'}
             type="text"
             placeholder="이름을 입력하세요"
             value={nameValue}
