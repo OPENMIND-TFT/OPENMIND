@@ -161,15 +161,16 @@ const QuestionPage = () => {
       ]);
       setPage(prevPage => prevPage + 1);
     }
-
   }, [page, id]);
+
+  const handleModalQuestion = () => {
+    setIsShowModal(!isShowModal);
+  };
 
   const elementRef = useInfiniteScroll(() => {
     getUserQuestions(id);
   });
 
-
- 
   const fetchData = async () => {
     const responseUser = await getUser(id);
     setUser(responseUser);
