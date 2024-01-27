@@ -37,6 +37,7 @@ const DropDownContainer = styled.div`
         background: none;
         border: none;
         border-radius: 8px;
+        cursor: pointer;
 
         &:hover {
           color: var(--Blue-50);

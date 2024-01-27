@@ -40,15 +40,23 @@ const AnswerPageQuestionItem = ({ user, question }) => {
     window.location.reload(true);
   };
 
+  const questionStatus = () => {
+    if (question?.answer?.isRejected) {
+      return <div className="answer-status reject">답변거절</div>;
+    }
+
+    if (question.answer) {
+      return <div className="answer-status complete">답변완료</div>;
+    }
+
+    return <div className="answer-status none">미답변</div>;
+  };
+
   return (
     <QuestionContainer>
       <div className="question-card">
         <div className="card-navigation">
-          {question.answer ? (
-            <div className="answer-status complete">답변완료</div>
-          ) : (
-            <div className="answer-status none">미답변</div>
-          )}
+          {questionStatus()}
           <ul
             className="card-navigation-kebab"
             onClick={() => {
@@ -90,7 +98,11 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       {getElapsedTime(question.answer.createdAt)}
                     </h4>
                   </div>
-                  <p className="reply-font">{question.answer.content}</p>
+                  {question.answer.isRejected ? (
+                    <p className="reply-font refuse">답변 거절</p>
+                  ) : (
+                    <p className="reply-font">{question.answer.content}</p>
+                  )}
                 </div>
               </div>
             </div>
