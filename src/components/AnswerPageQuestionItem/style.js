@@ -59,6 +59,12 @@ const QuestionContainer = styled.div`
     background: var(--Grayscale-10);
   }
 
+  .reject {
+    color: var(--Red-50);
+    border: 1px solid var(--Red-50);
+    background: var(--Grayscale-10);
+  }
+
   .write-date {
     color: var(--Grayscale-40);
     font-feature-settings:
@@ -101,6 +107,12 @@ const QuestionContainer = styled.div`
     flex-grow: 1;
   }
 
+  .answer-profile-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
   .answer-input-wrap {
     display: flex;
     flex-direction: column;
@@ -134,6 +146,10 @@ const QuestionContainer = styled.div`
       'liga' off;
     font-size: 1.6rem;
     line-height: 22px;
+  }
+
+  .refuse {
+    color: var(--Red-50);
   }
 
   .answer-textarea {
