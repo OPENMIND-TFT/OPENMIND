@@ -48,10 +48,27 @@ const MainContainer = styled.div`
       position: relative;
     }
 
-    input {
+    .initial-input {
+      outline: none;
+
       background-color: #ffffff;
       border: 1px solid;
       border-color: var(--Grayscale-40);
+      border-radius: 8px;
+      width: 100%;
+      height: 46px;
+      padding: 12px 16px 12px 40px;
+      font-size: 1.6rem;
+
+      &:focus {
+        border: 1px solid var(--Brown-40);
+      }
+    }
+
+    .error-input {
+      background-color: #ffffff;
+      border: 1px solid;
+      border-color: red;
       border-radius: 8px;
       width: 100%;
       height: 46px;
@@ -62,6 +79,10 @@ const MainContainer = styled.div`
       position: absolute;
       top: 13px;
       left: 16px;
+    }
+    .error-message {
+      color: red;
+      font-size: 1.4rem;
     }
     button {
       height: 46px;
