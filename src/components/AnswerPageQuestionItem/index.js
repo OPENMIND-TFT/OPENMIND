@@ -2,14 +2,19 @@ import { useState } from 'react';
 import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
 import ReactionButtonBox from '../ReactionButtonBox';
-import EditButton from '../EditButton';
 import KebabDropDown from '../KebabDropDown';
 
 const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
   const [textAreaValue, setTextAreaValue] = useState(true);
   const [clickStatus, setClickStatus] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const { id } = question;
+
+  const handleEditClick = () => {
+    setIsEditing(!isEditing);
+    setContent(question.answer.content);
+  };
 
   const checkTextAreaEmpty = e => {
     if (e.target.value !== '') {
@@ -40,6 +45,27 @@ const AnswerPageQuestionItem = ({ user, question }) => {
     window.location.reload(true);
   };
 
+  const submitEditAnswer = async () => {
+    const response = await fetch(
+      `https://openmind-api.vercel.app/3-5/answers/${question.answer.id}/`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content,
+          isRejected: false,
+        }),
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error('답변을 수정하는데 실패했습니다.');
+    }
+    window.location.reload(true);
+  };
+
   const questionStatus = () => {
     if (question?.answer?.isRejected) {
       return <div className="answer-status reject">답변거절</div>;
@@ -50,6 +76,37 @@ const AnswerPageQuestionItem = ({ user, question }) => {
     }
 
     return <div className="answer-status none">미답변</div>;
+  };
+
+  const renderEditableView = () => {
+    if (isEditing) {
+      return (
+        <form>
+          <textarea
+            onChange={e => {
+              setContent(e.target.value);
+              checkTextAreaEmpty(e);
+            }}
+            value={content}
+            className="answer-textarea"
+          />
+          <button
+            type="button"
+            className="answer-button"
+            onClick={submitEditAnswer}
+            disabled={textAreaValue}
+          >
+            수정완료
+          </button>
+        </form>
+      );
+    }
+
+    if (question.answer.isRejected) {
+      return <p className="reply-font refuse">답변 거절</p>;
+    }
+
+    return <p className="reply-font">{question.answer.content}</p>;
   };
 
   return (
@@ -98,11 +155,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       {getElapsedTime(question.answer.createdAt)}
                     </h4>
                   </div>
-                  {question.answer.isRejected ? (
-                    <p className="reply-font refuse">답변 거절</p>
-                  ) : (
-                    <p className="reply-font">{question.answer.content}</p>
-                  )}
+                  {renderEditableView()}
                 </div>
               </div>
             </div>
@@ -111,7 +164,14 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 question={question}
                 style={{ border: 'none' }}
               />
-              <EditButton />
+              <button
+                className="edit-button"
+                type="button"
+                onClick={handleEditClick}
+              >
+                <img src="/assets/images/edit.svg" alt="수정 버튼" />
+                {isEditing ? '수정취소' : '수정하기'}
+              </button>
             </div>
           </>
         ) : (
