@@ -3,8 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import getElapsedTime from '../../utils/getElapsedTime';
 import ReactionButtonBox from '../../components/ReactionButtonBox';
-import QuestionPageContainer from './style';
 import ModalQuestion from '../../components/ModalQuestion';
+import QuestionPageContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
 
@@ -147,6 +147,10 @@ const QuestionPage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
 
+  const handleModalQuestion = () => {
+    setIsShowModal(!isShowModal);
+  };
+
   const getUserQuestions = useCallback(async () => {
     const response = await fetch(
       `${API_BASE_URL}/subjects/${id}/questions/?limit=4&offset=${page * 4}`,
@@ -161,15 +165,10 @@ const QuestionPage = () => {
       ]);
       setPage(prevPage => prevPage + 1);
     }
-
   }, [page, id]);
 
-  const elementRef = useInfiniteScroll(() => {
-    getUserQuestions(id);
-  });
+  const elementRef = useInfiniteScroll(getUserQuestions);
 
-
- 
   const fetchData = async () => {
     const responseUser = await getUser(id);
     setUser(responseUser);
@@ -191,7 +190,7 @@ const QuestionPage = () => {
             <span className="title">{questionCount}개의 질문이 있습니다</span>
           </div>
           {/* 질문이 없는 경우 no-question-image 활성화
-          <figure className="no-question-image" /> */}
+            <figure className="no-question-image" /> */}
 
           <div className="question-list">
             {questions.map(question => (
@@ -203,7 +202,7 @@ const QuestionPage = () => {
                 setQuestionCount={setQuestionCount}
               />
             ))}
-            {hasMore && <div ref={elementRef}>Load More Questions...</div>}
+            {hasMore && <div ref={elementRef}>Load More Questoins...</div>}
           </div>
         </article>
       </main>
