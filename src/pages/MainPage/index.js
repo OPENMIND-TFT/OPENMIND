@@ -6,6 +6,7 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   const [nameValue, setNameValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleNameChange = e => {
     setNameValue(e.target.value);
@@ -38,6 +39,15 @@ const MainPage = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (!nameValue) {
+      setErrorMessage('이름을 입력해주세요!');
+      return;
+    }
+    if (nameValue.length > 10) {
+      setErrorMessage('이름은 10자 이하여야 합니다!');
+      return;
+    }
+    setErrorMessage('');
     await creatPheed(nameValue);
   };
 
@@ -64,6 +74,7 @@ const MainPage = () => {
             src="/assets/images/personIcon.svg"
             alt="사람 아이콘"
           />
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
           <button type="submit">질문 받기</button>
         </form>
       </div>
