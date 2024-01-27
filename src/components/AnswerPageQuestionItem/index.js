@@ -126,7 +126,13 @@ const AnswerPageQuestionItem = ({ user, question }) => {
               src="/assets/images/kebab.svg"
               alt="더보기 버튼"
             />
-            {clickStatus && <KebabDropDown question={question} />}
+            {clickStatus && (
+              <KebabDropDown
+                question={question}
+                handleEditClick={handleEditClick}
+                isEditing={isEditing}
+              />
+            )}
           </ul>
         </div>
         <div className="card-title-wrap">
@@ -169,8 +175,17 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 type="button"
                 onClick={handleEditClick}
               >
-                <img src="/assets/images/edit.svg" alt="수정 버튼" />
-                {isEditing ? '수정취소' : '수정하기'}
+                {isEditing ? (
+                  <>
+                    <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+                    <span>수정취소</span>
+                  </>
+                ) : (
+                  <>
+                    <img src="/assets/images/edit.svg" alt="수정 버튼" />
+                    <span>수정하기</span>
+                  </>
+                )}
               </button>
             </div>
           </>
