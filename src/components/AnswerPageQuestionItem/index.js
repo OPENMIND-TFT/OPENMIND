@@ -1,13 +1,22 @@
 import { useState } from 'react';
 import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
+import ReactionButtonBox from '../ReactionButtonBox';
+import EditButton from '../EditButton';
+import KebabDropDown from '../KebabDropDown';
 
 const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
+  const [textAreaValue, setTextAreaValue] = useState(true);
+  const [clickStatus, setClickStatus] = useState(false);
   const { id } = question;
 
-  const handleSubmitAnswer = e => {
-    setContent(e.target.value);
+  const checkTextAreaEmpty = e => {
+    if (e.target.value !== '') {
+      setTextAreaValue(false);
+    } else {
+      setTextAreaValue(true);
+    }
   };
 
   const submitAnswer = async () => {
@@ -40,9 +49,20 @@ const AnswerPageQuestionItem = ({ user, question }) => {
           ) : (
             <div className="answer-status none">미답변</div>
           )}
-          <div className="card-navigation-kebab">
-            <img src="/assets/images/kebab.svg" alt="더보기 버튼" />
-          </div>
+          <ul
+            className="card-navigation-kebab"
+            onClick={() => {
+              setClickStatus(!clickStatus);
+            }}
+            role="presentation"
+          >
+            <img
+              className="kebab-image"
+              src="/assets/images/kebab.svg"
+              alt="더보기 버튼"
+            />
+            {clickStatus && <KebabDropDown question={question} />}
+          </ul>
         </div>
         <div className="card-title-wrap">
           <span className="write-date">질문 · </span>
@@ -74,23 +94,13 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 </div>
               </div>
             </div>
-
-            <footer className="card-footer-section">
-              <div className="reaction-section">
-                <div className="reaction-like">
-                  <img src="/assets/images/thumbsUp.svg" alt="좋아요 버튼" />
-                  <h4>좋아요</h4>
-                </div>
-                <div className="reaction-hate">
-                  <img src="/assets/images/thumbsDown.svg" alt="싫어요 버튼" />
-                  <h4>싫어요</h4>
-                </div>
-              </div>
-              <button className="edit-button" type="button">
-                <img src="/assets/images/edit.svg" alt="수정 버튼" />
-                수정하기
-              </button>
-            </footer>
+            <div className="question-item-footer">
+              <ReactionButtonBox
+                question={question}
+                style={{ border: 'none' }}
+              />
+              <EditButton />
+            </div>
           </>
         ) : (
           <>
@@ -107,7 +117,10 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                   <h3 className="answer-profile-name">{user.name}</h3>
                   <form>
                     <textarea
-                      onChange={handleSubmitAnswer}
+                      onChange={e => {
+                        setContent(e.target.value);
+                        checkTextAreaEmpty(e);
+                      }}
                       value={content}
                       placeholder="답변을 입력해주세요."
                       className="answer-textarea"
@@ -116,6 +129,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       type="button"
                       className="answer-button"
                       onClick={submitAnswer}
+                      disabled={textAreaValue}
                     >
                       답변완료
                     </button>
@@ -123,19 +137,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 </div>
               </div>
             </div>
-
-            <footer className="card-footer-section">
-              <div className="reaction-section">
-                <div className="reaction-like">
-                  <img src="/assets/images/thumbsUp.svg" alt="좋아요 버튼" />
-                  <h4>좋아요</h4>
-                </div>
-                <div className="reaction-hate">
-                  <img src="/assets/images/thumbsDown.svg" alt="싫어요 버튼" />
-                  <h4>싫어요</h4>
-                </div>
-              </div>
-            </footer>
+            <ReactionButtonBox question={question} />
           </>
         )}
       </div>

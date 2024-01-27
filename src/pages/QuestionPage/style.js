@@ -149,6 +149,25 @@ const QuestionPageContainer = styled.div`
       min-height: 243px;
       padding: 32px;
       margin-bottom: 20px;
+      position: relative;
+
+      .question-delete-button {
+        position: absolute;
+        top: 28px;
+        right: 32px;
+        width: 100px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 200px;
+        background: var(--Brown-40);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        border: 0;
+
+        color: var(--Grayscale-10, #fff);
+        font-size: 1.5rem;
+      }
     }
 
     .answer {
@@ -184,6 +203,7 @@ const QuestionPageContainer = styled.div`
     .question-content {
       font-size: 1.8rem;
       font-family: Actor;
+      white-space: pre-line;
     }
 
     .answer-box {
@@ -222,54 +242,6 @@ const QuestionPageContainer = styled.div`
 
     .answer-content.refuse {
       color: var(--Red-50);
-    }
-
-    .reaction-button-box {
-      display: flex;
-      align-items: flex-end;
-      border-top: 1px solid var(--Grayscale-30);
-      gap: 32px;
-      height: 43px;
-    }
-
-    .like-button-box,
-    .dislike-button-box {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      font-size: 1.4rem;
-      color: var(--Grayscale-40);
-    }
-
-    .like-button-box.on {
-      color: var(--Blue-50);
-      .tumbs-up-image {
-        background: url('/assets/images/thumbsUpBlue50.svg');
-      }
-    }
-
-    .dislike-button-box.on {
-      color: var(--Red-50);
-      .tumbs-up-image {
-        background: url('/assets/images/thumbsDown.svg');
-      }
-    }
-
-    .tumbs-up-image {
-      background: url('/assets/images/thumbsUp.svg');
-    }
-
-    .tumbs-down-image {
-      background: url('/assets/images/thumbsDown.svg');
-    }
-
-    .tumbs-up-image,
-    .tumbs-down-image {
-      width: 16px;
-      height: 16px;
-      background-repeat: no-repeat;
-      background-size: cover;
     }
   }
 
