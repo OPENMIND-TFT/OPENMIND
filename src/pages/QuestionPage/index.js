@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import getElapsedTime from '../../utils/getElapsedTime';
 import ReactionButtonBox from '../../components/ReactionButtonBox';
 import QuestionPageContainer from './style';
@@ -146,11 +147,9 @@ const QuestionPage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
 
-  const elementRef = useRef(null);
-
-  const getUserQuestions = async userId => {
+  const getUserQuestions = useCallback(async () => {
     const response = await fetch(
-      `${API_BASE_URL}/subjects/${userId}/questions/?limit=4&offset=${page * 4}`,
+      `${API_BASE_URL}/subjects/${id}/questions/?limit=4&offset=${page * 4}`,
     );
     const responseQuestions = await response.json();
     if (responseQuestions.results.length === 0) {
@@ -162,38 +161,24 @@ const QuestionPage = () => {
       ]);
       setPage(prevPage => prevPage + 1);
     }
-  };
 
-  const onInterSection = entries => {
-    const firstEntry = entries[0];
-    if (firstEntry.isIntersecting && hasMore) {
-      getUserQuestions(id);
-    }
-  };
+  }, [page, id]);
 
-  const handleModalQuestion = () => {
-    setIsShowModal(!isShowModal);
-  };
+  const elementRef = useInfiniteScroll(() => {
+    getUserQuestions(id);
+  });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(onInterSection);
-    if (observer && elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-    return () => {
-      if (observer) {
-        observer.disconnect();
-      }
-    };
-  }, [questions]);
+
+ 
   const fetchData = async () => {
     const responseUser = await getUser(id);
     setUser(responseUser);
     setQuestionCount(responseUser.questionCount);
   };
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <QuestionPageContainer>
