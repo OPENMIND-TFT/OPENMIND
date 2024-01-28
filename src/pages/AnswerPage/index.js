@@ -25,7 +25,7 @@ const AnswerPage = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async () => {
+  const handleDeleteAll = async () => {
     await deleteAll(id);
     navigate('/');
   };
@@ -39,7 +39,7 @@ const AnswerPage = () => {
             <button
               type="button"
               className="delete-button"
-              onClick={handleDelete}
+              onClick={handleDeleteAll}
             >
               삭제하기
             </button>
