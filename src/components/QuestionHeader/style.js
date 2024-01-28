@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const AnswerPageHeaderContainer = styled.header`
+const QuestionHeaderContainer = styled.header`
   .header-background-image {
     position: relative;
     width: 100%;
@@ -15,17 +15,9 @@ const AnswerPageHeaderContainer = styled.header`
       align-items: center;
       justify-content: center;
       z-index: 2;
+      top: 50px;
       left: 0;
       right: 0;
-      margin-left: auto;
-      margin-right: auto;
-
-      .top-logo {
-        width: 170px;
-        height: 67px;
-        margin-top: 50px;
-        margin-bottom: 12px;
-      }
 
       .header-profile-image {
         width: 136px;
@@ -68,4 +60,4 @@ const AnswerPageHeaderContainer = styled.header`
   }
 `;
 
-export default AnswerPageHeaderContainer;
+export default QuestionHeaderContainer;

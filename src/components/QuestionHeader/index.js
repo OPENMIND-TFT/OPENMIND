@@ -1,19 +1,13 @@
-import { Link } from 'react-router-dom';
-import AnswerPageHeaderContainer from './style';
+import QuestionHeaderContainer from './style';
+import BackToMain from '../BackToMain';
 import ShareButtonBar from '../ShareButtonBar';
 
 const QuestionHeader = ({ user }) => {
   return (
-    <AnswerPageHeaderContainer>
+    <QuestionHeaderContainer>
       <div className="header-background-image">
         <div className="header-profile-wrap">
-          <Link to="/">
-            <img
-              className="top-logo"
-              src="/assets/images/logo.png"
-              alt="로고"
-            />
-          </Link>
+          <BackToMain width="170px" />
           <div>
             <img
               src={user.imageSource}
@@ -25,7 +19,7 @@ const QuestionHeader = ({ user }) => {
           <ShareButtonBar />
         </div>
       </div>
-    </AnswerPageHeaderContainer>
+    </QuestionHeaderContainer>
   );
 };
 

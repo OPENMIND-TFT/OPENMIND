@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import postPheedData from '../../api/creatPheed';
+import BackToMain from '../../components/BackToMain';
 import MainContainer from './style';
 
 const MainPage = () => {
@@ -40,9 +41,7 @@ const MainPage = () => {
           <button type="button">질문 하러 가기 {'->'}</button>
         </Link>
       </div>
-      <Link to="/">
-        <img className="logo-image" src="/assets/images/logo.png" alt="로고" />
-      </Link>
+      <BackToMain width="456px" />
       <div className="input-area">
         <form onSubmit={handleSubmit}>
           <input

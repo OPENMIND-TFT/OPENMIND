@@ -71,7 +71,7 @@ const List = () => {
     <Container x={translateX}>
       <header className="list-header">
         <div className="list-header-inner">
-          <BackToMain />
+          <BackToMain width="146px" />
           <GoToAnswer />
         </div>
       </header>
