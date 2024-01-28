@@ -150,6 +150,7 @@ const QuestionContainer = styled.div`
       'liga' off;
     font-size: 1.6rem;
     line-height: 22px;
+    white-space: pre-line;
   }
 
   .refuse {
