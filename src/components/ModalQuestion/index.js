@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Cta from '../Cta';
 import Container from './style';
 
 const ModalQuestion = ({ handleClose }) => {
@@ -107,14 +108,9 @@ const ModalQuestion = ({ handleClose }) => {
           }}
           onKeyDown={handleEnter}
         />
-        <button
-          className="modal-button"
-          type="button"
-          onClick={sendQuestion}
-          disabled={isTextareaEmpty}
-        >
+        <Cta onClick={sendQuestion} disabled={isTextareaEmpty}>
           질문 보내기
-        </button>
+        </Cta>
       </div>
     </Container>
   );

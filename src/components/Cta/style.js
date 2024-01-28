@@ -20,6 +20,17 @@ const CtaButton = styled.button`
     color: var(--Brown-50);
     border-color: var(--Brown-40);
   }
+
+  &:disabled {
+    background: var(--Brown-30);
+    cursor: default;
+
+    &:hover {
+      background: var(--Brown-30);
+      color: var(--Grayscale-10);
+      border: 1px solid transparent;
+    }
+  }
 `;
 
 export default CtaButton;

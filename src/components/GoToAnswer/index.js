@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Button from './style';
+import GoToButton from '../GoToButton';
 
 const GoToAnswer = () => {
   const navigate = useNavigate();
@@ -11,16 +11,7 @@ const GoToAnswer = () => {
     );
   };
 
-  return (
-    <Button onClick={checkLocalStorage}>
-      <p className="button-p">답변하러 가기</p>
-      <img
-        src="/assets/images/arrowRight.svg"
-        alt="오른쪽화살표"
-        className="button-img"
-      />
-    </Button>
-  );
+  return <GoToButton onClick={checkLocalStorage}>답변하러 가기</GoToButton>;
 };
 
 export default GoToAnswer;

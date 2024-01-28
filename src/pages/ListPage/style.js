@@ -4,12 +4,11 @@ const Container = styled.div`
   background-color: var(--Grayscale-20);
 
   .list-header {
-    padding: 0px 130px;
+    padding: 45px 130px 0;
     width: 100%;
     height: 137px;
     display: flex;
     justify-content: center;
-    align-items: center;
 
     .list-header-inner {
       max-width: 1200px;

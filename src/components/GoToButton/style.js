@@ -9,10 +9,11 @@ const Button = styled.button`
   border-radius: 8px;
   border: 1px solid var(--Brown-40);
   background-color: var(--Brown-10);
+  color: var(--Brown-40);
+  transition: 0.3s all;
   cursor: pointer;
 
   & span {
-    color: var(--Brown-40);
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 22px;
@@ -21,6 +22,16 @@ const Button = styled.button`
   & img {
     width: 18px;
     height: 18px;
+    transition: 0.1s all;
+  }
+
+  &:hover {
+    background-color: var(--Brown-40);
+    color: var(--Grayscale-10);
+
+    img {
+      filter: brightness(100);
+    }
   }
 
   @media screen and (max-width: 425px) {
