@@ -85,7 +85,6 @@ const MainContainer = styled.div`
       font-size: 1.4rem;
     }
     button {
-      width: 100%;
       height: 46px;
       padding: 12px 24px;
       border-radius: 8px;
