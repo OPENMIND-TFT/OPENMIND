@@ -184,7 +184,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
               >
                 {isEditing ? (
                   <>
-                    <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+                    <img src="/assets/images/xIcon.svg" alt="수정취소 버튼" />
                     <span>수정취소</span>
                   </>
                 ) : (

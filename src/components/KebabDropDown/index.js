@@ -58,7 +58,10 @@ const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
         <div className="dropdown-box">
           <li>
             <button type="button" onClick={handleDeleteAnswer}>
-              <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+              <img
+                src="/assets/images/xIcon.svg"
+                alt="답변거절 취소하기 버튼"
+              />
               <span>거절취소</span>
             </button>
           </li>
@@ -73,7 +76,7 @@ const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
             <button type="button" onClick={handleEditClick}>
               {isEditing ? (
                 <>
-                  <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+                  <img src="/assets/images/xIcon.svg" alt="수정취소 버튼" />
                   <span>수정취소</span>
                 </>
               ) : (
@@ -86,7 +89,7 @@ const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
           </li>
           <li>
             <button type="button" onClick={handleDeleteAnswer}>
-              <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+              <img src="/assets/images/xIcon.svg" alt="답변 삭제하기 버튼" />
               <span>답변삭제</span>
             </button>
           </li>
@@ -98,13 +101,13 @@ const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
       <div className="dropdown-box">
         <li>
           <button type="button" onClick={submitAnswerRejected}>
-            <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+            <img src="/assets/images/xIcon.svg" alt="답변 거절하기 버튼" />
             <span>답변거절</span>
           </button>
         </li>
         <li>
           <button type="button" onClick={handleDeleteQuestion}>
-            <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+            <img src="/assets/images/xIcon.svg" alt="질문 삭제하기 버튼" />
             <span>질문삭제</span>
           </button>
         </li>
