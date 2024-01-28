@@ -17,29 +17,17 @@ const getUser = async userId => {
   return response.json();
 };
 
-const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
-  const deleteQuestion = async questionId => {
-    const response = await fetch(`${API_BASE_URL}/questions/${questionId}/`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      setQuestions(prevQuestions =>
-        prevQuestions.filter(prevQuestion => prevQuestion.id !== question.id),
-      );
-      setQuestionCount(prevCount => prevCount - 1);
-    } else if (!response.ok) {
-      throw new Error('질문 삭제 실패했습니다');
-    }
-  };
-
+const QuestionItem = ({ user, question }) => {
   return (
     <section className="question-answer-box answer-complete">
-      {question.answer ? (
-        <div className="answer complete">답변 완료</div>
-      ) : (
-        <div className="answer none">미답변</div>
+      {question.answer && question.answer.isRejected && (
+        <div className="answer rejected">답변 거절</div>
       )}
+      {question.answer && !question.answer.isRejected && (
+        <div className="answer complete">답변 완료</div>
+      )}
+      {!question.answer && <div className="answer none">미답변</div>}
+
       <div className="question-box">
         <div className="question-title-box">
           <span className="question-title">질문 · </span>
@@ -74,14 +62,6 @@ const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
       ) : null}
 
       <ReactionButtonBox question={question} />
-
-      <button
-        type="button"
-        className="question-delete-button"
-        onClick={() => deleteQuestion(question.id)}
-      >
-        삭제하기
-      </button>
     </section>
   );
 };
@@ -139,7 +119,6 @@ const QuestionPage = () => {
       setPage(prevPage => prevPage + 1);
     }
   }, [page, id]);
-
   const elementRef = useInfiniteScroll(getUserQuestions);
 
   const fetchData = async () => {
@@ -165,7 +144,7 @@ const QuestionPage = () => {
                 ? `${questionCount}개의 질문이 있습니다.`
                 : `아직 질문이 없습니다.`}
             </span>
-            {questionCount || <figure className="no-question-image" />}
+            {!questionCount && <figure className="no-question-image" />}
           </div>
           <div className="question-list">
             {questions.map(question => (
