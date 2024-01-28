@@ -125,11 +125,12 @@ const QuestionPageContainer = styled.div`
     width: 150px;
     height: 154px;
     display: flex;
-    background: url('/assets/images/bucket.png');
-    background-repeat: no-repeat;
+    background: url('/assets/images/bucket.png') no-repeat center;
     background-size: cover;
     position: absolute;
+    left: 50%;
     bottom: 65px;
+    transform: translate(-50%);
   }
 
   .question-list {
