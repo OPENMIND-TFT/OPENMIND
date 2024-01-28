@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import postPheedData from '../../api/creatPheed';
 import MainContainer from './style';
 
 const MainPage = () => {
@@ -13,30 +14,11 @@ const MainPage = () => {
     setNameValue(e.target.value);
   };
 
-  async function creatPheed(formData) {
-    const name = formData;
-    const response = await fetch(
-      `https://openmind-api.vercel.app/3-5/subjects/`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          team: '3-5',
-        }),
-      },
-    );
-    if (!response.ok) {
-      throw new Error('피드를 불러오는데 실패했습니다');
-    }
-    const body = await response.json();
-    window.localStorage.setItem('myId', body.id);
-    navigate(`/post/${body.id}/answer`);
-
-    return body;
-  }
+  const creatPheed = async () => {
+    const pheedData = await postPheedData(nameValue);
+    window.localStorage.setItem('myId', pheedData.id);
+    navigate(`/post/${pheedData.id}/answer`);
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
