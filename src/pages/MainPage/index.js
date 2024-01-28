@@ -38,13 +38,13 @@ const MainPage = () => {
 
   return (
     <MainContainer>
-      <div className="button-area">
+      <header className="button-area">
         <Link to="/list">
           <GoToButton>질문하러 가기</GoToButton>
         </Link>
-      </div>
+      </header>
       <BackToMain />
-      <div className="input-area">
+      <main className="input-area">
         <form onSubmit={handleSubmit}>
           <input
             className={errorMessage ? 'error-input' : 'initial-input'}
@@ -63,7 +63,7 @@ const MainPage = () => {
             질문 받기
           </Cta>
         </form>
-      </div>
+      </main>
       <div className="image-area">
         <img
           className="people-image"
