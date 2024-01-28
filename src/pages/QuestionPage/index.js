@@ -20,11 +20,14 @@ const getUser = async userId => {
 const QuestionItem = ({ user, question }) => {
   return (
     <section className="question-answer-box answer-complete">
-      {question.answer ? (
-        <div className="answer complete">답변 완료</div>
-      ) : (
-        <div className="answer none">미답변</div>
+      {question.answer && question.answer.isRejected && (
+        <div className="answer rejected">답변 거절</div>
       )}
+      {question.answer && !question.answer.isRejected && (
+        <div className="answer complete">답변 완료</div>
+      )}
+      {!question.answer && <div className="answer none">미답변</div>}
+
       <div className="question-box">
         <div className="question-title-box">
           <span className="question-title">질문 · </span>
