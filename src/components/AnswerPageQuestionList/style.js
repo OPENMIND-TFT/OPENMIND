@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 const QuestionListContainer = styled.div`
   .question-list-wrap {
+    position: relative;
     width: 100%;
+    min-height: 330px;
     display: inline-flex;
     padding: 16px;
     margin-bottom: 140px;
@@ -26,6 +28,18 @@ const QuestionListContainer = styled.div`
       font-family: Actor;
       font-size: 2rem;
       line-height: 25px;
+    }
+
+    .no-question-image {
+      width: 150px;
+      height: 154px;
+      display: flex;
+      background: url('/assets/images/bucket.png') no-repeat center;
+      background-size: cover;
+      position: absolute;
+      left: 50%;
+      bottom: 65px;
+      transform: translate(-50%);
     }
   }
 `;

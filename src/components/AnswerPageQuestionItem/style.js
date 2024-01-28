@@ -23,6 +23,11 @@ const QuestionContainer = styled.div`
 
   .card-navigation-kebab {
     display: flex;
+    position: relative;
+
+    .kebab-image {
+      cursor: pointer;
+    }
   }
 
   .answer-status {
@@ -51,6 +56,12 @@ const QuestionContainer = styled.div`
   .none {
     color: var(--Grayscale-40);
     border: 1px solid var(--Grayscale-40);
+    background: var(--Grayscale-10);
+  }
+
+  .reject {
+    color: var(--Red-50);
+    border: 1px solid var(--Red-50);
     background: var(--Grayscale-10);
   }
 
@@ -91,9 +102,19 @@ const QuestionContainer = styled.div`
     border-radius: 999px;
   }
 
+  .answer-area-wrap {
+    width: 100%;
+  }
+
   .answer-input-area {
     display: flex;
     flex-grow: 1;
+  }
+
+  .answer-profile-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
   }
 
   .answer-input-wrap {
@@ -131,6 +152,10 @@ const QuestionContainer = styled.div`
     line-height: 22px;
   }
 
+  .refuse {
+    color: var(--Red-50);
+  }
+
   .answer-textarea {
     width: 100%;
     height: 186px;
@@ -160,6 +185,7 @@ const QuestionContainer = styled.div`
       'liga' off;
     font-size: 1.6rem;
     line-height: 22px;
+    cursor: pointer;
 
     display: flex;
     width: 100%;
@@ -173,6 +199,11 @@ const QuestionContainer = styled.div`
     border: none;
     border-radius: 8px;
     background: var(--Brown-40);
+
+    &:disabled {
+      background: var(--Brown-30);
+      cursor: default;
+    }
   }
 
   .question-item-footer {
@@ -180,6 +211,46 @@ const QuestionContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .edit-button {
+    margin-top: 24px;
+    gap: 8px;
+    color: var(--Grayscale-50);
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 18px;
+    display: flex;
+    width: 103px;
+    padding: 10px 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--Grayscale-30);
+    background: var(--Grayscale-10);
+    box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
+    cursor: pointer;
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1124px) {
+    .edit-button {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    .edit-button {
+      display: none;
+    }
   }
 `;
 
