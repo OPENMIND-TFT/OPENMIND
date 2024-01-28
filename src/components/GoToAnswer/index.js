@@ -7,7 +7,7 @@ const GoToAnswer = () => {
 
   const checkLocalStorage = () => {
     window.localStorage.getItem(
-      myId ? navigate(`post/${myId}/answer`) : navigate('/'),
+      myId ? navigate(`/post/${myId}/answer`) : navigate('/'),
     );
   };
 
