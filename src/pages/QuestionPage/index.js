@@ -139,7 +139,6 @@ const QuestionPage = () => {
       setPage(prevPage => prevPage + 1);
     }
   }, [page, id]);
-
   const elementRef = useInfiniteScroll(getUserQuestions);
 
   const fetchData = async () => {
@@ -165,7 +164,7 @@ const QuestionPage = () => {
                 ? `${questionCount}개의 질문이 있습니다.`
                 : `아직 질문이 없습니다.`}
             </span>
-            {questionCount || <figure className="no-question-image" />}
+            {!questionCount && <figure className="no-question-image" />}
           </div>
           <div className="question-list">
             {questions.map(question => (
