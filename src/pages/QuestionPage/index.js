@@ -3,8 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import getElapsedTime from '../../utils/getElapsedTime';
 import ReactionButtonBox from '../../components/ReactionButtonBox';
-import QuestionPageContainer from './style';
 import ModalQuestion from '../../components/ModalQuestion';
+import ShareButtonBar from '../../components/ShareButtonBar';
+import QuestionPageContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
 
@@ -85,34 +86,6 @@ const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
   );
 };
 
-const ProfileShareIcons = () => {
-  return (
-    <div className="profile-share-icons">
-      <div className="profile-share-link-box brown">
-        <img
-          src="/assets/images/Link.svg"
-          className="profile-share-link-logo"
-          alt="링크 공유하기 기능이 있는 로고"
-        />
-      </div>
-      <div className="profile-share-link-box yellow">
-        <img
-          src="/assets/images/Kakaotalk.svg"
-          className="profile-share-link-logo Kakaotalk-logo"
-          alt="카카오톡으로 공유하기 기능이 있는 카카오톡 로고"
-        />
-      </div>
-      <div className="profile-share-link-box blue">
-        <img
-          src="/assets/images/Facebook.svg"
-          className="profile-share-link-logo Facebook-logo"
-          alt="페이스북으로 공유하기 기능이 있는 페이스북 로고"
-        />
-      </div>
-    </div>
-  );
-};
-
 const QuestionHeader = ({ user }) => {
   return (
     <header className="questions-page-header">
@@ -131,7 +104,7 @@ const QuestionHeader = ({ user }) => {
             alt="프로필 이미지"
           />
           <span className="profile-name">{user.name}</span>
-          <ProfileShareIcons />
+          <ShareButtonBar />
         </section>
       </section>
     </header>
@@ -146,6 +119,10 @@ const QuestionPage = () => {
   const [page, setPage] = useState(0);
   const [isShowModal, setIsShowModal] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
+
+  const handleModalQuestion = () => {
+    setIsShowModal(!isShowModal);
+  };
 
   const getUserQuestions = useCallback(async () => {
     const response = await fetch(
@@ -162,14 +139,8 @@ const QuestionPage = () => {
       setPage(prevPage => prevPage + 1);
     }
   }, [page, id]);
-
-  const handleModalQuestion = () => {
-    setIsShowModal(!isShowModal);
-  };
-
-  const elementRef = useInfiniteScroll(() => {
-    getUserQuestions(id);
-  });
+  
+  const elementRef = useInfiniteScroll(getUserQuestions);
 
   const fetchData = async () => {
     const responseUser = await getUser(id);
@@ -189,11 +160,13 @@ const QuestionPage = () => {
         <article className="question-list-container">
           <div className="title-box">
             <figure className="title-image" />
-            <span className="title">{questionCount}개의 질문이 있습니다</span>
+            <span className="title">
+              {questionCount
+                ? `${questionCount}개의 질문이 있습니다.`
+                : `아직 질문이 없습니다.`}
+            </span>
+            {questionCount || <figure className="no-question-image" />}
           </div>
-          {/* 질문이 없는 경우 no-question-image 활성화
-          <figure className="no-question-image" /> */}
-
           <div className="question-list">
             {questions.map(question => (
               <QuestionItem
@@ -204,7 +177,7 @@ const QuestionPage = () => {
                 setQuestionCount={setQuestionCount}
               />
             ))}
-            {hasMore && <div ref={elementRef}>Load More Questions...</div>}
+            {hasMore && <div ref={elementRef}>Load More Questoins...</div>}
           </div>
         </article>
       </main>

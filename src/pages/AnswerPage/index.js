@@ -4,26 +4,21 @@ import AnswerPageQuestionList from '../../components/AnswerPageQuestionList';
 import AnswerPageContainer from './style';
 import AnswerPageQuestionHeader from '../../components/AnswerPageQuestionHeader';
 import getUserData from '../../api/getUserData';
-import getUserQuestionData from '../../api/getUserQuestionData';
 import deleteAll from '../../api/deleteAll';
 
 const AnswerPage = () => {
   const [user, setUser] = useState([]);
-  const [questions, setQuestions] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const fetchData = async () => {
+    const responseUser = await getUserData(id);
+    setUser(responseUser);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const userData = await getUserData(id);
-      const questionData = await getUserQuestionData(id);
-
-      setUser(userData);
-      setQuestions(questionData.results);
-    };
-
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleDeleteAll = async () => {
     await deleteAll(id);
@@ -45,7 +40,7 @@ const AnswerPage = () => {
             </button>
           </div>
 
-          <AnswerPageQuestionList user={user} questions={questions} />
+          <AnswerPageQuestionList user={user} id={id} />
         </article>
       </main>
     </AnswerPageContainer>
