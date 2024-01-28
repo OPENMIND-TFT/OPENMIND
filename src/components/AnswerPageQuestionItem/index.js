@@ -109,6 +109,12 @@ const AnswerPageQuestionItem = ({ user, question }) => {
     return <p className="reply-font">{question.answer.content}</p>;
   };
 
+  const handleEnterSubmitAnswer = e => {
+    if (e.keyCode === 13 && !e.shiftKey) {
+      submitAnswer();
+    }
+  };
+
   return (
     <QuestionContainer>
       <div className="question-card">
@@ -211,6 +217,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       value={content}
                       placeholder="답변을 입력해주세요."
                       className="answer-textarea"
+                      onKeyDown={handleEnterSubmitAnswer}
                     />
                     <button
                       type="button"
