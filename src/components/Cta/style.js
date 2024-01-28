@@ -12,6 +12,7 @@ const CtaButton = styled.button`
   border: 1px solid transparent;
   outline: 0;
   transition: 0.3s all;
+  z-index: 1;
   cursor: pointer;
 
   &:hover {

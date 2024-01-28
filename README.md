@@ -16,7 +16,7 @@
 
 <br/>
 
-**[오픈마인드 바로가기](https://www.naver.com/)**  
+**[오픈마인드 바로가기](https://www.naver.com/)**
 
 **[팀 Wiki 바로가기](https://github.com/OPENMIND-TFT/OPENMIND/wiki)**
 
@@ -26,7 +26,7 @@
 
 ### ✔️ 피드 생성
 
-- 메인페이지에서 이름을 입력하고 '질문 받기' 버튼을 클릭하면 피드를 생성 
+- 메인페이지에서 이름을 입력하고 '질문 받기' 버튼을 클릭하면 피드를 생성
 
 <br/>
 
@@ -67,7 +67,7 @@
 
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white" /> 
 <img src="https://img.shields.io/badge/react-3178C6?style=for-the-badge&logo=react&logoColor=white" />
-<img src="https://img.shields.io/badge/styledcomponent-06B6D4?style=for-the-badge&logo=styledcomponent&logoColor=white" /> 
+<img src="https://img.shields.io/badge/styledcomponent-06B6D4?style=for-the-badge&logo=styledcomponent&logoColor=white" />
 
 #### Config
 

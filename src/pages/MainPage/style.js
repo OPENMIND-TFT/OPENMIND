@@ -84,19 +84,6 @@ const MainContainer = styled.div`
       color: red;
       font-size: 1.4rem;
     }
-    button {
-      height: 46px;
-      padding: 12px 24px;
-      border-radius: 8px;
-      border: 1px solid;
-      color: var(--Grayscale-10);
-      background-color: var(--Brown-40);
-      font-size: 1.6rem;
-      font-weight: 400;
-      z-index: 1;
-
-      cursor: pointer;
-    }
   }
 
   .image-area {

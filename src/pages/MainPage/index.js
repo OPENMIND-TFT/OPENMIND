@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import postPheedData from '../../api/creatPheed';
 import BackToMain from '../../components/BackToMain';
+import Cta from '../../components/Cta';
 import MainContainer from './style';
 
 const MainPage = () => {
@@ -57,7 +58,9 @@ const MainPage = () => {
             alt="사람 아이콘"
           />
           {errorMessage && <div className="error-message">{errorMessage}</div>}
-          <button type="submit">질문 받기</button>
+          <Cta height="46px" type="submit">
+            질문 받기
+          </Cta>
         </form>
       </div>
       <div className="image-area">
