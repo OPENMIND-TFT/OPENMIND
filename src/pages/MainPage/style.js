@@ -85,6 +85,7 @@ const MainContainer = styled.div`
       font-size: 1.4rem;
     }
     button {
+      width: 100%;
       height: 46px;
       padding: 12px 24px;
       border-radius: 8px;
@@ -93,6 +94,7 @@ const MainContainer = styled.div`
       background-color: var(--Brown-40);
       font-size: 1.6rem;
       font-weight: 400;
+      z-index: 1;
 
       cursor: pointer;
     }
