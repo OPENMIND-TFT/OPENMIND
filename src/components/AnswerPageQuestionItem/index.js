@@ -138,6 +138,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 question={question}
                 handleEditClick={handleEditClick}
                 isEditing={isEditing}
+                setClickStatus={setClickStatus}
               />
             )}
           </ul>

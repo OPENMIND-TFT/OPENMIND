@@ -1,8 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import DropDownContainer from './style';
 
-const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
+const KebabDropDown = ({
+  question,
+  handleEditClick,
+  isEditing,
+  setClickStatus,
+}) => {
+  const dropdownRef = useRef(null);
   const { id } = question;
+
+  useEffect(() => {
+    const handleClickOutside = e => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setClickStatus(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const [editButtonImage, setEditButtonImage] = useState(
     '/assets/images/edit.svg',
   );
@@ -177,7 +197,9 @@ const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
     );
   };
 
-  return <DropDownContainer>{kebabStatus()}</DropDownContainer>;
+  return (
+    <DropDownContainer ref={dropdownRef}>{kebabStatus()}</DropDownContainer>
+  );
 };
 
 export default KebabDropDown;
