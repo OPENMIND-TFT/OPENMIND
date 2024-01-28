@@ -1,7 +1,42 @@
+import { useState } from 'react';
 import DropDownContainer from './style';
 
 const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
   const { id } = question;
+  const [editButtonImage, setEditButtonImage] = useState(
+    '/assets/images/edit.svg',
+  );
+  const [deleteButtonImage, setDeleteButtonImage] = useState(
+    '/assets/images/xIcon.svg',
+  );
+
+  const [rejectButtonImage, setRejectButtonImage] = useState(
+    '/assets/images/rejection.svg',
+  );
+
+  const handleMouseEnterEdit = () => {
+    setEditButtonImage('/assets/images/editblue50.svg');
+  };
+
+  const handleMouseLeaveEdit = () => {
+    setEditButtonImage('/assets/images/edit.svg');
+  };
+
+  const handleMouseEnterDelete = () => {
+    setDeleteButtonImage('/assets/images/xIconblue50.svg');
+  };
+
+  const handleMouseLeaveDelete = () => {
+    setDeleteButtonImage('/assets/images/xIcon.svg');
+  };
+
+  const handleMouseEnterReject = () => {
+    setRejectButtonImage('/assets/images/rejectionblue50.svg');
+  };
+
+  const handleMouseLeaveReject = () => {
+    setRejectButtonImage('/assets/images/rejection.svg');
+  };
 
   const deleteAnswer = async () => {
     await fetch(
@@ -57,11 +92,13 @@ const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
       return (
         <div className="dropdown-box">
           <li>
-            <button type="button" onClick={handleDeleteAnswer}>
-              <img
-                src="/assets/images/xIcon.svg"
-                alt="답변거절 취소하기 버튼"
-              />
+            <button
+              type="button"
+              onClick={handleDeleteAnswer}
+              onMouseEnter={handleMouseEnterReject}
+              onMouseLeave={handleMouseLeaveReject}
+            >
+              <img src={rejectButtonImage} alt="답변거절 취소하기 버튼" />
               <span>거절취소</span>
             </button>
           </li>
@@ -73,23 +110,38 @@ const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
       return (
         <div className="dropdown-box">
           <li>
-            <button type="button" onClick={handleEditClick}>
+            <button
+              type="button"
+              onClick={handleEditClick}
+              onMouseEnter={handleMouseEnterEdit}
+              onMouseLeave={handleMouseLeaveEdit}
+            >
               {isEditing ? (
                 <>
-                  <img src="/assets/images/xIcon.svg" alt="수정취소 버튼" />
-                  <span>수정취소</span>
+                  <img src={rejectButtonImage} alt="수정취소 버튼" />
+                  <span
+                    onMouseEnter={handleMouseEnterReject}
+                    onMouseLeave={handleMouseLeaveReject}
+                  >
+                    수정취소
+                  </span>
                 </>
               ) : (
                 <>
-                  <img src="/assets/images/Edit.svg" alt="수정하기 버튼" />
+                  <img src={editButtonImage} alt="수정하기 버튼" />
                   <span>수정하기</span>
                 </>
               )}
             </button>
           </li>
           <li>
-            <button type="button" onClick={handleDeleteAnswer}>
-              <img src="/assets/images/xIcon.svg" alt="답변 삭제하기 버튼" />
+            <button
+              type="button"
+              onClick={handleDeleteAnswer}
+              onMouseEnter={handleMouseEnterDelete}
+              onMouseLeave={handleMouseLeaveDelete}
+            >
+              <img src={deleteButtonImage} alt="답변 삭제하기 버튼" />
               <span>답변삭제</span>
             </button>
           </li>
@@ -100,14 +152,24 @@ const KebabDropDown = ({ question, handleEditClick, isEditing }) => {
     return (
       <div className="dropdown-box">
         <li>
-          <button type="button" onClick={submitAnswerRejected}>
-            <img src="/assets/images/xIcon.svg" alt="답변 거절하기 버튼" />
+          <button
+            type="button"
+            onClick={submitAnswerRejected}
+            onMouseEnter={handleMouseEnterReject}
+            onMouseLeave={handleMouseLeaveReject}
+          >
+            <img src={rejectButtonImage} alt="답변 거절하기 버튼" />
             <span>답변거절</span>
           </button>
         </li>
         <li>
-          <button type="button" onClick={handleDeleteQuestion}>
-            <img src="/assets/images/xIcon.svg" alt="질문 삭제하기 버튼" />
+          <button
+            type="button"
+            onClick={handleDeleteQuestion}
+            onMouseEnter={handleMouseEnterDelete}
+            onMouseLeave={handleMouseLeaveDelete}
+          >
+            <img src={deleteButtonImage} alt="질문 삭제하기 버튼" />
             <span>질문삭제</span>
           </button>
         </li>
