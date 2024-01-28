@@ -1,9 +1,9 @@
-const getCardData = async (sortBy, itemsPerPage, currentPage) => {
+const getCardData = async (sortBy, currentPage) => {
   try {
     const response = await fetch(
       sortBy === '최신순'
-        ? `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${itemsPerPage * (currentPage - 1)}`
-        : `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${itemsPerPage * (currentPage - 1)}&sort=name`,
+        ? `https://openmind-api.vercel.app/3-5/subjects/?limit=8&offset=${8 * (currentPage - 1)}`
+        : `https://openmind-api.vercel.app/3-5/subjects/?limit=8&offset=${8 * (currentPage - 1)}&sort=name`,
     );
     const data = await response.json();
     return data;
