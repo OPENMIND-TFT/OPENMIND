@@ -13,13 +13,13 @@ const GoToButtonStyled = styled.button`
   transition: 0.3s all;
   cursor: pointer;
 
-  & span {
+  span {
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 22px;
   }
 
-  & img {
+  img {
     width: 18px;
     height: 18px;
     transition: 0.1s all;
