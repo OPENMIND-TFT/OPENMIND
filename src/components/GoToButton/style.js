@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
-  padding: 12px 24px;
-  height: 46px;
+const GoToButtonStyled = styled.button`
   display: flex;
   gap: 8px;
   align-items: center;
-  border-radius: 8px;
+  padding: 12px 24px;
+  height: 46px;
   border: 1px solid var(--Brown-40);
+  border-radius: 8px;
   background-color: var(--Brown-10);
   color: var(--Brown-40);
   transition: 0.3s all;
@@ -36,9 +36,9 @@ const Button = styled.button`
 
   @media screen and (max-width: 425px) {
     height: 34px;
-    font-size: 1.4rem;
     padding: 8px 12px;
+    font-size: 1.4rem;
   }
 `;
 
-export default Button;
+export default GoToButtonStyled;

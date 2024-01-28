@@ -39,7 +39,7 @@ const MainContainer = styled.div`
         border: 1px solid var(--Grayscale-40);
         border-radius: 8px;
         outline: none;
-        background-color: #ffffff;
+        background-color: var(--Grayscale-10);
         font-size: 1.6rem;
 
         &:focus {
@@ -66,11 +66,11 @@ const MainContainer = styled.div`
 
   .image-area {
     img {
-      height: auto;
-      width: 100%;
       position: fixed;
       bottom: 0;
       left: 0;
+      width: 100%;
+      height: auto;
       padding: 0px 100px 0px 100px;
     }
   }
@@ -91,10 +91,10 @@ const MainContainer = styled.div`
 
     .button-area {
       order: 2;
-      margin-top: 24px;
-      text-align: center;
-      padding-bottom: 24px;
       justify-content: center;
+      margin-top: 24px;
+      padding-bottom: 24px;
+      text-align: center;
     }
 
     .input-area {
@@ -104,11 +104,11 @@ const MainContainer = styled.div`
 
     .image-area {
       img {
-        height: auto;
-        width: 100%;
         position: fixed;
         bottom: 0;
         left: 0;
+        width: 100%;
+        height: auto;
         padding: 0;
       }
     }

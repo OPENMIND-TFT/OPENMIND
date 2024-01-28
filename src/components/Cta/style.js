@@ -1,27 +1,28 @@
 import styled from 'styled-components';
 
-const CtaButton = styled.button`
+const CtaStyled = styled.button`
+  display: inline-block;
   width: ${props => (props.width ? props.width : 'unset')};
   height: ${props => (props.height ? props.height : 'unset')};
-  display: inline-block;
+  z-index: 1;
+  padding: 12px 24px;
+  border: 1px solid transparent;
   border-radius: 8px;
+  outline: 0;
+  background: var(--Brown-40);
+  color: var(--Grayscale-10);
   font-size: 1.6em;
+  font-weight: 400;
   font-feature-settings:
     'clig' off,
     'liga' off;
-  background: var(--Brown-40);
-  color: var(--Grayscale-10);
-  padding: 12px 24px;
-  border: 1px solid transparent;
-  outline: 0;
   transition: 0.3s all;
-  z-index: 1;
   cursor: pointer;
 
   &:hover {
+    border-color: var(--Brown-40);
     background: var(--Grayscale-10);
     color: var(--Brown-50);
-    border-color: var(--Brown-40);
   }
 
   &:disabled {
@@ -29,11 +30,11 @@ const CtaButton = styled.button`
     cursor: default;
 
     &:hover {
+      border: 1px solid transparent;
       background: var(--Brown-30);
       color: var(--Grayscale-10);
-      border: 1px solid transparent;
     }
   }
 `;
 
-export default CtaButton;
+export default CtaStyled;

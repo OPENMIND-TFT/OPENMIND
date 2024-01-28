@@ -1,4 +1,4 @@
-import CtaButton from './style';
+import CtaStyled from './style';
 
 const Cta = ({
   children,
@@ -9,7 +9,7 @@ const Cta = ({
   type = 'button',
 }) => {
   return (
-    <CtaButton
+    <CtaStyled
       type={type}
       width={width}
       height={height}
@@ -17,7 +17,7 @@ const Cta = ({
       disabled={disabled}
     >
       {children}
-    </CtaButton>
+    </CtaStyled>
   );
 };
 

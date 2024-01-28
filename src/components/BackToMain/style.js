@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LogoContainer = styled.div`
+const BackToMainContainer = styled.div`
   a {
     display: block;
     width: ${props => props.width || 'auto'};
@@ -8,4 +8,4 @@ const LogoContainer = styled.div`
   }
 `;
 
-export default LogoContainer;
+export default BackToMainContainer;

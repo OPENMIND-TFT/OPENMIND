@@ -1,16 +1,16 @@
-import GoToButton from './style';
+import GoToButtonStyled from './style';
 
-const GoToAnswer = ({ children, onClick, type = 'button' }) => {
+const GoToButton = ({ children, onClick, type = 'button' }) => {
   return (
-    <GoToButton type={type} onClick={onClick}>
+    <GoToButtonStyled type={type} onClick={onClick}>
       <span>{children}</span>
       <img
         src="/assets/images/arrowRight.svg"
         alt="오른쪽화살표"
         className="button-img"
       />
-    </GoToButton>
+    </GoToButtonStyled>
   );
 };
 
-export default GoToAnswer;
+export default GoToButton;

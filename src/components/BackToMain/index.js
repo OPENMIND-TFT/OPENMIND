@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import LogoContainer from './style';
+import BackToMainContainer from './style';
 
 const BackToMain = ({ width, height }) => {
   return (
-    <LogoContainer>
+    <BackToMainContainer>
       <Link to="/">
         <img
           src="/assets/images/logo.png"
@@ -13,7 +13,7 @@ const BackToMain = ({ width, height }) => {
           alt="로고"
         />
       </Link>
-    </LogoContainer>
+    </BackToMainContainer>
   );
 };
 
