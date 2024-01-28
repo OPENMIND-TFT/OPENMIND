@@ -6,6 +6,9 @@ const CtaButton = styled.button`
   display: inline-block;
   border-radius: 8px;
   font-size: 1.6em;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   background: var(--Brown-40);
   color: var(--Grayscale-10);
   padding: 12px 24px;

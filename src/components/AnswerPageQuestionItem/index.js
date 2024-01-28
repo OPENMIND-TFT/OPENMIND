@@ -4,6 +4,7 @@ import QuestionContainer from './style';
 import ReactionButtonBox from '../ReactionButtonBox';
 import KebabDropDown from '../KebabDropDown';
 import QuestionCardHeader from '../QuestionCardHeader';
+import Cta from '../Cta';
 
 const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
@@ -92,14 +93,9 @@ const AnswerPageQuestionItem = ({ user, question }) => {
             value={content}
             className="answer-textarea"
           />
-          <button
-            type="button"
-            className="answer-button"
-            onClick={submitEditAnswer}
-            disabled={textAreaValue}
-          >
+          <Cta width="100%" onClick={submitEditAnswer} disabled={textAreaValue}>
             수정완료
-          </button>
+          </Cta>
         </form>
       );
     }
@@ -216,14 +212,13 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       className="answer-textarea"
                       onKeyDown={handleEnterSubmitAnswer}
                     />
-                    <button
-                      type="button"
-                      className="answer-button"
+                    <Cta
+                      width="100%"
                       onClick={submitAnswer}
                       disabled={textAreaValue}
                     >
                       답변완료
-                    </button>
+                    </Cta>
                   </form>
                 </div>
               </div>
