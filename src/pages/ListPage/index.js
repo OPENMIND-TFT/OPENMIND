@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Container from './style';
 import GoToAnswer from '../../components/GoToAnswer';
 import BackToMain from '../../components/BackToMain';
+import getCardData from '../../api/getCardData';
 
 const List = () => {
   const [isDropDown, setIsDropDown] = useState(false);
@@ -10,27 +11,17 @@ const List = () => {
   const [cardInfo, setCardInfo] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8);
   const [translateX, setTranslateX] = useState(0);
   const [currentScroll, setCurrentScroll] = useState(1);
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const totalPages = Math.ceil(totalItems / 8);
+
+  const fetchData = async () => {
+    const data = await getCardData(sortBy, currentPage);
+    setCardInfo(data['results']);
+    setTotalItems(data['count']);
+  };
 
   useEffect(() => {
-    // 카드정보 호출
-    async function fetchData() {
-      try {
-        const response = await fetch(
-          sortBy === '최신순'
-            ? `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${itemsPerPage * (currentPage - 1)}`
-            : `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${itemsPerPage * (currentPage - 1)}&sort=name`,
-        );
-        const data = await response.json();
-        setCardInfo(data['results']);
-        setTotalItems(data['count']);
-      } catch (e) {
-        throw new Error('서버로부터 정보를 가져오지 못했습니다.');
-      }
-    }
     fetchData();
   }, [currentPage, sortBy]);
 
