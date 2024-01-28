@@ -188,6 +188,10 @@ const QuestionPageContainer = styled.div`
       border-color: var(--Grayscale-40);
       color: var(--Grayscale-40);
     }
+    .answer.rejected {
+      border-color: var(--Red-50);
+      color: var(--Red-50);
+    }
 
     .question-box {
       display: flex;
