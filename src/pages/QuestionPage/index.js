@@ -139,7 +139,7 @@ const QuestionPage = () => {
       setPage(prevPage => prevPage + 1);
     }
   }, [page, id]);
-  
+
   const elementRef = useInfiniteScroll(getUserQuestions);
 
   const fetchData = async () => {

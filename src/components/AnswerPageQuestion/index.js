@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
-import QuestionItem from '../AnswerPageQuestionItem';
+import AnswerPageQuestionItem from '../AnswerPageQuestionItem';
 import QuestionItemContainer from './style';
 
 const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
@@ -29,9 +29,13 @@ const AnswerPageQuestion = ({ user, id }) => {
   const elementRef = useInfiniteScroll(getUserQuestions);
   return (
     <QuestionItemContainer>
-      {questions.length ||
+      {questions.length &&
         questions.map(question => (
-          <QuestionItem key={question.id} user={user} question={question} />
+          <AnswerPageQuestionItem
+            key={question.id}
+            user={user}
+            question={question}
+          />
         ))}
       {hasMore && <div ref={elementRef}>Load More Questoins...</div>}
     </QuestionItemContainer>
