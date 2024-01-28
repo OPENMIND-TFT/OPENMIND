@@ -3,6 +3,7 @@ import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
 import ReactionButtonBox from '../ReactionButtonBox';
 import KebabDropDown from '../KebabDropDown';
+import QuestionCardHeader from '../QuestionCardHeader';
 
 const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
@@ -143,13 +144,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
             )}
           </ul>
         </div>
-        <div className="card-title-wrap">
-          <span className="write-date">질문 · </span>
-          <span className="write-date">
-            {getElapsedTime(question.createdAt)}
-          </span>
-          <h3 className="card-title">{question.content}</h3>
-        </div>
+        <QuestionCardHeader question={question} />
 
         {question.answer ? (
           <>

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import AnswerPageHeaderContainer from './style';
 import ShareButtonBar from '../ShareButtonBar';
 
-const AnswerPageQuestionHeader = ({ user }) => {
+const QuestionHeader = ({ user }) => {
   return (
     <AnswerPageHeaderContainer>
       <div className="header-background-image">
@@ -29,4 +29,4 @@ const AnswerPageQuestionHeader = ({ user }) => {
   );
 };
 
-export default AnswerPageQuestionHeader;
+export default QuestionHeader;
