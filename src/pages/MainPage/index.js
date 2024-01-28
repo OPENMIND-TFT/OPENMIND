@@ -9,6 +9,7 @@ const MainPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleNameChange = e => {
+    setErrorMessage('');
     setNameValue(e.target.value);
   };
 

@@ -28,8 +28,8 @@ const ReactionButtonBoxContainer = styled.div`
 
   .dislike-button-box.on {
     color: var(--Red-50);
-    .tumbs-up-image {
-      background: url('/assets/images/thumbsDown.svg');
+    .tumbs-down-image {
+      background: url('/assets/images/thumbsDownRed50.svg');
     }
   }
 
