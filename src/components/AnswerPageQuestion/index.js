@@ -29,7 +29,7 @@ const AnswerPageQuestion = ({ user, id }) => {
   const elementRef = useInfiniteScroll(getUserQuestions);
   return (
     <QuestionItemContainer>
-      {questions.length &&
+      {questions &&
         questions.map(question => (
           <AnswerPageQuestionItem
             key={question.id}

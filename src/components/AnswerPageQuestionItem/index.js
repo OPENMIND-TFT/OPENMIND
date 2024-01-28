@@ -14,6 +14,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
   const handleEditClick = () => {
     setIsEditing(!isEditing);
     setContent(question.answer.content);
+    setTextAreaValue(false);
   };
 
   const checkTextAreaEmpty = e => {
@@ -109,6 +110,12 @@ const AnswerPageQuestionItem = ({ user, question }) => {
     return <p className="reply-font">{question.answer.content}</p>;
   };
 
+  const handleEnterSubmitAnswer = e => {
+    if (e.keyCode === 13 && !e.shiftKey) {
+      submitAnswer();
+    }
+  };
+
   return (
     <QuestionContainer>
       <div className="question-card">
@@ -131,6 +138,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 question={question}
                 handleEditClick={handleEditClick}
                 isEditing={isEditing}
+                setClickStatus={setClickStatus}
               />
             )}
           </ul>
@@ -177,7 +185,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
               >
                 {isEditing ? (
                   <>
-                    <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+                    <img src="/assets/images/xIcon.svg" alt="수정취소 버튼" />
                     <span>수정취소</span>
                   </>
                 ) : (
@@ -211,6 +219,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       value={content}
                       placeholder="답변을 입력해주세요."
                       className="answer-textarea"
+                      onKeyDown={handleEnterSubmitAnswer}
                     />
                     <button
                       type="button"
