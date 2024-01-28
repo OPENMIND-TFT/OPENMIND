@@ -6,7 +6,7 @@ const CtaButton = styled.button`
   display: inline-block;
   border-radius: 8px;
   font-size: 1.6em;
-  background: var(--Brown-50);
+  background: var(--Brown-40);
   color: var(--Grayscale-10);
   padding: 12px 24px;
   border: 1px solid transparent;
@@ -18,7 +18,7 @@ const CtaButton = styled.button`
   &:hover {
     background: var(--Grayscale-10);
     color: var(--Brown-50);
-    border-color: var(--Brown-50);
+    border-color: var(--Brown-40);
   }
 `;
 

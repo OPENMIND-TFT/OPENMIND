@@ -11,25 +11,11 @@ const MainContainer = styled.div`
 
   .button-area {
     width: 100%;
-    text-align: end;
+    max-width: 1200px;
+    margin: 45px auto 0;
+    display: flex;
+    justify-content: flex-end;
     padding-bottom: 69px;
-
-    button {
-      width: 161px;
-      height: 46px;
-      padding: 12px 24px;
-      border-radius: 8px;
-      border: 1px solid;
-      border-color: var(--Brown-40);
-      color: var(--Brown-40);
-      background-color: var(--Brown-10);
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-top: 45px;
-      margin-right: 130px;
-
-      cursor: pointer;
-    }
   }
 
   .input-area {
@@ -97,6 +83,9 @@ const MainContainer = styled.div`
     }
   }
   @media screen and (min-width: 768px) and (max-width: 1124px) {
+    .button-area {
+      padding: 0 50px 69px 0;
+    }
   }
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
@@ -105,18 +94,9 @@ const MainContainer = styled.div`
       margin-top: 24px;
       text-align: center;
       padding-bottom: 24px;
-
-      button {
-        width: 123px;
-        height: 34px;
-        padding: 8px 12px;
-        font-size: 1.4rem;
-        margin-top: 0px;
-        margin-right: 0px;
-        cursor: pointer;
-      }
+      justify-content: center;
     }
-    .logo-image {
+    .logo {
       order: 1;
       width: 248px;
       height: 98px;

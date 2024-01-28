@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import postPheedData from '../../api/creatPheed';
 import BackToMain from '../../components/BackToMain';
 import Cta from '../../components/Cta';
+import GoToButton from '../../components/GoToButton';
 import MainContainer from './style';
 
 const MainPage = () => {
@@ -39,10 +40,10 @@ const MainPage = () => {
     <MainContainer>
       <div className="button-area">
         <Link to="/list">
-          <button type="button">질문 하러 가기 {'->'}</button>
+          <GoToButton>질문하러 가기</GoToButton>
         </Link>
       </div>
-      <BackToMain width="456px" />
+      <BackToMain />
       <div className="input-area">
         <form onSubmit={handleSubmit}>
           <input
