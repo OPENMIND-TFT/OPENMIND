@@ -14,6 +14,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
   const handleEditClick = () => {
     setIsEditing(!isEditing);
     setContent(question.answer.content);
+    setTextAreaValue(false);
   };
 
   const checkTextAreaEmpty = e => {
