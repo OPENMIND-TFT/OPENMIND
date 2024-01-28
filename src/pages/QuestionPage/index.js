@@ -17,22 +17,7 @@ const getUser = async userId => {
   return response.json();
 };
 
-const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
-  const deleteQuestion = async questionId => {
-    const response = await fetch(`${API_BASE_URL}/questions/${questionId}/`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      setQuestions(prevQuestions =>
-        prevQuestions.filter(prevQuestion => prevQuestion.id !== question.id),
-      );
-      setQuestionCount(prevCount => prevCount - 1);
-    } else if (!response.ok) {
-      throw new Error('질문 삭제 실패했습니다');
-    }
-  };
-
+const QuestionItem = ({ user, question }) => {
   return (
     <section className="question-answer-box answer-complete">
       {question.answer ? (
@@ -74,14 +59,6 @@ const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
       ) : null}
 
       <ReactionButtonBox question={question} />
-
-      <button
-        type="button"
-        className="question-delete-button"
-        onClick={() => deleteQuestion(question.id)}
-      >
-        삭제하기
-      </button>
     </section>
   );
 };
