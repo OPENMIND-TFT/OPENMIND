@@ -69,16 +69,21 @@ const KebabDropDown = ({
   };
 
   const deleteQuestion = async () => {
-    await fetch(
-      `https://openmind-api.vercel.app/3-5/questions/${question.id}/`,
+    const response = await fetch(
+      `https://openmind-api.vercel.app/3-5/questions/${id}/`,
       {
         method: 'DELETE',
       },
     );
+
+    if (response.ok) {
+      setQuestions(prevQuestions => prevQuestions.filter(q => q.id !== id));
+    }
   };
 
   const handleDeleteAnswer = async () => {
     await deleteAnswer(question.answer.id);
+    window.location.reload(true);
   };
 
   const handleDeleteQuestion = async () => {
@@ -100,22 +105,10 @@ const KebabDropDown = ({
       },
     );
 
-    const result = await response.json();
-
     if (!response.ok) {
       throw new Error('답변을 전송하는데 실패했습니다.');
     }
-
-    setQuestions(prevQuestions => {
-      const index = prevQuestions.findIndex(
-        prevQuestion => prevQuestion.id === question.id,
-      );
-
-      const temp = prevQuestions.filter(prevQuestion => prevQuestion);
-      temp[index].answer = result;
-
-      return temp;
-    });
+    window.location.reload(true);
   };
 
   const kebabStatus = () => {
