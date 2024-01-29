@@ -8,8 +8,7 @@ import QuestionPageContainer from './style';
 import QuestionHeader from '../../components/QuestionHeader';
 import getUserData from '../../api/getUserData';
 import QuestionCardHeader from '../../components/QuestionCardHeader';
-
-const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
+import getUserQuestionData from '../../api/getUserQuestionData';
 
 const QuestionItem = ({ user, question }) => {
   return (
@@ -66,10 +65,8 @@ const QuestionPage = () => {
   };
 
   const getUserQuestions = useCallback(async () => {
-    const response = await fetch(
-      `${API_BASE_URL}/subjects/${id}/questions/?limit=4&offset=${page * 4}`,
-    );
-    const responseQuestions = await response.json();
+    const responseQuestions = await getUserQuestionData(id, page);
+
     if (responseQuestions.results.length === 0) {
       setHasMore(false);
     } else {

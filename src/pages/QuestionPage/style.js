@@ -13,18 +13,18 @@ const QuestionPageContainer = styled.div`
   }
 
   .question-list-container {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 189px;
-    margin-bottom: 136px;
-    width: 716px;
+    position: relative;
+    margin: 189px auto 136px;
+    width: 100%;
+    max-width: 716px;
     min-height: 330px;
-    background-color: var(--Brown-10);
+    padding: 16px;
     border: 1px solid var(--Brown-30);
     border-radius: 16px;
-    padding: 16px;
+    background-color: var(--Brown-10);
 
     .title-box {
       display: flex;
@@ -32,38 +32,37 @@ const QuestionPageContainer = styled.div`
     }
 
     .title {
-      font-family: Actor;
-      color: var(--Brown-40);
-      font-size: 2rem;
       margin-bottom: 16px;
+      color: var(--Brown-40);
+      font-family: Actor, pretendard;
+      font-size: 2rem;
     }
 
     .title-image {
-      background-image: url('/assets/images/messagesBrown40.svg');
       width: 24px;
       height: 24px;
-      background-repeat: no-repeat;
+      background: url('/assets/images/messagesBrown40.svg') no-repeat;
       background-size: cover;
     }
   }
 
   .no-question-image {
-    width: 150px;
-    height: 154px;
     display: flex;
-    background: url('/assets/images/bucket.png') no-repeat center;
-    background-size: cover;
     position: absolute;
     left: 50%;
     bottom: 65px;
+    width: 150px;
+    height: 154px;
+    background: url('/assets/images/bucket.png') no-repeat center;
+    background-size: cover;
     transform: translate(-50%);
   }
 
   .question-list {
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 
     .question-answer-box {
       display: flex;
@@ -151,6 +150,7 @@ const QuestionPageContainer = styled.div`
     .answer-content {
       font-size: 1.6rem;
       line-height: 22px;
+      white-space: pre-line;
     }
 
     .answer-content.refuse {
@@ -199,6 +199,11 @@ const QuestionPageContainer = styled.div`
         height: 104px;
       }
     }
+
+    .question-list-container {
+      margin-top: 110px;
+    }
+
     .questions-page-main {
       padding: 0px 32px;
     }

@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-  width: 146px;
-  height: 57px;
-
-  .logo {
-    width: 146px;
-    height: 57px;
+const BackToMainContainer = styled.div`
+  a {
+    display: block;
+    width: ${props => props.width || 'auto'};
+    height: ${props => props.height || 'auto'};
   }
 `;
 
-export default Container;
+export default BackToMainContainer;

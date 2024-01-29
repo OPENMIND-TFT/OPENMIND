@@ -21,6 +21,7 @@ const QuestionCardHeaderStyle = styled.div`
     font-family: Actor;
     font-size: 1.8rem;
     line-height: 24px;
+    white-space: pre-line;
   }
 `;
 

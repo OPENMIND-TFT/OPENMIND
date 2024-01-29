@@ -157,34 +157,6 @@ const QuestionContainer = styled.div`
     }
   }
 
-  .answer-button {
-    color: var(--Grayscale-10);
-    font-feature-settings:
-      'clig' off,
-      'liga' off;
-    font-size: 1.6rem;
-    line-height: 22px;
-    cursor: pointer;
-
-    display: flex;
-    width: 100%;
-    height: 46px;
-    padding: 12px 24px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    align-self: stretch;
-
-    border: none;
-    border-radius: 8px;
-    background: var(--Brown-40);
-
-    &:disabled {
-      background: var(--Brown-30);
-      cursor: default;
-    }
-  }
-
   .question-item-footer {
     border-top: 1px solid var(--Grayscale-30);
     display: flex;
