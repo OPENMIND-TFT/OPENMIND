@@ -1,6 +1,5 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import getElapsedTime from '../../utils/getElapsedTime';
 import ReactionButtonBox from '../../components/ReactionButtonBox';
 import ModalQuestion from '../../components/ModalQuestion';
@@ -8,11 +7,23 @@ import QuestionPageContainer from './style';
 import QuestionHeader from '../../components/QuestionHeader';
 import getUserData from '../../api/getUserData';
 import QuestionCardHeader from '../../components/QuestionCardHeader';
-import getUserQuestionData from '../../api/getUserQuestionData';
+import useGetUserQuestions from '../../hooks/useGetUserQuestions';
 
 const QuestionItem = ({ user, question }) => {
+  const [isFadedIn, setIsFadedIn] = useState(false);
+
+  useEffect(() => {
+    const fadeInTimeout = setTimeout(() => {
+      setIsFadedIn(true);
+    }, 300);
+
+    return () => {
+      clearTimeout(fadeInTimeout);
+    };
+  }, []);
+
   return (
-    <section className="question-answer-box answer-complete">
+    <section className={`question-answer-box ${isFadedIn ? 'fade-in' : ''}`}>
       {question.answer && question.answer.isRejected && (
         <div className="answer rejected">답변 거절</div>
       )}
@@ -54,30 +65,14 @@ const QuestionItem = ({ user, question }) => {
 const QuestionPage = () => {
   const { id } = useParams();
   const [user, setUser] = useState([]);
-  const [questions, setQuestions] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(0);
+  const { questions, hasMore, elementRef, setQuestions } =
+    useGetUserQuestions(id);
   const [isShowModal, setIsShowModal] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
 
   const handleModalQuestion = () => {
     setIsShowModal(!isShowModal);
   };
-
-  const getUserQuestions = useCallback(async () => {
-    const responseQuestions = await getUserQuestionData(id, page);
-
-    if (responseQuestions.results.length === 0) {
-      setHasMore(false);
-    } else {
-      setQuestions(prevQuestions => [
-        ...prevQuestions,
-        ...responseQuestions.results,
-      ]);
-      setPage(prevPage => prevPage + 1);
-    }
-  }, [page, id]);
-  const elementRef = useInfiniteScroll(getUserQuestions);
 
   const fetchData = async () => {
     const responseUser = await getUserData(id);
@@ -114,7 +109,11 @@ const QuestionPage = () => {
                 setQuestionCount={setQuestionCount}
               />
             ))}
-            {hasMore && <div ref={elementRef}>Load More Questoins...</div>}
+            {hasMore && (
+              <div className="loading-spinner" ref={elementRef}>
+                <img src="/assets/images/spinner.gif" alt="로딩 스피너" />
+              </div>
+            )}
           </div>
         </article>
       </main>

@@ -12,7 +12,9 @@ const useInfiniteScroll = onIntersection => {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersection);
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 1,
+    });
     const currentElement = elementRef.current;
 
     if (currentElement) {
