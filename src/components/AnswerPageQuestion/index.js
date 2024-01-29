@@ -3,7 +3,8 @@ import AnswerPageQuestionItem from '../AnswerPageQuestionItem';
 import QuestionItemContainer from './style';
 
 const AnswerPageQuestion = ({ user, id }) => {
-  const { questions, hasMore, elementRef } = useGetUserQuestions(id);
+  const { questions, hasMore, elementRef, setQuestions } =
+    useGetUserQuestions(id);
 
   return (
     <QuestionItemContainer>
@@ -13,6 +14,7 @@ const AnswerPageQuestion = ({ user, id }) => {
             key={question.id}
             user={user}
             question={question}
+            setQuestions={setQuestions}
           />
         ))}
       {hasMore && (
