@@ -169,6 +169,9 @@ const AnswerPageQuestionItem = ({ user, question, setQuestions }) => {
                 handleEditClick={handleEditClick}
                 isEditing={isEditing}
                 setClickStatus={setClickStatus}
+                setQuestions={setQuestions}
+                setContent={setContent}
+                setIsEditing={setIsEditing}
               />
             )}
           </ul>

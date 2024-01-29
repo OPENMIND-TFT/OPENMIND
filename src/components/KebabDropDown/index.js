@@ -6,6 +6,7 @@ const KebabDropDown = ({
   handleEditClick,
   isEditing,
   setClickStatus,
+  setQuestions,
 }) => {
   const dropdownRef = useRef(null);
   const { id } = question;
@@ -78,12 +79,10 @@ const KebabDropDown = ({
 
   const handleDeleteAnswer = async () => {
     await deleteAnswer(question.answer.id);
-    window.location.reload(true);
   };
 
   const handleDeleteQuestion = async () => {
     await deleteQuestion(question.id);
-    window.location.reload(true);
   };
 
   const submitAnswerRejected = async () => {
@@ -101,10 +100,22 @@ const KebabDropDown = ({
       },
     );
 
+    const result = await response.json();
+
     if (!response.ok) {
       throw new Error('답변을 전송하는데 실패했습니다.');
     }
-    window.location.reload(true);
+
+    setQuestions(prevQuestions => {
+      const index = prevQuestions.findIndex(
+        prevQuestion => prevQuestion.id === question.id,
+      );
+
+      const temp = prevQuestions.filter(prevQuestion => prevQuestion);
+      temp[index].answer = result;
+
+      return temp;
+    });
   };
 
   const kebabStatus = () => {
