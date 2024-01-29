@@ -6,8 +6,8 @@ import KebabDropDown from '../KebabDropDown';
 import QuestionCardHeader from '../QuestionCardHeader';
 import Cta from '../Cta';
 
-const AnswerPageQuestionItem = ({ user, question }) => {
-  const [content, setContent] = useState('');
+const AnswerPageQuestionItem = ({ user, question, setQuestions }) => {
+  const [content, setContent] = useState(question?.answer?.content || '');
   const [textAreaValue, setTextAreaValue] = useState(true);
   const [clickStatus, setClickStatus] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -27,7 +27,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
-    setContent(question.answer.content);
+    setContent(content);
     setTextAreaValue(false);
   };
 
@@ -54,10 +54,21 @@ const AnswerPageQuestionItem = ({ user, question }) => {
       },
     );
 
+    const result = await response.json();
+
     if (!response.ok) {
       throw new Error('답변을 전송하는데 실패했습니다.');
     }
-    window.location.reload(true);
+    setQuestions(prevQuestions => {
+      const index = prevQuestions.findIndex(
+        prevQuestion => prevQuestion.id === question.id,
+      );
+
+      const temp = prevQuestions.filter(prevQuestion => prevQuestion);
+      temp[index].answer = result;
+
+      return temp;
+    });
   };
 
   const submitEditAnswer = async () => {
@@ -75,10 +86,13 @@ const AnswerPageQuestionItem = ({ user, question }) => {
       },
     );
 
+    const result = await response.json();
+
     if (!response.ok) {
       throw new Error('답변을 수정하는데 실패했습니다.');
     }
-    window.location.reload(true);
+    setContent(result.content);
+    setIsEditing(false);
   };
 
   const questionStatus = () => {
@@ -123,7 +137,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
       return <p className="reply-font refuse">답변 거절</p>;
     }
 
-    return <p className="reply-font">{question.answer.content}</p>;
+    return <p className="reply-font">{content}</p>;
   };
 
   const handleEnterSubmitAnswer = e => {
