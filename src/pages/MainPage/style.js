@@ -65,19 +65,41 @@ const MainContainer = styled.div`
   }
 
   .image-area {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    svg {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
     img {
       position: fixed;
       bottom: 0;
-      left: 0;
-      width: 100%;
+      left: 50%;
       height: auto;
       padding: 0px 100px 0px 100px;
+      transform: translate(-50%);
     }
   }
 
   @media screen and (min-width: 768px) and (max-width: 1124px) {
     .button-area {
       padding: 0 50px 69px 0;
+    }
+
+    .image-area {
+      img {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        padding: 0;
+      }
     }
   }
 
@@ -103,10 +125,11 @@ const MainContainer = styled.div`
     }
 
     .image-area {
+      order: 4;
+
       img {
         position: fixed;
         bottom: 0;
-        left: 0;
         width: 100%;
         height: auto;
         padding: 0;
