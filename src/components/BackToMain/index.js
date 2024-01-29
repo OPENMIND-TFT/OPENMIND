@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom';
-import Container from './style';
+import BackToMainContainer from './style';
 
-const BackToMain = () => {
+const BackToMain = ({ width, height }) => {
   return (
-    <Container>
+    <BackToMainContainer>
       <Link to="/">
-        <img src="/assets/images/logo.png" className="logo" alt="로고" />
+        <img
+          src="/assets/images/logo.png"
+          width={width}
+          height={height}
+          className="logo"
+          alt="로고"
+        />
       </Link>
-    </Container>
+    </BackToMainContainer>
   );
 };
 

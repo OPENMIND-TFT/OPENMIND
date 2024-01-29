@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import AnswerPageQuestionList from '../../components/AnswerPageQuestionList';
 import AnswerPageContainer from './style';
-import AnswerPageQuestionHeader from '../../components/AnswerPageQuestionHeader';
+import QuestionHeader from '../../components/QuestionHeader';
 import getUserData from '../../api/getUserData';
 import deleteAll from '../../api/deleteAll';
 
@@ -27,7 +27,7 @@ const AnswerPage = () => {
 
   return (
     <AnswerPageContainer>
-      <AnswerPageQuestionHeader user={user} />
+      <QuestionHeader user={user} />
       <main className="list-area">
         <article className="article-container">
           <div className="delete-button-wrap">
