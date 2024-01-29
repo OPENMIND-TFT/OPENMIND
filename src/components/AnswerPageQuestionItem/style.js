@@ -13,6 +13,11 @@ const QuestionContainer = styled.div`
     background: var(--Grayscale-10);
 
     box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+  .question-card.fade-in {
+    opacity: 1;
   }
 
   .card-navigation {

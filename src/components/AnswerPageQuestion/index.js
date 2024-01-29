@@ -10,6 +10,14 @@ const AnswerPageQuestion = ({ user, id }) => {
   const [page, setPage] = useState(0);
 
   const getUserQuestions = useCallback(async () => {
+    const delay = ms =>
+      new Promise(res => {
+        setTimeout(() => {
+          res();
+        }, ms);
+      });
+    await delay(800);
+
     const responseQuestions = await getUserQuestionData(id, page);
 
     if (responseQuestions.results.length === 0) {
@@ -34,7 +42,11 @@ const AnswerPageQuestion = ({ user, id }) => {
             question={question}
           />
         ))}
-      {hasMore && <div ref={elementRef}>Load More Questoins...</div>}
+      {hasMore && (
+        <div className="loading-spinner" ref={elementRef}>
+          <img src="/assets/images/spinner.gif" alt="로딩 스피너" />
+        </div>
+      )}
     </QuestionItemContainer>
   );
 };

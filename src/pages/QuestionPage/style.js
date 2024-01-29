@@ -165,9 +165,10 @@ const QuestionPageContainer = styled.div`
       display: flex;
       justify-content: center;
       margin-top: 0;
-    }
-    img {
-      width: 80px;
+
+      img {
+        width: 80px;
+      }
     }
   }
 
