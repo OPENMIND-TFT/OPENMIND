@@ -4,7 +4,7 @@ const MainLineSvgStyled = styled.svg`
   width: 1250px;
   fill: none;
   stroke: #000000;
-  stroke-width: 2;
+  stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10;

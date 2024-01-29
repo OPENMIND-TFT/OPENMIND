@@ -67,11 +67,23 @@ const MainPage = () => {
       </main>
       <div className="image-area">
         <MainLineSvg />
-        <img
-          className="people-image"
-          src="/assets/images/mainWithoutBg.png"
-          alt="메인페이지 일러스트"
-        />
+        <div className="image-box">
+          <img
+            className="bubble-hello bubble-image"
+            src="/assets/images/mainBubbleHello.png"
+            alt="메인페이지 일러스트 말풍선 hello"
+          />
+          <img
+            className="bubble-Cool bubble-image"
+            src="/assets/images/mainBubbleCool.png"
+            alt="메인페이지 일러스트 말풍선 cool"
+          />
+          <img
+            className="people-image"
+            src="/assets/images/mainWithoutBg.png"
+            alt="메인페이지 일러스트"
+          />
+        </div>
       </div>
     </MainContainer>
   );
