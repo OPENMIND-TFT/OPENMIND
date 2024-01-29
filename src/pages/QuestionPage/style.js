@@ -150,6 +150,7 @@ const QuestionPageContainer = styled.div`
     .answer-content {
       font-size: 1.6rem;
       line-height: 22px;
+      white-space: pre-line;
     }
 
     .answer-content.refuse {

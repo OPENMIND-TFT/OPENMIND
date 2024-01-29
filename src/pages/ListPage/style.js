@@ -87,6 +87,13 @@ const ListContainer = styled.div`
       border-radius: 16px;
       background-color: var(--Grayscale-10);
       cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        transform: translateY(-5px);
+        box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.1);
+      }
 
       .card-profile {
         display: flex;
