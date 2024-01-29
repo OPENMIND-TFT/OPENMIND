@@ -83,29 +83,12 @@ const Container = styled.div`
       border: 0px;
       border-radius: 8px;
       background: var(--Grayscale-20);
+      font-size: 1.6rem;
       resize: none;
       margin-bottom: 8px;
 
       &:focus {
         outline: none;
-      }
-    }
-
-    .modal-button {
-      padding: 12px 24px;
-      border-radius: 8px;
-      background: var(--Brown-40);
-      border: 0px;
-      color: var(--Grayscale-10);
-      font-size: 1.6rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 22px;
-      cursor: pointer;
-
-      &:disabled {
-        background: var(--Brown-30);
-        cursor: default;
       }
     }
   }

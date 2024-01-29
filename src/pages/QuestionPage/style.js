@@ -7,98 +7,24 @@ const QuestionPageContainer = styled.div`
     cursor: pointer;
   }
 
-  .questions-page-header {
-    position: relative;
-    height: 234px;
-    background-color: var(--Grayscale-10);
-  }
-
-  .header-section {
-    position: absolute;
-    bottom: 0;
-    background-image: url(/assets/images/logoWithoutBg.png);
-    background-repeat: no-repeat;
-    background-position: center top -10%;
-    width: 100%;
-    height: 184px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 12px;
-
-    .logo {
-      width: 170px;
-      height: 67px;
-    }
-
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .header-profile-image {
-      width: 136px;
-      height: 136px;
-      border-radius: 9999px;
-    }
-
-    .profile-name {
-      font-size: 3.2rem;
-    }
-
-    .profile-share-icons {
-      display: flex;
-      gap: 12px;
-    }
-
-    .profile-share-link-box {
-      width: 40px;
-      height: 40px;
-      border-radius: 9999px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .profile-share-link-logo {
-      width: 18px;
-      height: 18px;
-    }
-
-    .profile-share-link-box.brown {
-      background-color: var(--Brown-40);
-    }
-
-    .profile-share-link-box.yellow {
-      background-color: var(--Yellow-50);
-    }
-
-    .profile-share-link-box.blue {
-      background-color: var(--Blue-50);
-    }
-  }
-
   .questions-page-main {
     display: flex;
     justify-content: center;
   }
 
   .question-list-container {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 189px;
-    margin-bottom: 136px;
-    width: 716px;
+    position: relative;
+    margin: 189px auto 136px;
+    width: 100%;
+    max-width: 716px;
     min-height: 330px;
-    background-color: var(--Brown-10);
+    padding: 16px;
     border: 1px solid var(--Brown-30);
     border-radius: 16px;
-    padding: 16px;
+    background-color: var(--Brown-10);
 
     .title-box {
       display: flex;
@@ -106,38 +32,37 @@ const QuestionPageContainer = styled.div`
     }
 
     .title {
-      font-family: Actor;
-      color: var(--Brown-40);
-      font-size: 2rem;
       margin-bottom: 16px;
+      color: var(--Brown-40);
+      font-family: Actor, pretendard;
+      font-size: 2rem;
     }
 
     .title-image {
-      background-image: url('/assets/images/messagesBrown40.svg');
       width: 24px;
       height: 24px;
-      background-repeat: no-repeat;
+      background: url('/assets/images/messagesBrown40.svg') no-repeat;
       background-size: cover;
     }
   }
 
   .no-question-image {
-    width: 150px;
-    height: 154px;
     display: flex;
-    background: url('/assets/images/bucket.png') no-repeat center;
-    background-size: cover;
     position: absolute;
     left: 50%;
     bottom: 65px;
+    width: 150px;
+    height: 154px;
+    background: url('/assets/images/bucket.png') no-repeat center;
+    background-size: cover;
     transform: translate(-50%);
   }
 
   .question-list {
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 
     .question-answer-box {
       display: flex;
@@ -188,23 +113,9 @@ const QuestionPageContainer = styled.div`
       border-color: var(--Grayscale-40);
       color: var(--Grayscale-40);
     }
-
-    .question-box {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .question-title-box {
-      font-size: 1.4rem;
-      color: var(--Grayscale-40);
-      margin-bottom: 4px;
-    }
-
-    .question-content {
-      font-size: 1.8rem;
-      font-family: Actor;
-      white-space: pre-line;
+    .answer.rejected {
+      border-color: var(--Red-50);
+      color: var(--Red-50);
     }
 
     .answer-box {
@@ -287,6 +198,11 @@ const QuestionPageContainer = styled.div`
         height: 104px;
       }
     }
+
+    .question-list-container {
+      margin-top: 110px;
+    }
+
     .questions-page-main {
       padding: 0px 32px;
     }

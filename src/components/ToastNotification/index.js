@@ -5,7 +5,7 @@ const ToastNotification = ({ children, setIsToastVisible }) => {
   useEffect(() => {
     const toastTimeout = setTimeout(() => {
       setIsToastVisible(false);
-    }, 5000);
+    }, 2000);
 
     return () => {
       clearTimeout(toastTimeout);

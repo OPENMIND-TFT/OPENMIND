@@ -65,31 +65,9 @@ const QuestionContainer = styled.div`
     background: var(--Grayscale-10);
   }
 
-  .write-date {
-    color: var(--Grayscale-40);
-    font-feature-settings:
-      'clig' off,
-      'liga' off;
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 18px;
-
-    margin-bottom: 4px;
-  }
-
   .card-answer-section {
     display: flex;
     gap: 12px;
-  }
-
-  .card-title {
-    color: var(--Grayscale-60);
-    font-feature-settings:
-      'clig' off,
-      'liga' off;
-    font-family: Actor;
-    font-size: 1.8rem;
-    line-height: 24px;
   }
 
   .card-profile-wrap {
@@ -150,6 +128,7 @@ const QuestionContainer = styled.div`
       'liga' off;
     font-size: 1.6rem;
     line-height: 22px;
+    white-space: pre-line;
   }
 
   .refuse {
@@ -175,34 +154,6 @@ const QuestionContainer = styled.div`
         'liga' off;
       font-size: 1.6rem;
       line-height: 22px;
-    }
-  }
-
-  .answer-button {
-    color: var(--Grayscale-10);
-    font-feature-settings:
-      'clig' off,
-      'liga' off;
-    font-size: 1.6rem;
-    line-height: 22px;
-    cursor: pointer;
-
-    display: flex;
-    width: 100%;
-    height: 46px;
-    padding: 12px 24px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    align-self: stretch;
-
-    border: none;
-    border-radius: 8px;
-    background: var(--Brown-40);
-
-    &:disabled {
-      background: var(--Brown-30);
-      cursor: default;
     }
   }
 

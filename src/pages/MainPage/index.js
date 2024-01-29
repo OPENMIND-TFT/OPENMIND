@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import postPheedData from '../../api/creatPheed';
+import BackToMain from '../../components/BackToMain';
+import Cta from '../../components/Cta';
+import GoToButton from '../../components/GoToButton';
 import MainContainer from './style';
 
 const MainPage = () => {
@@ -13,30 +17,11 @@ const MainPage = () => {
     setNameValue(e.target.value);
   };
 
-  async function creatPheed(formData) {
-    const name = formData;
-    const response = await fetch(
-      `https://openmind-api.vercel.app/3-5/subjects/`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          team: '3-5',
-        }),
-      },
-    );
-    if (!response.ok) {
-      throw new Error('피드를 불러오는데 실패했습니다');
-    }
-    const body = await response.json();
-    window.localStorage.setItem('myId', body.id);
-    navigate(`/post/${body.id}/answer`);
-
-    return body;
-  }
+  const creatPheed = async () => {
+    const pheedData = await postPheedData(nameValue);
+    window.localStorage.setItem('myId', pheedData.id);
+    navigate(`/post/${pheedData.id}/answer`);
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -53,15 +38,13 @@ const MainPage = () => {
 
   return (
     <MainContainer>
-      <div className="button-area">
+      <header className="button-area">
         <Link to="/list">
-          <button type="button">질문 하러 가기 {'->'}</button>
+          <GoToButton>질문하러 가기</GoToButton>
         </Link>
-      </div>
-      <Link to="/">
-        <img className="logo-image" src="/assets/images/logo.png" alt="로고" />
-      </Link>
-      <div className="input-area">
+      </header>
+      <BackToMain />
+      <main className="input-area">
         <form onSubmit={handleSubmit}>
           <input
             className={errorMessage ? 'error-input' : 'initial-input'}
@@ -76,9 +59,11 @@ const MainPage = () => {
             alt="사람 아이콘"
           />
           {errorMessage && <div className="error-message">{errorMessage}</div>}
-          <button type="submit">질문 받기</button>
+          <Cta height="46px" type="submit">
+            질문 받기
+          </Cta>
         </form>
-      </div>
+      </main>
       <div className="image-area">
         <img
           className="people-image"

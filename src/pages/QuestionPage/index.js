@@ -1,54 +1,27 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import getElapsedTime from '../../utils/getElapsedTime';
 import ReactionButtonBox from '../../components/ReactionButtonBox';
 import ModalQuestion from '../../components/ModalQuestion';
-import ShareButtonBar from '../../components/ShareButtonBar';
 import QuestionPageContainer from './style';
+import QuestionHeader from '../../components/QuestionHeader';
+import getUserData from '../../api/getUserData';
+import QuestionCardHeader from '../../components/QuestionCardHeader';
+import getUserQuestionData from '../../api/getUserQuestionData';
 
-const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
-
-const getUser = async userId => {
-  const response = await fetch(`${API_BASE_URL}/subjects/${userId}/`);
-  if (!response.ok) {
-    throw new Error('유저 데이터를 불러오는데 실패했습니다');
-  }
-  return response.json();
-};
-
-const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
-  const deleteQuestion = async questionId => {
-    const response = await fetch(`${API_BASE_URL}/questions/${questionId}/`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      setQuestions(prevQuestions =>
-        prevQuestions.filter(prevQuestion => prevQuestion.id !== question.id),
-      );
-      setQuestionCount(prevCount => prevCount - 1);
-    } else if (!response.ok) {
-      throw new Error('질문 삭제 실패했습니다');
-    }
-  };
-
+const QuestionItem = ({ user, question }) => {
   return (
     <section className="question-answer-box answer-complete">
-      {question.answer ? (
-        <div className="answer complete">답변 완료</div>
-      ) : (
-        <div className="answer none">미답변</div>
+      {question.answer && question.answer.isRejected && (
+        <div className="answer rejected">답변 거절</div>
       )}
-      <div className="question-box">
-        <div className="question-title-box">
-          <span className="question-title">질문 · </span>
-          <span className="question-time-line">
-            {getElapsedTime(question.createdAt)}
-          </span>
-        </div>
-        <span className="question-content">{question.content}</span>
-      </div>
+      {question.answer && !question.answer.isRejected && (
+        <div className="answer complete">답변 완료</div>
+      )}
+      {!question.answer && <div className="answer none">미답변</div>}
+
+      <QuestionCardHeader question={question} />
 
       {question.answer ? (
         <div className="answer-box">
@@ -74,40 +47,7 @@ const QuestionItem = ({ user, question, setQuestions, setQuestionCount }) => {
       ) : null}
 
       <ReactionButtonBox question={question} />
-
-      <button
-        type="button"
-        className="question-delete-button"
-        onClick={() => deleteQuestion(question.id)}
-      >
-        삭제하기
-      </button>
     </section>
-  );
-};
-
-const QuestionHeader = ({ user }) => {
-  return (
-    <header className="questions-page-header">
-      <section className="header-section">
-        <Link to="/">
-          <img
-            src="/assets/images/logo.png"
-            className="logo"
-            alt="OpenMind 서비스 로고"
-          />
-        </Link>
-        <section className="profile">
-          <img
-            src={user.imageSource}
-            className="header-profile-image"
-            alt="프로필 이미지"
-          />
-          <span className="profile-name">{user.name}</span>
-          <ShareButtonBar />
-        </section>
-      </section>
-    </header>
   );
 };
 
@@ -125,10 +65,8 @@ const QuestionPage = () => {
   };
 
   const getUserQuestions = useCallback(async () => {
-    const response = await fetch(
-      `${API_BASE_URL}/subjects/${id}/questions/?limit=4&offset=${page * 4}`,
-    );
-    const responseQuestions = await response.json();
+    const responseQuestions = await getUserQuestionData(id, page);
+
     if (responseQuestions.results.length === 0) {
       setHasMore(false);
     } else {
@@ -139,11 +77,10 @@ const QuestionPage = () => {
       setPage(prevPage => prevPage + 1);
     }
   }, [page, id]);
-
   const elementRef = useInfiniteScroll(getUserQuestions);
 
   const fetchData = async () => {
-    const responseUser = await getUser(id);
+    const responseUser = await getUserData(id);
     setUser(responseUser);
     setQuestionCount(responseUser.questionCount);
   };
@@ -165,7 +102,7 @@ const QuestionPage = () => {
                 ? `${questionCount}개의 질문이 있습니다.`
                 : `아직 질문이 없습니다.`}
             </span>
-            {questionCount || <figure className="no-question-image" />}
+            {!questionCount && <figure className="no-question-image" />}
           </div>
           <div className="question-list">
             {questions.map(question => (

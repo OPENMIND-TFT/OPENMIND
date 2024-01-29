@@ -1,9 +1,8 @@
 import { useState, useCallback } from 'react';
+import getUserQuestionData from '../../api/getUserQuestionData';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import AnswerPageQuestionItem from '../AnswerPageQuestionItem';
 import QuestionItemContainer from './style';
-
-const API_BASE_URL = 'https://openmind-api.vercel.app/3-5';
 
 const AnswerPageQuestion = ({ user, id }) => {
   const [questions, setQuestions] = useState([]);
@@ -11,10 +10,8 @@ const AnswerPageQuestion = ({ user, id }) => {
   const [page, setPage] = useState(0);
 
   const getUserQuestions = useCallback(async () => {
-    const response = await fetch(
-      `${API_BASE_URL}/subjects/${id}/questions/?limit=4&offset=${page * 4}`,
-    );
-    const responseQuestions = await response.json();
+    const responseQuestions = await getUserQuestionData(id, page);
+
     if (responseQuestions.results.length === 0) {
       setHasMore(false);
     } else {
@@ -29,7 +26,7 @@ const AnswerPageQuestion = ({ user, id }) => {
   const elementRef = useInfiniteScroll(getUserQuestions);
   return (
     <QuestionItemContainer>
-      {questions.length &&
+      {questions &&
         questions.map(question => (
           <AnswerPageQuestionItem
             key={question.id}

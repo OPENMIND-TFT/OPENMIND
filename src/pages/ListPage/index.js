@@ -1,36 +1,27 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Container from './style';
+import ListContainer from './style';
 import GoToAnswer from '../../components/GoToAnswer';
 import BackToMain from '../../components/BackToMain';
+import getCardData from '../../api/getCardData';
 
-const List = () => {
+const ListPage = () => {
   const [isDropDown, setIsDropDown] = useState(false);
   const [sortBy, setSortBy] = useState('최신순');
   const [cardInfo, setCardInfo] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8);
   const [translateX, setTranslateX] = useState(0);
   const [currentScroll, setCurrentScroll] = useState(1);
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const totalPages = Math.ceil(totalItems / 8);
+
+  const fetchData = async () => {
+    const data = await getCardData(sortBy, currentPage);
+    setCardInfo(data['results']);
+    setTotalItems(data['count']);
+  };
 
   useEffect(() => {
-    // 카드정보 호출
-    async function fetchData() {
-      try {
-        const response = await fetch(
-          sortBy === '최신순'
-            ? `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${itemsPerPage * (currentPage - 1)}`
-            : `https://openmind-api.vercel.app/3-5/subjects/?limit=${itemsPerPage}&offset=${itemsPerPage * (currentPage - 1)}&sort=name`,
-        );
-        const data = await response.json();
-        setCardInfo(data['results']);
-        setTotalItems(data['count']);
-      } catch (e) {
-        throw new Error('서버로부터 정보를 가져오지 못했습니다.');
-      }
-    }
     fetchData();
   }, [currentPage, sortBy]);
 
@@ -68,18 +59,18 @@ const List = () => {
   };
 
   return (
-    <Container x={translateX}>
+    <ListContainer x={translateX}>
       <header className="list-header">
         <div className="list-header-inner">
-          <BackToMain />
+          <BackToMain width="146px" />
           <GoToAnswer />
         </div>
       </header>
 
-      <main className="list-main">
-        <h1 className="list-main-h1">누구에게 질문할까요?</h1>
+      <article className="list-filter-area">
+        <h1>누구에게 질문할까요?</h1>
         <ul
-          className={`list-main-ul ${isDropDown ? 'activated' : ''}`}
+          className={`${isDropDown ? 'activated' : ''}`}
           onKeyDown={() => {}}
           role="presentation"
           onClick={() => {
@@ -96,9 +87,8 @@ const List = () => {
             alt="정렬버튼 화살표"
           />
           {isDropDown && (
-            <div className="list-main-ul-dropdown">
+            <div className="list-filter-dropdown">
               <li
-                className="list-main-li"
                 onClick={handleSorting}
                 onKeyDown={() => {}}
                 role="presentation"
@@ -106,7 +96,6 @@ const List = () => {
                 이름순
               </li>
               <li
-                className="list-main-li"
                 onClick={handleSorting}
                 onKeyDown={() => {}}
                 role="presentation"
@@ -116,71 +105,70 @@ const List = () => {
             </div>
           )}
         </ul>
-      </main>
+      </article>
 
-      <section className="list-section">
+      <main className="list-content">
         {cardInfo.map(item => {
           return (
             <Link to={`/post/${item.id}`} key={item.id}>
-              <article className="list-section-card">
+              <article className="list-content-card">
                 <div className="card-profile">
                   <img
                     src={item.imageSource}
                     alt="프로필사진"
                     className="card-profile-img"
                   />
-                  <h2 className="card-profile-h2">{item.name}</h2>
+                  <h2 className="card-profile-name">{item.name}</h2>
                 </div>
                 <div className="card-questions">
-                  <div className="card-questions-div">
+                  <h3 className="card-questions-title">
                     <img
                       src="/assets/images/messages.svg"
                       alt="메세지아이콘"
                       className="card-questions-img"
                     />
-                    <h3 className="card-questions-h3">받은질문</h3>
-                  </div>
-                  <h3 className="card-questions-h3">{item.questionCount}개</h3>
+                    받은 질문
+                  </h3>
+                  <span className="card-questions-count">
+                    {item.questionCount}개
+                  </span>
                 </div>
               </article>
             </Link>
           );
         })}
-      </section>
+      </main>
 
-      <nav className="list-nav">
-        <div
-          className="list-nav-controlbutton"
+      <nav className="list-pagination">
+        <button
+          type="button"
+          className="list-pagenation-prev list-pagenation-controlbutton"
           onClick={goToPrev}
-          onKeyDown={() => {}}
-          role="presentation"
         >
           {'<'}
-        </div>
-        <div className="list-nav-pagebutton-box">
+        </button>
+        <div className="list-pagenation-button-wrapper">
           {Array.from({ length: totalPages }, (_, index) => (
-            <div
+            <button
+              type="button"
               onClick={e => handlePageChange(e)}
               className={`list-nav-pagebutton ${currentPage === index + 1 ? 'selected' : ''}`}
               key={index + 1}
-              onKeyDown={() => {}}
-              role="presentation"
             >
               {index + 1}
-            </div>
+            </button>
           ))}
         </div>
-        <div
-          className="list-nav-controlbutton"
+        <button
+          type="button"
+          className="list-pagenation-next list-pagenation-controlbutton"
           onClick={goToNext}
-          onKeyDown={() => {}}
-          role="presentation"
         >
           {'>'}
-        </div>
+        </button>
       </nav>
-    </Container>
+    </ListContainer>
   );
 };
 
-export default List;
+export default ListPage;

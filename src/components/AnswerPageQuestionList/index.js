@@ -12,7 +12,7 @@ const AnswerPageQuestionList = ({ user, id }) => {
               ? `${user.questionCount}개의 질문이 있습니다.`
               : `아직 질문이 없습니다.`}
           </h3>
-          {user.questionCount || <figure className="no-question-image" />}
+          {!user.questionCount && <figure className="no-question-image" />}
         </div>
         <AnswerPageQuestion user={user} id={id} />
       </div>

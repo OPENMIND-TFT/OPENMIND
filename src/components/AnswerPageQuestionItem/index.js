@@ -3,6 +3,8 @@ import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
 import ReactionButtonBox from '../ReactionButtonBox';
 import KebabDropDown from '../KebabDropDown';
+import QuestionCardHeader from '../QuestionCardHeader';
+import Cta from '../Cta';
 
 const AnswerPageQuestionItem = ({ user, question }) => {
   const [content, setContent] = useState('');
@@ -14,6 +16,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
   const handleEditClick = () => {
     setIsEditing(!isEditing);
     setContent(question.answer.content);
+    setTextAreaValue(false);
   };
 
   const checkTextAreaEmpty = e => {
@@ -90,14 +93,9 @@ const AnswerPageQuestionItem = ({ user, question }) => {
             value={content}
             className="answer-textarea"
           />
-          <button
-            type="button"
-            className="answer-button"
-            onClick={submitEditAnswer}
-            disabled={textAreaValue}
-          >
+          <Cta width="100%" onClick={submitEditAnswer} disabled={textAreaValue}>
             수정완료
-          </button>
+          </Cta>
         </form>
       );
     }
@@ -107,6 +105,12 @@ const AnswerPageQuestionItem = ({ user, question }) => {
     }
 
     return <p className="reply-font">{question.answer.content}</p>;
+  };
+
+  const handleEnterSubmitAnswer = e => {
+    if (e.keyCode === 13 && !e.shiftKey) {
+      submitAnswer();
+    }
   };
 
   return (
@@ -131,17 +135,12 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                 question={question}
                 handleEditClick={handleEditClick}
                 isEditing={isEditing}
+                setClickStatus={setClickStatus}
               />
             )}
           </ul>
         </div>
-        <div className="card-title-wrap">
-          <span className="write-date">질문 · </span>
-          <span className="write-date">
-            {getElapsedTime(question.createdAt)}
-          </span>
-          <h3 className="card-title">{question.content}</h3>
-        </div>
+        <QuestionCardHeader question={question} />
 
         {question.answer ? (
           <>
@@ -177,7 +176,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
               >
                 {isEditing ? (
                   <>
-                    <img src="/assets/images/xIcon.svg" alt="삭제하기 버튼" />
+                    <img src="/assets/images/xIcon.svg" alt="수정취소 버튼" />
                     <span>수정취소</span>
                   </>
                 ) : (
@@ -211,15 +210,15 @@ const AnswerPageQuestionItem = ({ user, question }) => {
                       value={content}
                       placeholder="답변을 입력해주세요."
                       className="answer-textarea"
+                      onKeyDown={handleEnterSubmitAnswer}
                     />
-                    <button
-                      type="button"
-                      className="answer-button"
+                    <Cta
+                      width="100%"
                       onClick={submitAnswer}
                       disabled={textAreaValue}
                     >
                       답변완료
-                    </button>
+                    </Cta>
                   </form>
                 </div>
               </div>
