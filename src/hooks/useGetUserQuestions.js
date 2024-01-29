@@ -31,7 +31,7 @@ const useGetUserQuestions = id => {
 
   const elementRef = useInfiniteScroll(getUserQuestions);
 
-  return { questions, hasMore, elementRef };
+  return { questions, hasMore, elementRef, setQuestions };
 };
 
 export default useGetUserQuestions;
