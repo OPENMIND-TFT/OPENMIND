@@ -1,53 +1,46 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-  background-color: var(--Grayscale-20);
-
+const ListContainer = styled.div`
   .list-header {
-    padding: 0px 130px;
-    width: 100%;
-    height: 137px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 137px;
+    padding: 45px 130px 0;
 
     .list-header-inner {
-      max-width: 1200px;
-      width: 100%;
       display: flex;
       justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
     }
   }
 
-  .list-main {
-    width: 100%;
+  .list-filter-area {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
 
-    .list-main-h1 {
+    h1 {
       font-size: 4rem;
-      font-style: normal;
       font-weight: 400;
-      line-height: normal;
     }
 
-    .list-main-ul {
-      padding: 8px 12px;
+    ul {
       display: flex;
       gap: 4px;
+      position: relative;
+      padding: 8px 12px;
       border: 1px solid var(--Grayscale-40);
       border-radius: 8px;
-      position: relative;
-      cursor: default;
       color: var(--Grayscale-40);
       font-size: 1.4rem;
-      font-style: normal;
       font-weight: 500;
       line-height: 18px;
+      cursor: pointer;
 
-      .list-main-ul-dropdown {
+      .list-filter-dropdown {
         position: absolute;
         top: 40px;
         left: 0px;
@@ -55,40 +48,41 @@ const Container = styled.div`
         border-radius: 8px;
         background-color: var(--Grayscale-10);
         z-index: 1;
+        box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
 
-        .list-main-li {
-          width: 79px;
+        li {
+          width: 80px;
           padding: 6px 16px;
           color: var(--Grayscale-50);
-        }
 
-        .list-main-li:hover {
-          color: var(--Blue-50);
+          &:hover {
+            color: var(--Blue-50);
+          }
         }
       }
     }
 
-    .list-main-ul.activated {
-      color: var(--Grayscale-60);
+    ul.activated {
       border: 1px solid var(--Grayscale-60);
+      color: var(--Grayscale-60);
     }
   }
 
-  .list-section {
-    max-width: 1200px;
-    padding: 30px 130px 50px;
-    margin: 0 auto;
+  .list-content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 130px 50px;
 
-    .list-section-card {
-      max-width: 220px;
-      height: 187px;
-      padding: 20px;
+    .list-content-card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      max-width: 220px;
+      height: 187px;
+      padding: 20px;
       border: 1px solid var(--Grayscale-40);
       border-radius: 16px;
       background-color: var(--Grayscale-10);
@@ -99,35 +93,34 @@ const Container = styled.div`
         flex-direction: column;
         gap: 12px;
 
-        .card-profile-img {
+        img {
           width: 60px;
           height: 60px;
           border-radius: 100%;
         }
 
-        .card-profile-h2 {
+        h2 {
+          color: var(--Grayscale-60);
           font-size: 2rem;
           font-weight: 400;
           line-height: 25px;
-          color: var(--Grayscale-60);
         }
       }
 
       .card-questions {
         display: flex;
         justify-content: space-between;
+        color: var(--Grayscale-40);
+        font-size: 1.6rem;
 
-        .card-questions-h3 {
-          color: var(--Grayscale-40);
-          font-size: 1.4rem;
-        }
-
-        .card-questions-div {
+        h3 {
           display: flex;
-          gap: 4px;
           align-items: center;
+          gap: 4px;
+          font-weight: 400;
+          font-size: 1.6rem;
 
-          .card-questions-img {
+          img {
             width: 18px;
             height: 18px;
           }
@@ -136,41 +129,38 @@ const Container = styled.div`
     }
   }
 
-  .list-nav {
+  .list-pagination {
+    display: flex;
     width: 280px;
     height: 40px;
     margin: 0 auto;
-    display: flex;
 
-    .list-nav-pagebutton-box {
-      width: 200px;
-      text-align: center;
-      overflow: hidden;
-      display: flex;
-      flex-wrap: nowrap;
-    }
-
+    .list-pagenation-controlbutton,
     .list-nav-pagebutton {
-      transition: all 0.5s;
-      transform: translateX(${props => props.x}px);
-    }
-
-    .list-nav-pagebutton,
-    .list-nav-controlbutton {
       min-width: 40px;
       height: 40px;
+      border: none;
+      outline: none;
+      background: transparent;
       color: var(--Grayscale-40);
-      font-size: 2rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 25px;
       font-family: 'Actor', sans-serif;
+      font-size: 2rem;
       cursor: pointer;
-      text-align: center;
     }
 
-    .list-nav-pagebutton.selected {
-      color: var(--Brown-40);
+    .list-pagenation-button-wrapper {
+      display: flex;
+      overflow: hidden;
+      width: 200px;
+
+      button {
+        transition: all 0.5s;
+        transform: translateX(${props => props.x}px);
+      }
+
+      button.selected {
+        color: var(--Brown-40);
+      }
     }
   }
 
@@ -180,28 +170,28 @@ const Container = styled.div`
       padding: 40px 50px;
     }
 
-    .list-section {
+    .list-content {
       padding: 30px 32px 50px;
 
-      .list-section-card {
+      .list-content-card {
         max-width: unset;
       }
     }
   }
 
   @media screen and (max-width: 868px) {
-    .list-section {
+    .list-content {
       grid-template-columns: repeat(3, 1fr);
       padding-bottom: 60px;
     }
 
-    .list-nav {
+    .list-pagination {
       margin-bottom: 60px;
     }
   }
 
   @media screen and (max-width: 425px) {
-    .list-section {
+    .list-content {
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -216,24 +206,24 @@ const Container = styled.div`
       }
     }
 
-    .list-main {
-      padding: 0 24px;
+    .list-filter-area {
       flex-direction: initial;
       justify-content: space-between;
+      padding: 0 24px;
 
-      .list-main-h1 {
+      h1 {
         font-size: 2.4rem;
       }
     }
 
-    .list-section {
+    .list-content {
       padding: 20px 24px 40px;
     }
 
-    .list-nav {
+    .list-pagination {
       margin-bottom: 40px;
     }
   }
 `;
 
-export default Container;
+export default ListContainer;

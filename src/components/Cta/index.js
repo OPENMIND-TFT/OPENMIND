@@ -1,10 +1,23 @@
-import CtaButton from './style';
+import CtaStyled from './style';
 
-const Cta = ({ children, width, height, onClick }) => {
+const Cta = ({
+  children,
+  width,
+  height,
+  onClick,
+  disabled,
+  type = 'button',
+}) => {
   return (
-    <CtaButton type="button" width={width} height={height} onClick={onClick}>
+    <CtaStyled
+      type={type}
+      width={width}
+      height={height}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
-    </CtaButton>
+    </CtaStyled>
   );
 };
 
