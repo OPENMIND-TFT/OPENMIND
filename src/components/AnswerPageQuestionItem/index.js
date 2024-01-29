@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import getElapsedTime from '../../utils/getElapsedTime';
 import QuestionContainer from './style';
 import ReactionButtonBox from '../ReactionButtonBox';
@@ -11,7 +11,19 @@ const AnswerPageQuestionItem = ({ user, question }) => {
   const [textAreaValue, setTextAreaValue] = useState(true);
   const [clickStatus, setClickStatus] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [isFadedIn, setIsFadedIn] = useState(false);
+
   const { id } = question;
+
+  useEffect(() => {
+    const fadeInTimeout = setTimeout(() => {
+      setIsFadedIn(true);
+    }, 300);
+
+    return () => {
+      clearTimeout(fadeInTimeout);
+    };
+  }, []);
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
@@ -122,7 +134,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
 
   return (
     <QuestionContainer>
-      <div className="question-card">
+      <div className={`question-card ${isFadedIn ? 'fade-in' : ''}`}>
         <div className="card-navigation">
           {questionStatus()}
           <ul

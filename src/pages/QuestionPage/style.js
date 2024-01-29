@@ -76,6 +76,8 @@ const QuestionPageContainer = styled.div`
       padding: 32px;
       margin-bottom: 20px;
       position: relative;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
 
       .question-delete-button {
         position: absolute;
@@ -94,6 +96,9 @@ const QuestionPageContainer = styled.div`
         color: var(--Grayscale-10, #fff);
         font-size: 1.5rem;
       }
+    }
+    .question-answer-box.fade-in {
+      opacity: 1;
     }
 
     .answer {
@@ -155,6 +160,15 @@ const QuestionPageContainer = styled.div`
 
     .answer-content.refuse {
       color: var(--Red-50);
+    }
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+
+      img {
+        width: 80px;
+      }
     }
   }
 

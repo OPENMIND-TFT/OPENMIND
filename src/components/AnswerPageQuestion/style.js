@@ -5,6 +5,16 @@ const QuestionItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+
+    img {
+      width: 80px;
+    }
+  }
 `;
 
 export default QuestionItemContainer;
