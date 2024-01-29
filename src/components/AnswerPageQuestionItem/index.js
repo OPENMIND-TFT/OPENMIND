@@ -81,6 +81,12 @@ const AnswerPageQuestionItem = ({ user, question }) => {
     return <div className="answer-status none">미답변</div>;
   };
 
+  const handleEnterEditAnswer = e => {
+    if (e.keyCode === 13 && !e.shiftKey) {
+      submitEditAnswer();
+    }
+  };
+
   const renderEditableView = () => {
     if (isEditing) {
       return (
@@ -92,6 +98,7 @@ const AnswerPageQuestionItem = ({ user, question }) => {
             }}
             value={content}
             className="answer-textarea"
+            onKeyDown={handleEnterEditAnswer}
           />
           <Cta width="100%" onClick={submitEditAnswer} disabled={textAreaValue}>
             수정완료

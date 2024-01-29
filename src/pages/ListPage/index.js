@@ -13,6 +13,7 @@ const ListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [translateX, setTranslateX] = useState(0);
   const [currentScroll, setCurrentScroll] = useState(1);
+  const [pageSet, setPageSet] = useState(1);
   const totalPages = Math.ceil(totalItems / 8);
 
   const fetchData = async () => {
@@ -33,6 +34,9 @@ const ListPage = () => {
     if (currentScroll > 1) {
       setTranslateX(translateX + 200);
       setCurrentScroll(currentScroll - 1);
+      const firstPage = pageSet - 5;
+      setPageSet(firstPage);
+      setCurrentPage(firstPage);
     }
   };
 
@@ -41,6 +45,9 @@ const ListPage = () => {
     if (currentScroll < Math.ceil(totalPages / 5)) {
       setTranslateX(translateX - 200);
       setCurrentScroll(currentScroll + 1);
+      const firstPage = pageSet + 5;
+      setPageSet(firstPage);
+      setCurrentPage(firstPage);
     }
   };
 
