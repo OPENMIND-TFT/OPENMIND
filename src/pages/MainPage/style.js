@@ -4,10 +4,25 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100vh;
   background: url(/assets/images/paperBackground.png) no-repeat;
   background-size: cover;
+
+  &::before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url(/assets/images/gridBg.png);
+    animation: bg-scrolling 2s infinite linear;
+  }
 
   .button-area {
     display: flex;
@@ -109,6 +124,12 @@ const MainContainer = styled.div`
         padding: 0px 100px 0px 100px;
         transform: translate(-50%);
       }
+    }
+  }
+
+  @keyframes bg-scrolling {
+    100% {
+      background-position: 50px 50px;
     }
   }
 
