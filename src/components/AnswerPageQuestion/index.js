@@ -16,7 +16,7 @@ const AnswerPageQuestion = ({ user, id }) => {
           res();
         }, ms);
       });
-    await delay(800);
+    await delay(500);
 
     const responseQuestions = await getUserQuestionData(id, page);
 
