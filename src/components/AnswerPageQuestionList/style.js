@@ -42,6 +42,12 @@ const QuestionListContainer = styled.div`
       transform: translate(-50%);
     }
   }
+
+  .skeleton-card-list-style {
+    width: 716px;
+    height: 350px;
+    border-radius: 16px;
+  }
 `;
 
 export default QuestionListContainer;

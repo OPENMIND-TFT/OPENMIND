@@ -32,6 +32,31 @@ const QuestionHeaderContainer = styled.header`
     }
   }
 
+  .skeleton-logo-style {
+    width: 170px;
+    height: 49px;
+    margin-bottom: 10px;
+  }
+
+  .skeleton-profile-style {
+    width: 136px;
+    height: 136px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+
+  .skeleton-title-style {
+    width: 200px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .skeleton-button-style {
+    width: 200px;
+    height: 40px;
+  }
+
   @media screen and (min-width: 768px) and (max-width: 1124px) {
   }
 
