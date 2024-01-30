@@ -21,6 +21,13 @@ const ListPage = () => {
 
   const fetchData = async () => {
     setIsLoading(true);
+    const delay = ms =>
+      new Promise(res => {
+        setTimeout(() => {
+          res();
+        }, ms);
+      });
+    await delay(1000);
     const data = await getCardData(sortBy, currentPage);
     setCardInfo(data['results']);
     setTotalItems(data['count']);
