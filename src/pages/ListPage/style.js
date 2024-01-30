@@ -170,6 +170,42 @@ const ListContainer = styled.div`
     }
   }
 
+  .skeleton-logo-style {
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+  }
+
+  .skeleton-answer-style {
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+  }
+
+  .skeleton-title-style {
+    width: 380px;
+    height: 50px;
+    border-radius: 15px;
+  }
+
+  .skeleton-filter-style {
+    width: 380px;
+    height: 50px;
+    border-radius: 15px;
+  }
+
+  .skeleton-card-style {
+    max-width: 220px;
+    height: 187px;
+    border-radius: 16px;
+  }
+
+  .skeleton-pagenation-style {
+    width: 280px;
+    height: 40px;
+    border-radius: 15px;
+  }
+
   /* 반응형 */
   @media screen and (max-width: 1199px) {
     .list-header {

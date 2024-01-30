@@ -43,6 +43,14 @@ const AnswerPageContainer = styled.div`
     }
   }
 
+  .skeleton-delete-button-style {
+    width: 100px;
+    height: 35px;
+    border-radius: 12px;
+    margin-top: 145px;
+    margin-bottom: 8px;
+  }
+
   @media screen and (min-width: 768px) and (max-width: 1124px) {
     .list-area {
       padding: 0 32px;
