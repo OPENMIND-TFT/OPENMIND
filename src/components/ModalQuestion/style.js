@@ -37,7 +37,7 @@ const Container = styled.div`
 
       .modal-title-h1 {
         color: var(--Grayscale-60);
-        font-family: Actor;
+        font-family: 'Actor', 'pretendard';
         font-size: 2.4rem;
         font-style: normal;
         font-weight: 400;

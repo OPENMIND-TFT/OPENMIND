@@ -25,7 +25,7 @@ const QuestionListContainer = styled.div`
       font-feature-settings:
         'clig' off,
         'liga' off;
-      font-family: Actor;
+      font-family: 'Actor', 'pretendard';
       font-size: 2rem;
       line-height: 25px;
     }

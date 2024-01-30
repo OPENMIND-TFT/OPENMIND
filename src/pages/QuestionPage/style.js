@@ -34,7 +34,7 @@ const QuestionPageContainer = styled.div`
     .title {
       margin-bottom: 16px;
       color: var(--Brown-40);
-      font-family: Actor, pretendard;
+      font-family: 'Actor', 'pretendard';
       font-size: 2rem;
     }
 
@@ -142,7 +142,7 @@ const QuestionPageContainer = styled.div`
 
     .answer-profile-name {
       font-size: 1.8rem;
-      font-family: Actor;
+      font-family: 'Actor', 'pretendard';
       margin-right: 8px;
       line-height: 24px;
     }
