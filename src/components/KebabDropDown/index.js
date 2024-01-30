@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import DropDownContainer from './style';
+import DeleteModalContext from '../../contexts/DeleteModalContext';
+import QuestionIdContext from '../../contexts/QuestionIdContext';
 
 const KebabDropDown = ({
   question,
@@ -10,8 +12,12 @@ const KebabDropDown = ({
 }) => {
   const dropdownRef = useRef(null);
   const { id } = question;
+  const setIsDeleteModal = useContext(DeleteModalContext);
+  const setQuestionId = useContext(QuestionIdContext);
 
   useEffect(() => {
+    setQuestionId(question.id);
+
     const handleClickOutside = e => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setClickStatus(false);
@@ -68,26 +74,9 @@ const KebabDropDown = ({
     );
   };
 
-  const deleteQuestion = async () => {
-    const response = await fetch(
-      `https://openmind-api.vercel.app/3-5/questions/${id}/`,
-      {
-        method: 'DELETE',
-      },
-    );
-
-    if (response.ok) {
-      setQuestions(prevQuestions => prevQuestions.filter(q => q.id !== id));
-    }
-  };
-
   const handleDeleteAnswer = async () => {
     await deleteAnswer(question.answer.id);
     window.location.reload(true);
-  };
-
-  const handleDeleteQuestion = async () => {
-    await deleteQuestion(question.id);
   };
 
   const submitAnswerRejected = async () => {
@@ -201,7 +190,7 @@ const KebabDropDown = ({
         <li>
           <button
             type="button"
-            onClick={handleDeleteQuestion}
+            onClick={e => setIsDeleteModal(e.target.textContent)}
             onMouseEnter={handleMouseEnterDelete}
             onMouseLeave={handleMouseLeaveDelete}
           >

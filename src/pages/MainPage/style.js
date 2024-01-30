@@ -4,10 +4,25 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100vh;
   background: url(/assets/images/paperBackground.png) no-repeat;
   background-size: cover;
+
+  &::before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url(/assets/images/gridBg.png);
+    animation: bg-scrolling 2s infinite linear;
+  }
 
   .button-area {
     display: flex;
@@ -15,7 +30,7 @@ const MainContainer = styled.div`
     width: 100%;
     max-width: 1200px;
     margin: 45px auto 0;
-    padding-bottom: 69px;
+    padding-bottom: 120px;
   }
 
   .input-area {
@@ -65,13 +80,82 @@ const MainContainer = styled.div`
   }
 
   .image-area {
-    img {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    svg {
       position: fixed;
       bottom: 0;
-      left: 0;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .image-box {
+      position: relative;
       width: 100%;
-      height: auto;
-      padding: 0px 100px 0px 100px;
+      max-width: 1250px;
+      margin: 0 auto;
+
+      .bubble-image {
+        position: absolute;
+        opacity: 0;
+        animation: fade-in-up 1s forwards;
+      }
+
+      .bubble-hello {
+        left: 6.5%;
+        bottom: 255px;
+        animation-delay: 1s;
+      }
+
+      .bubble-Cool {
+        bottom: 235px;
+        right: 2.5%;
+        animation-delay: 1.6s;
+      }
+
+      .people-image {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        height: auto;
+        padding: 0px 100px 0px 100px;
+        transform: translate(-50%);
+      }
+    }
+  }
+
+  @keyframes bg-scrolling {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (max-width: 1250px) {
+    .image-area {
+      .image-box {
+        .bubble-hello {
+          left: 0%;
+        }
+
+        .bubble-Cool {
+          right: 0%;
+        }
+      }
     }
   }
 
@@ -79,14 +163,38 @@ const MainContainer = styled.div`
     .button-area {
       padding: 0 50px 69px 0;
     }
+
+    .image-area {
+      .image-box {
+        .bubble-hello {
+          bottom: 220px;
+          width: 110px;
+        }
+
+        .bubble-Cool {
+          bottom: 230px;
+          width: 100px;
+        }
+
+        .people-image {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          height: auto;
+          padding: 0;
+        }
+      }
+    }
   }
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
+    justify-content: center;
+    padding-bottom: 120px;
+
     .logo {
       order: 1;
       width: 248px;
       height: 98px;
-      margin-top: 80px;
     }
 
     .button-area {
@@ -103,13 +211,25 @@ const MainContainer = styled.div`
     }
 
     .image-area {
-      img {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        padding: 0;
+      order: 4;
+      .image-box {
+        .bubble-hello {
+          bottom: 130px;
+          width: 80px;
+        }
+
+        .bubble-Cool {
+          bottom: 130px;
+          width: 80px;
+        }
+
+        .people-image {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          height: auto;
+          padding: 0;
+        }
       }
     }
   }

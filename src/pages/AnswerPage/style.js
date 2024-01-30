@@ -6,6 +6,7 @@ const AnswerPageContainer = styled.div`
   background: url(/assets/images/paperBackground.png) no-repeat;
   background-size: cover;
   background-color: var(--Grayscale-20);
+  position: relative;
 
   .list-area {
     display: flex;
