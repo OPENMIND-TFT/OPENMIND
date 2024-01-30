@@ -241,6 +241,26 @@ const QuestionPageContainer = styled.div`
       visibility: visible;
     }
   }
+
+  .skeleton-question-list-style {
+    width: 716px;
+    height: 350px;
+    border-radius: 16px;
+    margin-top: 189px;
+  }
+
+  .skeleton-modal-button-style {
+    width: 208px;
+    height: 54px;
+    border-radius: 200px;
+
+    position: fixed;
+    z-index: 1;
+    bottom: 24px;
+    right: 24px;
+    width: 208px;
+    height: 54px;
+  }
 `;
 
 export default QuestionPageContainer;

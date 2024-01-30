@@ -6,6 +6,7 @@ const AnswerPageContainer = styled.div`
   background: url(/assets/images/paperBackground.png) no-repeat;
   background-size: cover;
   background-color: var(--Grayscale-20);
+  position: relative;
 
   .list-area {
     display: flex;
@@ -40,6 +41,14 @@ const AnswerPageContainer = styled.div`
         cursor: pointer;
       }
     }
+  }
+
+  .skeleton-delete-button-style {
+    width: 100px;
+    height: 35px;
+    border-radius: 12px;
+    margin-top: 145px;
+    margin-bottom: 8px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1124px) {
