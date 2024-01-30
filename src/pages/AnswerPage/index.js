@@ -31,6 +31,7 @@ const AnswerPage = () => {
   }, [id]);
 
   const handleDeleteAll = async () => {
+    window.localStorage.removeItem('myId');
     await deleteAll(id);
     navigate('/');
   };

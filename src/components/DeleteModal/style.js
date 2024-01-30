@@ -45,10 +45,10 @@ const DeleteModalContainer = styled.div`
       cursor: pointer;
       background: var(--Grayscale-10);
       font-size: 1.4rem;
+    }
 
-      &:hover {
-        color: var(--Blue-50);
-      }
+    .delete-button {
+      color: var(--Red-50);
     }
   }
 `;
