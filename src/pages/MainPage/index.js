@@ -4,6 +4,7 @@ import postPheedData from '../../api/creatPheed';
 import BackToMain from '../../components/BackToMain';
 import Cta from '../../components/Cta';
 import GoToButton from '../../components/GoToButton';
+import MainLineSvg from '../../components/MainLineSvg';
 import MainContainer from './style';
 
 const MainPage = () => {
@@ -65,11 +66,24 @@ const MainPage = () => {
         </form>
       </main>
       <div className="image-area">
-        <img
-          className="people-image"
-          src="/assets/images/logoWithoutBg.png"
-          alt="메인페이지 일러스트"
-        />
+        <MainLineSvg />
+        <div className="image-box">
+          <img
+            className="bubble-hello bubble-image"
+            src="/assets/images/mainBubbleHello.png"
+            alt="메인페이지 일러스트 말풍선 hello"
+          />
+          <img
+            className="bubble-Cool bubble-image"
+            src="/assets/images/mainBubbleCool.png"
+            alt="메인페이지 일러스트 말풍선 cool"
+          />
+          <img
+            className="people-image"
+            src="/assets/images/mainWithoutBg.png"
+            alt="메인페이지 일러스트"
+          />
+        </div>
       </div>
     </MainContainer>
   );
