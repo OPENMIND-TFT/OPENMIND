@@ -11,7 +11,6 @@ import DeleteModal from '../../components/DeleteModal';
 import DeleteModalContext from '../../contexts/DeleteModalContext';
 import QuestionIdContext from '../../contexts/QuestionIdContext';
 
-
 const AnswerPage = () => {
   const [user, setUser] = useState([]);
   const { id } = useParams();
@@ -19,7 +18,6 @@ const AnswerPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [questionId, setQuestionId] = useState('');
-
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -38,32 +36,34 @@ const AnswerPage = () => {
   };
 
   return (
-        <QuestionIdContext.Provider value={setQuestionId}>
+    <QuestionIdContext.Provider value={setQuestionId}>
       <DeleteModalContext.Provider value={setIsDeleteModal}>
-        
-        
-    <AnswerPageContainer>
-      <QuestionHeader user={user} isLoading={isLoading} />
-      <main className="list-area">
-        <article className="article-container">
-          <div className="delete-button-wrap">
-            {isLoading ? (
-              <Skeleton className="skeleton-delete-button-style" />
-            ) : (
-             <button
-                  type="button"
-                  className="delete-button"
-                  onClick={e => setIsDeleteModal(e.target.textContent)}
-                >
-                  삭제하기
-                </button>
-            )}
-          </div>
+        <AnswerPageContainer>
+          <QuestionHeader user={user} isLoading={isLoading} />
+          <main className="list-area">
+            <article className="article-container">
+              <div className="delete-button-wrap">
+                {isLoading ? (
+                  <Skeleton className="skeleton-delete-button-style" />
+                ) : (
+                  <button
+                    type="button"
+                    className="delete-button"
+                    onClick={e => setIsDeleteModal(e.target.textContent)}
+                  >
+                    삭제하기
+                  </button>
+                )}
+              </div>
 
-          <AnswerPageQuestionList user={user} id={id} isLoading={isLoading} />
-        </article>
-      </main>
-{isDeleteModal && (
+              <AnswerPageQuestionList
+                user={user}
+                id={id}
+                isLoading={isLoading}
+              />
+            </article>
+          </main>
+          {isDeleteModal && (
             <DeleteModal
               questionId={questionId}
               isDeleteModal={isDeleteModal}
@@ -71,10 +71,8 @@ const AnswerPage = () => {
               handleDeleteAll={handleDeleteAll}
             />
           )}
-    </AnswerPageContainer>
-
-
-  </DeleteModalContext.Provider>
+        </AnswerPageContainer>
+      </DeleteModalContext.Provider>
     </QuestionIdContext.Provider>
   );
 };
