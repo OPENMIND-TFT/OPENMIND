@@ -19,7 +19,7 @@ const DeleteModalContainer = styled.div`
       background: var(--Grayscale-10);
       box-shadow: 0px 16px 20px 0px rgba(48, 48, 48, 0.62);
       padding: 30px;
-      font-family: Actor;
+      font-family: 'Actor', 'pretendard';
     }
 
     .delete-content {
@@ -45,10 +45,10 @@ const DeleteModalContainer = styled.div`
       cursor: pointer;
       background: var(--Grayscale-10);
       font-size: 1.4rem;
+    }
 
-      &:hover {
-        color: var(--Blue-50);
-      }
+    .delete-button {
+      color: var(--Red-50);
     }
   }
 `;

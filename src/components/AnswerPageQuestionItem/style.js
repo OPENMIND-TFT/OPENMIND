@@ -111,7 +111,7 @@ const QuestionContainer = styled.div`
     font-feature-settings:
       'clig' off,
       'liga' off;
-    font-family: Actor;
+    font-family: 'Actor', 'pretendard';
     font-size: 1.8rem;
     line-height: 24px;
   }
