@@ -79,6 +79,13 @@ const QuestionPage = () => {
 
   const fetchData = async () => {
     setIsLoading(true);
+    const delay = ms =>
+      new Promise(res => {
+        setTimeout(() => {
+          res();
+        }, ms);
+      });
+    await delay(1000);
     const responseUser = await getUserData(id);
     setUser(responseUser);
     setQuestionCount(responseUser.questionCount);

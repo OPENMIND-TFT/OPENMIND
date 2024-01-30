@@ -1,17 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const useInfiniteScroll = onIntersection => {
   const elementRef = useRef(null);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   const handleIntersection = entries => {
     const entry = entries[0];
 
-    if (entry.isIntersecting) {
+    if (entry.isIntersecting && entry.target && !isFirstRender) {
       onIntersection();
     }
   };
 
   useEffect(() => {
+    setIsFirstRender(false);
     const observer = new IntersectionObserver(handleIntersection, {
       threshold: 1,
     });
@@ -26,7 +28,7 @@ const useInfiniteScroll = onIntersection => {
         observer.unobserve(currentElement);
       }
     };
-  }, [onIntersection]);
+  }, [onIntersection, elementRef.current]);
 
   return elementRef;
 };
