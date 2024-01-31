@@ -1,19 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const useInfiniteScroll = onIntersection => {
   const elementRef = useRef(null);
-  const [isFirstRender, setIsFirstRender] = useState(true);
 
   const handleIntersection = entries => {
     const entry = entries[0];
 
-    if (entry.isIntersecting && entry.target && !isFirstRender) {
+    if (entry.isIntersecting && entry.target) {
       onIntersection();
     }
   };
 
   useEffect(() => {
-    setIsFirstRender(false);
     const observer = new IntersectionObserver(handleIntersection, {
       threshold: 1,
     });
