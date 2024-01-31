@@ -76,7 +76,16 @@ const KebabDropDown = ({
 
   const handleDeleteAnswer = async () => {
     await deleteAnswer(question.answer.id);
-    window.location.reload(true);
+    setQuestions(prevQuestions => {
+      const index = prevQuestions.findIndex(
+        prevQuestion => prevQuestion.id === question.id,
+      );
+
+      const temp = prevQuestions.filter(prevQuestion => prevQuestion);
+      temp[index].answer = null;
+
+      return temp;
+    });
   };
 
   const submitAnswerRejected = async () => {
