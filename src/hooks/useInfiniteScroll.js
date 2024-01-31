@@ -7,7 +7,7 @@ const useInfiniteScroll = onIntersection => {
   const handleIntersection = entries => {
     const entry = entries[0];
 
-    if (entry.isIntersecting && entry.target && !isFirstRender) {
+    if (entry.isIntersecting && !isFirstRender) {
       onIntersection();
     }
   };
