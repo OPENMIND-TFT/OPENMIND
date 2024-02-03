@@ -3,7 +3,8 @@ import KakaoShareButtonStyled from './style';
 
 const KakaoShareButton = () => {
   const { Kakao } = window;
-  const realUrl = 'https://merry-licorice-4358a9.netlify.app/';
+  const realUrl = 'https://fastidious-gecko-7937eb.netlify.app/';
+
 
   useEffect(() => {
     Kakao.cleanup();
