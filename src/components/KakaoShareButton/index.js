@@ -5,6 +5,7 @@ const KakaoShareButton = () => {
   const { Kakao } = window;
   const realUrl = 'https://fastidious-gecko-7937eb.netlify.app/';
 
+
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init('cee8f493f2e0af4b4d91def7f810a26c');
@@ -17,7 +18,7 @@ const KakaoShareButton = () => {
         title: '오픈마인드',
         description: '마음을 열고 대화를 주고 받는 소통 플랫폼, 오픈마인드',
         imageUrl:
-          'https://harmonious-dusk-d79620.netlify.app/assets/images/kakaoShareImage.png',
+          'https://merry-licorice-4358a9.netlify.app/assets/images/kakaoShareImage.png',
         link: {
           mobileWebUrl: realUrl,
         },

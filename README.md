@@ -16,7 +16,7 @@
 
 <br/>
 
-**[오픈마인드 바로가기](https://www.naver.com/)**
+**[오픈마인드 바로가기](https://fastidious-gecko-7937eb.netlify.app/)**
 
 **[팀 Wiki 바로가기](https://github.com/OPENMIND-TFT/OPENMIND/wiki)**
 
