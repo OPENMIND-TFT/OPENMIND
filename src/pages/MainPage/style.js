@@ -39,6 +39,7 @@ const MainContainer = styled.div`
     padding: 32px;
     border-radius: 16px;
     background: var(--Grayscale-10);
+    z-index: 9999;
 
     form {
       display: flex;
