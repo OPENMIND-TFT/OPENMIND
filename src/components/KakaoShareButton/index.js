@@ -5,7 +5,6 @@ const KakaoShareButton = () => {
   const { Kakao } = window;
   const realUrl = 'https://fastidious-gecko-7937eb.netlify.app/';
 
-
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init('cee8f493f2e0af4b4d91def7f810a26c');
