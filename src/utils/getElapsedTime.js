@@ -25,7 +25,7 @@ const getElapsedTime = createdAt => {
     return `1주전`;
   }
   if (day * 2 <= elapsedTime) {
-    return `${Math.floor(elapsedTime / day)}달전`;
+    return `${Math.floor(elapsedTime / day)}일전`;
   }
   if (day <= elapsedTime) {
     return `1일전`;
